@@ -12,3 +12,6 @@ data/intermediate/projects/
 data/processed/.staging-*/
 tmp/
 
+
+.DS_Store
+*.egg-info/
