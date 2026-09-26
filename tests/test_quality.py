@@ -4,7 +4,7 @@ from pathlib import Path
 import pytest
 
 from gridlock_pipeline.extraction import read_pages_jsonl
-from gridlock_pipeline.models import SourceDocument
+from gridlock_pipeline.models import ConfidenceLevel, SourceDocument
 from gridlock_pipeline.parsers import ParserDiagnostic, Sertp2026Parser
 from gridlock_pipeline.validation.invariants import validate_observation
 from gridlock_pipeline.validation.quality import (
@@ -79,6 +79,34 @@ def test_major_quality_collapse_fails_against_previous_report() -> None:
 
     with pytest.raises(QualityGateError, match="collapse"):
         enforce_run_gates(current, previous_report=previous, minimum_records=1)
+
+
+def test_unknown_only_authority_run_fails_gate() -> None:
+    observations = [
+        item.model_copy(
+            update={
+                "balancing_authority_raw": "UNKNOWN",
+                "balancing_authority_normalized": "UNKNOWN",
+            }
+        )
+        for item in parsed_observations()
+    ]
+
+    with pytest.raises(QualityGateError, match="recognized balancing authorit"):
+        enforce_run_gates(build_quality_report(observations), minimum_records=1)
+
+
+def test_major_confidence_collapse_fails_against_previous_report() -> None:
+    previous = build_quality_report(parsed_observations())
+    degraded = [
+        item.model_copy(update={"confidence": ConfidenceLevel.LOW})
+        for item in parsed_observations()
+    ]
+
+    with pytest.raises(QualityGateError, match="confidence collapse"):
+        enforce_run_gates(
+            build_quality_report(degraded), previous_report=previous, minimum_records=1
+        )
 
 
 def test_quality_and_review_outputs_are_written(tmp_path: Path) -> None:

@@ -44,9 +44,10 @@ Successful runs atomically publish:
 - `data/processed/source_manifest.json`: discovery URL, final URL, HTTP metadata, SHA-256, page count, and source-change history;
 - `data/processed/review_queue.csv`: records needing human attention;
 - `data/processed/data_quality.json`: record, authority, confidence, validation, warning, and parser-diagnostic counts;
+- `data/processed/bundle_manifest.json`: the atomic snapshot boundary and hashes for coherent multi-file reads;
 - `schemas/project_observation.schema.json`: the Pydantic-generated machine-readable contract.
 
-Each observation preserves the complete cleaned `raw_record_text`, individual raw fields, separately normalized or derived values, source PDF SHA-256, zero-based PDF page range, printed-page range where detected, parser/pipeline versions, and PDF extraction engine/version. `field_provenance` identifies the raw source fields and deterministic rule behind derived values. `SOUTHERN` remains a balancing authority, while prefixes such as `SOCO:` and `GTC:` are preserved without attributing projects to Georgia Power.
+Each observation preserves the complete cleaned `raw_record_text`, individual raw fields, separately normalized or derived values, source PDF SHA-256, zero-based PDF page range, printed-page range where detected, parser/pipeline versions, and PDF extraction engine/version. `field_provenance` identifies the raw source fields and deterministic rule behind derived values. `SOUTHERN` remains a balancing authority, while prefixes such as `SOCO:` and `GTC:` are preserved without attributing projects to Georgia Power. Multi-file consumers can use `read_verified_output_bundle` to accept a snapshot only when every file matches the manifest published last.
 
 Before publication, records are validated, duplicate candidates are flagged, and run-level gates reject empty or implausibly small results, absent authorities, excessive invalid records, or cross-format count mismatches. Warnings lower confidence and send records to the review queue rather than silently inventing facts. Candidate exports are staged and cross-checked; an error leaves the last known-good bundle unchanged.
 

@@ -2,6 +2,7 @@
 
 from gridlock_pipeline.discovery.sertp import (
     AmbiguousDocumentError,
+    DiscoveryError,
     UnsupportedPlanningYear,
     discover_sertp_document,
     rank_sertp_candidates,
@@ -9,6 +10,7 @@ from gridlock_pipeline.discovery.sertp import (
 
 __all__ = [
     "AmbiguousDocumentError",
+    "DiscoveryError",
     "UnsupportedPlanningYear",
     "discover_sertp_document",
     "rank_sertp_candidates",

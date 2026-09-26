@@ -1,6 +1,7 @@
 """Discovery of the official public SERTP 2026 report."""
 
 import re
+import time
 from urllib.parse import urljoin
 
 from bs4 import BeautifulSoup
@@ -19,6 +20,10 @@ class UnsupportedPlanningYear(ValueError):
 
 class AmbiguousDocumentError(RuntimeError):
     """Raised when discovery cannot identify one defensible source document."""
+
+
+class DiscoveryError(RuntimeError):
+    """Raised when a discovery page cannot be safely accepted."""
 
 
 def _search_text(value: str) -> str:
@@ -81,6 +86,63 @@ def urlsplit_path(url: str) -> str:
     return urlsplit(url).path
 
 
+def _read_bounded_html(response, maximum: int) -> str:
+    declared = response.headers.get("Content-Length")
+    try:
+        declared_length = int(declared) if declared else None
+    except (TypeError, ValueError):
+        declared_length = None
+    if declared_length is not None and declared_length > maximum:
+        raise DiscoveryError("discovery page size exceeds configured limit")
+
+    iterator = getattr(response, "iter_content", None)
+    if iterator is None:
+        text = response.text
+        if len(text.encode("utf-8")) > maximum:
+            raise DiscoveryError("discovery page size exceeds configured limit")
+        return text
+
+    content = bytearray()
+    for chunk in iterator(chunk_size=64 * 1024):
+        if not chunk:
+            continue
+        content.extend(chunk)
+        if len(content) > maximum:
+            raise DiscoveryError("discovery page size exceeds configured limit")
+    encoding = getattr(response, "encoding", None) or "utf-8"
+    return bytes(content).decode(encoding, errors="replace")
+
+
+def _fetch_public_discovery_html(
+    session, requested_url: str, policy: SourcePolicy
+) -> tuple[str, str]:
+    current = validate_public_url(requested_url, policy)
+    for redirect_count in range(6):
+        response = session.get(
+            current,
+            timeout=policy.timeout_seconds,
+            headers={"User-Agent": "GridlockDataPipeline/0.1 (+public research)"},
+            allow_redirects=False,
+            stream=True,
+        )
+        if response.status_code in {301, 302, 303, 307, 308}:
+            location = response.headers.get("Location")
+            if not location:
+                raise DiscoveryError("discovery redirect omitted Location header")
+            next_url = validate_public_url(urljoin(current, location), policy)
+            close = getattr(response, "close", None)
+            if close is not None:
+                close()
+            current = next_url
+            if redirect_count < 5 and policy.request_interval_seconds:
+                time.sleep(policy.request_interval_seconds)
+            continue
+        response.raise_for_status()
+        final_url = validate_public_url(response.url or current, policy)
+        return _read_bounded_html(response, policy.max_content_bytes), final_url
+    raise DiscoveryError("discovery page exceeded redirect limit")
+
+
 def discover_sertp_document(
     session,
     year: int,
@@ -89,11 +151,8 @@ def discover_sertp_document(
     _ensure_supported(year, policy)
     ranked: list[SourceDocumentCandidate] = []
     for discovery_url in policy.discovery_pages:
-        safe_discovery_url = validate_public_url(discovery_url, policy)
-        response = session.get(safe_discovery_url, timeout=policy.timeout_seconds)
-        response.raise_for_status()
-        final_discovery_url = validate_public_url(response.url, policy)
-        ranked.extend(rank_sertp_candidates(response.text, final_discovery_url, year, policy))
+        html, final_discovery_url = _fetch_public_discovery_html(session, discovery_url, policy)
+        ranked.extend(rank_sertp_candidates(html, final_discovery_url, year, policy))
     ranked.sort(key=lambda item: (-item.score, item.url, item.title))
     if not ranked:
         raise AmbiguousDocumentError(f"no public SERTP document candidate found for {year}")
@@ -102,4 +161,3 @@ def discover_sertp_document(
     if len(tied) != 1:
         raise AmbiguousDocumentError(f"{len(tied)} document candidates tie for {year}")
     return ranked[0]
-

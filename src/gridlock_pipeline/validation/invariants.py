@@ -86,6 +86,9 @@ def validate_observation(observation: ProjectObservation) -> ProjectObservation:
 
 def _duplicate_fingerprint(observation: ProjectObservation) -> str:
     description = re.sub(r"\s+", " ", observation.description_raw or "").casefold()
+    supporting = re.sub(
+        r"\s+", " ", observation.supporting_statement_raw or ""
+    ).casefold()
     parts = (
         observation.balancing_authority_normalized or "",
         (observation.project_name_normalized or observation.project_name_raw).casefold(),
@@ -93,6 +96,7 @@ def _duplicate_fingerprint(observation: ProjectObservation) -> str:
         ",".join(str(value) for value in observation.voltage_kv),
         observation.owner_prefix_raw or "",
         hashlib.sha256(description.encode()).hexdigest(),
+        hashlib.sha256(supporting.encode()).hexdigest(),
     )
     return "\x1f".join(parts)
 

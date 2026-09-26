@@ -1,6 +1,6 @@
 [
   {
-    "observation_id": "sertp-2026-1c66c3f127333fcc4fcc",
+    "observation_id": "sertp-2026-b4916760ea19b31e9ea0",
     "project_name_raw": "BUSH RIVER TIE 115/100 KV AUTOTRANSFORMERS, REPLACE",
     "balancing_authority_raw": "DUKE CAROLINAS",
     "owner_prefix_raw": null,
@@ -18,7 +18,7 @@
     "project_type": "equipment_replacement"
   },
   {
-    "observation_id": "sertp-2026-6e4c76ca6bb10f5dc64a",
+    "observation_id": "sertp-2026-2017170b878014b7ef74",
     "project_name_raw": "GTC: ADAMSVILLE - BUZZARD ROOST 230 KV REBUILD",
     "balancing_authority_raw": "SOUTHERN",
     "owner_prefix_raw": "GTC:",
@@ -36,7 +36,7 @@
     "project_type": "line_rebuild"
   },
   {
-    "observation_id": "sertp-2026-dc59364365bc88326d2d",
+    "observation_id": "sertp-2026-6034b76d71594ed6f963",
     "project_name_raw": "GTC: EAST MOULTRIE - HIGHWAY 112 230 KV LINE",
     "balancing_authority_raw": "SOUTHERN",
     "owner_prefix_raw": "GTC:",
@@ -54,7 +54,7 @@
     "project_type": "new_construction"
   },
   {
-    "observation_id": "sertp-2026-d6a9dae2886b681c54b2",
+    "observation_id": "sertp-2026-3bdac3ea1b0b648edb05",
     "project_name_raw": "GTC: REPLACE 230/115 KV AUTO TRANSFORMERS AT SOUTH HAZLEHURST",
     "balancing_authority_raw": "SOUTHERN",
     "owner_prefix_raw": "GTC:",
@@ -72,7 +72,7 @@
     "project_type": "equipment_replacement"
   },
   {
-    "observation_id": "sertp-2026-6c2b19959f76f5131850",
+    "observation_id": "sertp-2026-aa6f39f020e1dac1f233",
     "project_name_raw": "SOCO: ANNISTON - BYNUM 115 KV TL UPGRADE",
     "balancing_authority_raw": "SOUTHERN",
     "owner_prefix_raw": "SOCO:",
@@ -90,7 +90,7 @@
     "project_type": "equipment_upgrade"
   },
   {
-    "observation_id": "sertp-2026-4d9c4c9bef226da6bb24",
+    "observation_id": "sertp-2026-7f1781e6c0e2980764dd",
     "project_name_raw": "SOCO: ATHENA - EAST WATKINSVILLE 115 KV REBUILD",
     "balancing_authority_raw": "SOUTHERN",
     "owner_prefix_raw": "SOCO:",
@@ -108,7 +108,7 @@
     "project_type": "line_rebuild"
   },
   {
-    "observation_id": "sertp-2026-18455a62660d42ef9dfd",
+    "observation_id": "sertp-2026-833e1d211c8abb450f06",
     "project_name_raw": "SOCO: AUTAUGAVILLE - EAST PELHAM NEW 230 KV TRANSMISSION LINE",
     "balancing_authority_raw": "SOUTHERN",
     "owner_prefix_raw": "SOCO:",
@@ -126,7 +126,7 @@
     "project_type": "new_construction"
   },
   {
-    "observation_id": "sertp-2026-15fa1491a52e7b78d170",
+    "observation_id": "sertp-2026-598d4bbfd098e28c6ff5",
     "project_name_raw": "SOCO: BESSEMER – SOUTH BESSEMER 115 KV TL RECONDUCTOR - PHASE 1",
     "balancing_authority_raw": "SOUTHERN",
     "owner_prefix_raw": "SOCO:",
@@ -144,7 +144,7 @@
     "project_type": "line_reconductor"
   },
   {
-    "observation_id": "sertp-2026-e687ae4d39552678f75e",
+    "observation_id": "sertp-2026-046f9bbd7afa0cd54097",
     "project_name_raw": "BULL RUN 500 KV SYNCHRONOUS CONDENSER, INSTALL",
     "balancing_authority_raw": "TVA",
     "owner_prefix_raw": null,
@@ -162,7 +162,7 @@
     "project_type": "equipment_installation"
   },
   {
-    "observation_id": "sertp-2026-af74aa5542d1bd2ab5bd",
+    "observation_id": "sertp-2026-5fd73699e5643f286cb2",
     "project_name_raw": "CORDOVA - YUM YUM 161 KV TRANSMISSION LINE, RECONDUCTOR",
     "balancing_authority_raw": "TVA",
     "owner_prefix_raw": null,

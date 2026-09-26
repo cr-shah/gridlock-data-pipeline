@@ -4,9 +4,28 @@ from pathlib import Path
 
 import pymupdf
 
-from gridlock_pipeline.extraction.pdf_text import extract_pdf_pages, write_pages_jsonl
+from gridlock_pipeline.extraction.pdf_text import (
+    EXPECTED_EXTRACTION_ENGINE_VERSION,
+    extract_pdf_pages,
+    write_pages_jsonl,
+)
 
 SOURCE_SHA = "c" * 64
+EXPECTED_TWO_PAGE_TEXT = [
+    (
+        "SERTP TRANSMISSION PROJECTS\n"
+        "SOUTHERN SERTP TRANSMISSION PROJECTS (CEII) Authority Area\n"
+        "Balancing Authority\n\nIn-Service  2028\nYear:\n\n"
+        "Project Name: SOCO: Alpha 230 kV Line\n\n"
+        "Description: Rebuild the Alpha line with\n\n\n\n\n\nPage 1 of 2"
+    ),
+    (
+        "SERTP TRANSMISSION PROJECTS\n"
+        "SOUTHERN SERTP TRANSMISSION PROJECTS (CEII) Authority Area\n"
+        "Balancing Authority\n\nbundled conductor.\n\n"
+        "Supporting Addresses thermal loading.\nStatement:\n\n\n\n\n\nPage 2 of 2"
+    ),
+]
 
 
 def test_extract_pdf_pages_preserves_order_text_and_provenance() -> None:
@@ -22,6 +41,17 @@ def test_extract_pdf_pages_preserves_order_text_and_provenance() -> None:
     assert {page.source_sha256 for page in pages} == {SOURCE_SHA}
     assert {page.extraction_engine for page in pages} == {"PyMuPDF"}
     assert {page.extraction_engine_version for page in pages} == {version("PyMuPDF")}
+
+
+def test_pinned_pdf_extraction_is_a_golden_engine_and_text_contract() -> None:
+    pages = extract_pdf_pages(
+        Path("tests/fixtures/sertp/two_page_projects.pdf"),
+        SOURCE_SHA,
+    )
+
+    assert EXPECTED_EXTRACTION_ENGINE_VERSION == "1.28.2"
+    assert version("PyMuPDF") == EXPECTED_EXTRACTION_ENGINE_VERSION
+    assert [page.text for page in pages] == EXPECTED_TWO_PAGE_TEXT
 
 
 def test_empty_page_warns_without_ocr(tmp_path: Path) -> None:

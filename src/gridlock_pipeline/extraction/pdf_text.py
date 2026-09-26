@@ -10,6 +10,8 @@ import pymupdf
 
 from gridlock_pipeline.extraction.page_model import ExtractedPage
 
+EXPECTED_EXTRACTION_ENGINE_VERSION = "1.28.2"
+
 
 def _printed_page_number(text: str) -> int | None:
     lines = [line.strip() for line in text.splitlines() if line.strip()]
@@ -24,6 +26,11 @@ def _printed_page_number(text: str) -> int | None:
 
 def extract_pdf_pages(pdf_path: Path, source_sha256: str) -> list[ExtractedPage]:
     engine_version = version("PyMuPDF")
+    if engine_version != EXPECTED_EXTRACTION_ENGINE_VERSION:
+        raise RuntimeError(
+            "unverified PyMuPDF version: "
+            f"expected {EXPECTED_EXTRACTION_ENGINE_VERSION}, received {engine_version}"
+        )
     extracted: list[ExtractedPage] = []
     with pymupdf.open(pdf_path) as document:
         for index, page in enumerate(document):

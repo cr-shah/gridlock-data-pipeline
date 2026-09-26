@@ -142,6 +142,31 @@ def test_observation_ids_are_stable_across_reruns() -> None:
     assert len({item.observation_id for item in first.observations}) == 22
 
 
+def test_supporting_statement_distinguishes_otherwise_identical_records() -> None:
+    page = ExtractedPage(
+        pdf_page_index=500,
+        printed_page_number=501,
+        text=(
+            "SERTP TRANSMISSION PROJECTS\nTVASERTP PROJECTS(CEII)AuthorityArea\n"
+            "Balancing Authority\nIn-Service 2030\nYear:\n"
+            "Project Name: ALPHA 161 KV LINE\nDescription: Rebuild the Alpha line.\n"
+            "Supporting Circuit one overloads.\nStatement:\n"
+            "In-Service 2030\nYear:\nProject Name: ALPHA 161 KV LINE\n"
+            "Description: Rebuild the Alpha line.\n"
+            "Supporting Circuit two overloads.\nStatement:\n"
+            "06/12/2026 Page 501 of 501"
+        ),
+        source_sha256=SHA,
+        extraction_engine="PyMuPDF",
+        extraction_engine_version="1.28.2",
+    )
+
+    observations = Sertp2026Parser().parse([page], source_document()).observations
+
+    assert len(observations) == 2
+    assert len({item.observation_id for item in observations}) == 2
+
+
 def test_supporting_statement_continues_across_page_header() -> None:
     first_page = ExtractedPage(
         pdf_page_index=300,

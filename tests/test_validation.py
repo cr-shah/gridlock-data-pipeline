@@ -116,6 +116,20 @@ def test_same_name_with_different_description_is_not_a_duplicate() -> None:
     assert all("POSSIBLE_DUPLICATE" not in item.warning_codes for item in result)
 
 
+def test_same_name_with_different_supporting_statement_is_not_a_duplicate() -> None:
+    first = sample_observation()
+    second = first.model_copy(
+        update={
+            "observation_id": "another-id",
+            "supporting_statement_raw": "A different circuit overloads.",
+        }
+    )
+
+    result = flag_duplicate_candidates([first, second])
+
+    assert all("POSSIBLE_DUPLICATE" not in item.warning_codes for item in result)
+
+
 def test_review_queue_is_machine_readable() -> None:
     reviewed = validate_observation(
         sample_observation().model_copy(update={"supporting_statement_raw": None})
@@ -126,4 +140,3 @@ def test_review_queue_is_machine_readable() -> None:
     assert len(queue) == 1
     assert queue[0].observation_id == reviewed.observation_id
     assert json.loads(queue[0].warning_codes_json) == ["MISSING_SUPPORTING_STATEMENT"]
-

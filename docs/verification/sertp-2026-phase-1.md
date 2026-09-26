@@ -59,10 +59,10 @@ An unchanged cached-input rerun produced byte-identical deterministic artifacts:
 
 | Artifact | SHA-256 |
 |---|---|
-| `sertp_2026_projects.json` | `89ac219de8aa91f9a6b6cf2e5e2295e5f88a4febac9a007da574ef756a1b3d07` |
-| `sertp_2026_projects.csv` | `44d24a48080d18bc00e46e92b3b942da520e0c330fbae65f9f0c81e0920e8df5` |
+| `sertp_2026_projects.json` | `68bd30edf2dbcc115b9aa15a731182d1739f1496231f9cb32d52606e37bf32cd` |
+| `sertp_2026_projects.csv` | `a6fda62ab4b510fd0def8d6a1b653b5d8c27feb430c00859935d795c8367ea62` |
 | `project_observation.schema.json` | `94580db9e62bf897c970d6e569c9920d74450a35de30fd299bb42b8cb9388755` |
-| `review_queue.csv` | `c13bbb0de5394506a3909c1212a5cd3ae25f07821224fb6d9eea7e7aad54347d` |
+| `review_queue.csv` | `3ae5755d58cc2c20d34b3e7dcad75335c35ecaa63bddfb0b9c38e11d290a78f9` |
 | `data_quality.json` | `da88bb230346018ed95ecc5bf71739263d62f168307b28922c8a550616fec4c2` |
 
 The source manifest is allowed to contain acquisition metadata, but the rerun retained the same source SHA-256 and empty change history.
@@ -75,6 +75,7 @@ data/processed/sertp_2026_projects.json
 data/processed/review_queue.csv
 data/processed/data_quality.json
 data/processed/source_manifest.json
+data/processed/bundle_manifest.json
 schemas/project_observation.schema.json
 ```
 

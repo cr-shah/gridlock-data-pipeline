@@ -1,0 +1,12 @@
+{
+  "bundle_id": "b58e994a3b33eeef513260c6f99bbe33095247e1df1690a6096a55141b501728",
+  "files": {
+    "data/processed/data_quality.json": "da88bb230346018ed95ecc5bf71739263d62f168307b28922c8a550616fec4c2",
+    "data/processed/review_queue.csv": "3ae5755d58cc2c20d34b3e7dcad75335c35ecaa63bddfb0b9c38e11d290a78f9",
+    "data/processed/sertp_2026_projects.csv": "a6fda62ab4b510fd0def8d6a1b653b5d8c27feb430c00859935d795c8367ea62",
+    "data/processed/sertp_2026_projects.json": "68bd30edf2dbcc115b9aa15a731182d1739f1496231f9cb32d52606e37bf32cd",
+    "data/processed/source_manifest.json": "874f1b2a2d77356bc80abc2a9c63c431f7d48b93704b7f7bd050c60f92fab243",
+    "schemas/project_observation.schema.json": "94580db9e62bf897c970d6e569c9920d74450a35de30fd299bb42b8cb9388755"
+  },
+  "schema_version": "1.0"
+}

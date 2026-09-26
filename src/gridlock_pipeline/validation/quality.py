@@ -8,6 +8,7 @@ from pathlib import Path
 
 from gridlock_pipeline.models import ProjectObservation, ValidationStatus
 from gridlock_pipeline.parsers import ParserDiagnostic
+from gridlock_pipeline.validation.invariants import KNOWN_AUTHORITIES
 from gridlock_pipeline.validation.schema import DataQualityReport, ReviewQueueEntry
 
 
@@ -72,12 +73,29 @@ def enforce_run_gates(
         raise QualityGateError(
             f"implausibly few observations: {report.total_observations} < {minimum_records}"
         )
-    if not report.balancing_authority_counts:
-        raise QualityGateError("no balancing authorities were parsed")
+    recognized_authorities = sum(
+        count
+        for authority, count in report.balancing_authority_counts.items()
+        if authority in KNOWN_AUTHORITIES
+    )
+    if recognized_authorities == 0:
+        raise QualityGateError("no recognized balancing authorities were parsed")
     if report.invalid_count / report.total_observations > 0.05:
         raise QualityGateError("required-field failure rate exceeds five percent")
     if previous_report and report.total_observations < previous_report.total_observations * 0.5:
         raise QualityGateError("observation-count quality collapse relative to previous run")
+    if previous_report:
+        previous_recognized = sum(
+            count
+            for authority, count in previous_report.balancing_authority_counts.items()
+            if authority in KNOWN_AUTHORITIES
+        )
+        if previous_recognized and recognized_authorities < previous_recognized * 0.5:
+            raise QualityGateError("recognized-authority quality collapse relative to previous run")
+        previous_high = previous_report.confidence_counts.get("HIGH", 0)
+        current_high = report.confidence_counts.get("HIGH", 0)
+        if previous_high and current_high < previous_high * 0.5:
+            raise QualityGateError("confidence collapse relative to previous run")
 
 
 def write_data_quality(report: DataQualityReport, path: Path) -> None:

@@ -18,6 +18,7 @@ from gridlock_pipeline.export import (
     fsync_output_bundle,
     promote_output_bundle,
     validate_output_bundle,
+    write_output_bundle_manifest,
     write_source_manifest,
 )
 from gridlock_pipeline.extraction import ExtractedPage, extract_pdf_pages, write_pages_jsonl
@@ -124,6 +125,7 @@ class PipelineRunner:
             )
             write_review_queue(observations, staged_processed / "review_queue.csv")
             write_data_quality(quality_report, staged_processed / "data_quality.json")
+            write_output_bundle_manifest(staging)
             validate_output_bundle(staging)
             fsync_output_bundle(staging)
             promote_output_bundle(staging, self.root)
@@ -153,20 +155,35 @@ class PipelineRunner:
         year: int,
         force: bool = False,
     ) -> PipelineRunResult:
-        candidate = self.discover(source=source, year=year)
-        downloaded = self.download(candidate, force=force)
-        pages = self.extract(downloaded)
-        parsed = self.parse(pages, downloaded.metadata)
-        observations = [validate_observation(item) for item in parsed.observations]
-        observations = flag_duplicate_candidates(observations)
-        quality_report = build_quality_report(observations, diagnostics=parsed.diagnostics)
-        minimum_records = 10 if len(pages) >= 50 else 1
-        enforce_run_gates(quality_report, minimum_records=minimum_records)
-        self.export(observations, downloaded.metadata, quality_report)
-        return PipelineRunResult(
-            document=downloaded.metadata,
-            pages=pages,
-            observations=observations,
-            diagnostics=parsed.diagnostics,
-            quality_report=quality_report,
-        )
+        try:
+            previous_report = self._load_previous_quality_report()
+            candidate = self.discover(source=source, year=year)
+            downloaded = self.download(candidate, force=force)
+            pages = self.extract(downloaded)
+            parsed = self.parse(pages, downloaded.metadata)
+            observations = [validate_observation(item) for item in parsed.observations]
+            observations = flag_duplicate_candidates(observations)
+            quality_report = build_quality_report(observations, diagnostics=parsed.diagnostics)
+            minimum_records = 10 if len(pages) >= 50 else 1
+            enforce_run_gates(
+                quality_report,
+                previous_report=previous_report,
+                minimum_records=minimum_records,
+            )
+            self.export(observations, downloaded.metadata, quality_report)
+            return PipelineRunResult(
+                document=downloaded.metadata,
+                pages=pages,
+                observations=observations,
+                diagnostics=parsed.diagnostics,
+                quality_report=quality_report,
+            )
+        except Exception as error:
+            self._write_failure_diagnostic(error)
+            raise
+
+    def _load_previous_quality_report(self) -> DataQualityReport | None:
+        path = self.root / "data/processed/data_quality.json"
+        if not path.exists():
+            return None
+        return DataQualityReport.model_validate_json(path.read_text(encoding="utf-8"))

@@ -2,9 +2,10 @@ from pathlib import Path
 
 import pytest
 
-from gridlock_pipeline.acquisition.safety import load_source_policy
+from gridlock_pipeline.acquisition.safety import UnsafeUrlError, load_source_policy
 from gridlock_pipeline.discovery.sertp import (
     AmbiguousDocumentError,
+    DiscoveryError,
     UnsupportedPlanningYear,
     discover_sertp_document,
     rank_sertp_candidates,
@@ -14,10 +15,18 @@ DISCOVERY_URL = "https://www.southeasternrtp.com/reference_library.cshtml"
 
 
 class FakeResponse:
-    def __init__(self, text: str, url: str = DISCOVERY_URL):
+    def __init__(
+        self,
+        text: str,
+        url: str = DISCOVERY_URL,
+        *,
+        status_code: int = 200,
+        headers: dict[str, str] | None = None,
+    ):
         self.text = text
         self.url = url
-        self.status_code = 200
+        self.status_code = status_code
+        self.headers = headers or {}
 
     def raise_for_status(self) -> None:
         return None
@@ -102,3 +111,38 @@ def test_external_candidate_is_ignored(policy) -> None:
     """
 
     assert rank_sertp_candidates(html, DISCOVERY_URL, 2026, policy) == []
+
+
+def test_discovery_rejects_blocked_redirect_before_requesting_destination(policy) -> None:
+    class RedirectSession:
+        def __init__(self):
+            self.requested: list[tuple[str, dict]] = []
+
+        def get(self, url: str, **kwargs) -> FakeResponse:
+            self.requested.append((url, kwargs))
+            return FakeResponse(
+                "",
+                status_code=302,
+                headers={"Location": "/secure_area/private"},
+            )
+
+    session = RedirectSession()
+
+    with pytest.raises(UnsafeUrlError, match="blocked"):
+        discover_sertp_document(session, 2026, policy)
+
+    assert [url for url, _kwargs in session.requested] == [DISCOVERY_URL]
+    assert session.requested[0][1]["allow_redirects"] is False
+
+
+def test_discovery_rejects_oversized_html(policy) -> None:
+    class OversizedSession:
+        def get(self, url: str, **_kwargs) -> FakeResponse:
+            return FakeResponse(
+                "",
+                url=url,
+                headers={"Content-Length": str(policy.max_content_bytes + 1)},
+            )
+
+    with pytest.raises(DiscoveryError, match="size"):
+        discover_sertp_document(OversizedSession(), 2026, policy)

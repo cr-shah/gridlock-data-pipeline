@@ -221,7 +221,14 @@ class Sertp2026Parser:
         )
 
         stable_facts = "\x1f".join(
-            [document.sha256, authority, year_raw or "", name_raw, description_raw or ""]
+            [
+                document.sha256,
+                authority,
+                year_raw or "",
+                name_raw,
+                description_raw or "",
+                supporting_raw or "",
+            ]
         )
         observation_id = f"sertp-2026-{hashlib.sha256(stable_facts.encode()).hexdigest()[:20]}"
         page_lookup = {page.pdf_page_index: page for page in pages}
@@ -281,4 +288,3 @@ class Sertp2026Parser:
             longitude=None,
             geometry=None,
         )
-
