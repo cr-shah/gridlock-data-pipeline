@@ -1,0 +1,533 @@
+[
+  {
+    "id": "scrtp-desc-2026-46820ad9c5762567112e",
+    "name": "Church Creek - Dawson 230 kV: Rebuild from Long Savannah to Dawson",
+    "priority_region": true,
+    "project_source_page": 45,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-7fa4730f03b913c12731",
+    "name": "Long Savannah 115 kV Tap: Construct",
+    "priority_region": true,
+    "project_source_page": 46,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-3fcc16fb58dedf958023",
+    "name": "Okatie - McIntosh 115kV Tie: Add Series Reactor",
+    "priority_region": true,
+    "project_source_page": 40,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "georgia-power-2026-83a79bb18ac6d7434a20",
+    "name": "Effingham County 500 kV",
+    "priority_region": true,
+    "project_source_page": null,
+    "project_source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/effingham-county.html",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "GPC"
+  },
+  {
+    "id": "scrtp-desc-2026-eb202ce3590c13fc88e7",
+    "name": "Adams Run - Red House Road 46 kV: Replace Dawhoo River Crossing and other Structures",
+    "priority_region": false,
+    "project_source_page": 27,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-309795ee1adf28cf2ca0",
+    "name": "Atomic Road 115/12kV Sub: Construct",
+    "priority_region": false,
+    "project_source_page": 23,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-a475537e9a3c614817c8",
+    "name": "Batesburg - Saluda County 115kV: Rebuild",
+    "priority_region": false,
+    "project_source_page": 4,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-580489b3325c66a1a3c7",
+    "name": "Burton-St Helena 115kV: Rebuild Frogmore Distribution - St. Helena Section",
+    "priority_region": false,
+    "project_source_page": 20,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-4c872ccba8939e35fac2",
+    "name": "CAE Industrial Park - Springdale Sub 115kV: Replace Laminated Wood Polls.",
+    "priority_region": false,
+    "project_source_page": 41,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-9b5c3fa9b64a36b4c27d",
+    "name": "Cainhoy - Hamlin 115kV: Rebuild Line and Cainhoy - Hamlin 115 kV #2: Construct New 115 kV Line",
+    "priority_region": false,
+    "project_source_page": 8,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-e24119ec3a7bdb72a697",
+    "name": "Calhoun County - North 46 kV Rebuild",
+    "priority_region": false,
+    "project_source_page": 49,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-2bdbe589065850b2bf7b",
+    "name": "Cameron Jct - Cameron - St Matthews 46 kV Rebuild",
+    "priority_region": false,
+    "project_source_page": 39,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-01721fe441d77ed53511",
+    "name": "Cameron Jct - Elloree 46 kV Rebuild",
+    "priority_region": false,
+    "project_source_page": 22,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-1abfb289467fdf34ea99",
+    "name": "Canadys-Ritter 115KV: Rebuild SPDC 230/115KV 1272 (Approx 18 Miles)",
+    "priority_region": false,
+    "project_source_page": 43,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-62cca916e3889b16667d",
+    "name": "Church Creek - Faber Place - Charleston Transmission: Add 230kV Line",
+    "priority_region": false,
+    "project_source_page": 15,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-682690d31529ada3413c",
+    "name": "Church Creek - Ritter 230kV - Replace 38 Large Angles and Dead Ends",
+    "priority_region": false,
+    "project_source_page": 31,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-8b260462f73fb187efb7",
+    "name": "Clements Ferry Rd Sub: 115kV Tap from Cainhoy",
+    "priority_region": false,
+    "project_source_page": 52,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-55ca5129e792a0ffac5a",
+    "name": "Coast Guard 115kV Substation and Tap: Construct",
+    "priority_region": false,
+    "project_source_page": 36,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-1b30b2d7f1243af224a6",
+    "name": "Coit - Gills Creek 115kV: Construct",
+    "priority_region": false,
+    "project_source_page": 9,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-5f045dde1ccaf5f7d88e",
+    "name": "Columbia Canal 115 kV: Rebuild",
+    "priority_region": false,
+    "project_source_page": 1,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-4a7942c7cf9090d1615f",
+    "name": "Dawson 230kV Sub and Fold-in: Construct and Rebuild",
+    "priority_region": false,
+    "project_source_page": 7,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-0ebf87ad38523a768f7f",
+    "name": "Eastover - Sumter 115kV DEP Tie: Rebuild with 1272 ACSR",
+    "priority_region": false,
+    "project_source_page": 3,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-539bcce2151a4cce3dfe",
+    "name": "Elloree - Santee City 46 kV: Rebuild",
+    "priority_region": false,
+    "project_source_page": 24,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-167cae57a08d41084d8f",
+    "name": "Faber Place-Bayfront 115kV: Rebuild North Bridge Terrace to Bayfront Section",
+    "priority_region": false,
+    "project_source_page": 51,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-4d45267b2be012b25f45",
+    "name": "Fairfax-Yemassee 115kV: Upgrade for DESCSQ #1151 Interconnection",
+    "priority_region": false,
+    "project_source_page": 17,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-ff156d76c0883982f0fe",
+    "name": "Flat Rock 115kV Sub and Tap: Construct",
+    "priority_region": false,
+    "project_source_page": 13,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-644509a9674dde09dab2",
+    "name": "Harleyville 115KV Transmission Tap - Construct (1.4 miles)",
+    "priority_region": false,
+    "project_source_page": 33,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-bbcc2e30ae237ba84769",
+    "name": "Hooks - Modoc 115/46 kV Rebuild",
+    "priority_region": false,
+    "project_source_page": 19,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-227b596e791634c1e100",
+    "name": "Jackson 115kV: Construct 115 - 12kV Distribution Substation",
+    "priority_region": false,
+    "project_source_page": 32,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-eb85d7f45be01076a63b",
+    "name": "Lyles - Kilbourne Park 115kV: Replace Structure 67 - Kilbourne Park",
+    "priority_region": false,
+    "project_source_page": 28,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-84d5c4bca259c7c3525e",
+    "name": "Millrace 115 kV Tap: Construct",
+    "priority_region": false,
+    "project_source_page": 37,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-d996339bf6f88a71bec4",
+    "name": "Modoc - McCormick 115/46 kV Rebuild",
+    "priority_region": false,
+    "project_source_page": 47,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-5fc8cc411f3fac441bb2",
+    "name": "Orangeburg #1 - Cameron Jct 46kV Line Rebuild",
+    "priority_region": false,
+    "project_source_page": 34,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-7611950eee55380eb17f",
+    "name": "Riverport 115kV Tap: Construct Tap",
+    "priority_region": false,
+    "project_source_page": 12,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-0e85d451a55e8819d96c",
+    "name": "Saluda Hydro - Bush River 115kV #1 and #2 Tie Lines Rebuild",
+    "priority_region": false,
+    "project_source_page": 14,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-962089b5689400bb0b79",
+    "name": "Scout 230 kV Sub and Fold-in: Construct",
+    "priority_region": false,
+    "project_source_page": 2,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-df647554a741cc921e3b",
+    "name": "St George - Sumter 230kV Tie: Rebuild Line from Santee Substation - Duke/Progress Energy Tie",
+    "priority_region": false,
+    "project_source_page": 18,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-6246e72a6d88f440bff0",
+    "name": "St. George- Holly Hill 115kV: Rebuild Structures 83-108",
+    "priority_region": false,
+    "project_source_page": 42,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-934683e291b7d4eca945",
+    "name": "Stevens Creek - Graniteville 115 kV: Rebuild",
+    "priority_region": false,
+    "project_source_page": 48,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-b67f9b219765f715cb64",
+    "name": "Summerville 115kV Loop: Rebuild",
+    "priority_region": false,
+    "project_source_page": 0,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-4adc3d7895d500e1fdc4",
+    "name": "Summerville-Boone Hill 115kV: Move Line for US78 SCDOT Road Widening",
+    "priority_region": false,
+    "project_source_page": 5,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-1369cc25b0f210697d9f",
+    "name": "Union Pier 115-13.8 kV Sub: Tap",
+    "priority_region": false,
+    "project_source_page": 50,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-338bea3571ea03ed111f",
+    "name": "VCS1-Denny Terrace 230kV & VCS1-Pineland 230kV: Rebuild Single Circuit Sections",
+    "priority_region": false,
+    "project_source_page": 35,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-e392d32c82bbf3b76a94",
+    "name": "VCS2-Ward 230kV: Rebuild Line",
+    "priority_region": false,
+    "project_source_page": 53,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-56b175a278b0372be50e",
+    "name": "Wagener 115kV Tap: Construct Tap",
+    "priority_region": false,
+    "project_source_page": 21,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-2f5f6153226830f2478a",
+    "name": "Wateree-Hopkins 230kV Line #1: Rebuild",
+    "priority_region": false,
+    "project_source_page": 26,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-293622a55138dc3ee32b",
+    "name": "Wateree-Killian 230kV: Rebuild",
+    "priority_region": false,
+    "project_source_page": 44,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-e9c1d443c0a9e36ceea8",
+    "name": "Williams St Sub: Replace Sw House & Relays, AM Williams Sub: Replace Sw House, and McMeekin Sub: Add Sw House",
+    "priority_region": false,
+    "project_source_page": 38,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-21cc4cdc9245c53a9d6d",
+    "name": "Williams-Summerville 230kV: Upgrade to SPDC B1272 ACSR",
+    "priority_region": false,
+    "project_source_page": 30,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-280ebdf1b72250caeba3",
+    "name": "Winnsboro West 230-115 kV Sub and Fold-in: Construct",
+    "priority_region": false,
+    "project_source_page": 29,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "scrtp-desc-2026-24a209cdb86fc26f12eb",
+    "name": "Yemassee- Ritter 230kV #1 & #2: Construct SPDC with B-1272",
+    "priority_region": false,
+    "project_source_page": 16,
+    "project_source_url": "https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "DESC"
+  },
+  {
+    "id": "georgia-power-2026-f86ec735e2182af8b86e",
+    "name": "Ashley Park - Wansley 500 kV",
+    "priority_region": false,
+    "project_source_page": null,
+    "project_source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/ashley-park.html",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "GPC"
+  },
+  {
+    "id": "georgia-power-2026-31e73b6a22013b33f193",
+    "name": "Big Tazewell - Farley 500 kV",
+    "priority_region": false,
+    "project_source_page": null,
+    "project_source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/big-tazewell-farley.html",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "GPC"
+  },
+  {
+    "id": "georgia-power-2026-85c6d93852f8eda4b276",
+    "name": "Conyers - Klondike 230 kV",
+    "priority_region": false,
+    "project_source_page": null,
+    "project_source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/conyers-klondike.html",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "GPC"
+  },
+  {
+    "id": "georgia-power-2026-f4697ce681309cdee657",
+    "name": "Decatur - Scottdale 115 kV",
+    "priority_region": false,
+    "project_source_page": null,
+    "project_source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/decatur-scottdale.html",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "GPC"
+  },
+  {
+    "id": "georgia-power-2026-aecc11f48e0f464e8c99",
+    "name": "Grassy Hollow - Great Valley 230 kV",
+    "priority_region": false,
+    "project_source_page": null,
+    "project_source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/grassy-hollow-great-valley.html",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "GPC"
+  },
+  {
+    "id": "georgia-power-2026-57d55e09e3bd5e9f6cb2",
+    "name": "Hatch - Wadley Primary 500 kV",
+    "priority_region": false,
+    "project_source_page": null,
+    "project_source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/hatch-wadley.html",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "GPC"
+  },
+  {
+    "id": "georgia-power-2026-c78a361d12a5667dd3a1",
+    "name": "Hills Bridge - Speedway 500/230 kV",
+    "priority_region": false,
+    "project_source_page": null,
+    "project_source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/hills-bridge-speedway.html",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "GPC"
+  },
+  {
+    "id": "georgia-power-2026-a84d843ee3a3cc43ff5f",
+    "name": "Tomochichi - Towaliga River 230 kV",
+    "priority_region": false,
+    "project_source_page": null,
+    "project_source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/tomochichi-towaliga.html",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "GPC"
+  }
+]
