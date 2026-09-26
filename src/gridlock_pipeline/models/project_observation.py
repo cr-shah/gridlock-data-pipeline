@@ -114,3 +114,26 @@ class ProjectObservation(BaseModel):
     @staticmethod
     def _is_populated(value: Any) -> bool:
         return value is not None and value != "" and value != []
+
+
+class DescProjectObservation(ProjectObservation):
+    """DESC fields present in the SCRTP current-project report."""
+
+    utility: Literal["DESC"] = "DESC"
+    project_id_raw: str
+    project_need_raw: str | None = None
+    project_status_raw: str | None = None
+    planned_in_service_date_raw: str | None = None
+    estimated_cost_raw: str | None = None
+    estimated_cost_usd: int | None = Field(default=None, ge=0)
+
+
+class GeorgiaPowerProjectObservation(ProjectObservation):
+    """Fields explicitly published on Georgia Power current-project pages."""
+
+    utility: Literal["GPC"] = "GPC"
+    county_region_raw: str
+    project_type_raw: str
+    timeline_raw: list[str] = Field(default_factory=list)
+    construction_start_raw: list[str] = Field(default_factory=list)
+    completion_target_raw: str | None = None

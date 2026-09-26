@@ -17,4 +17,37 @@ sertp:
   max_content_bytes: 52428800
   request_interval_seconds: 1.0
   ambiguity_margin: 0
-
+scrtp:
+  implemented_years: [2026]
+  discovery_pages:
+    - https://www.scrtp.com/assets/pdfs/home/2026-2030-2million-and-above-project-descriptions.pdf
+  allowed_hosts:
+    - scrtp.com
+    - www.scrtp.com
+  blocked_path_fragments:
+    - login
+    - signin
+    - auth
+  title_keywords:
+    - planned transmission projects
+  timeout_seconds: 30
+  max_content_bytes: 52428800
+  request_interval_seconds: 1.0
+  ambiguity_margin: 0
+georgia_power:
+  implemented_years: [2026]
+  discovery_pages:
+    - https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects.html
+  allowed_hosts:
+    - georgiapower.com
+    - www.georgiapower.com
+  blocked_path_fragments:
+    - login
+    - signin
+    - auth
+  title_keywords:
+    - current projects
+  timeout_seconds: 30
+  max_content_bytes: 5242880
+  request_interval_seconds: 0.25
+  ambiguity_margin: 0

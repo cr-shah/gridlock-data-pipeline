@@ -25,7 +25,8 @@ def export_observations_csv(
     observations: Sequence[ProjectObservation],
     path: Path,
 ) -> None:
-    fieldnames = list(ProjectObservation.model_fields)
+    model_type = type(observations[0]) if observations else ProjectObservation
+    fieldnames = list(model_type.model_fields)
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as stream:
         writer = csv.DictWriter(stream, fieldnames=fieldnames, lineterminator="\n")

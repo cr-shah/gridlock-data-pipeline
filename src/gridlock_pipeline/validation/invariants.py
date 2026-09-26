@@ -15,6 +15,8 @@ KNOWN_AUTHORITIES = {
     "LG&E/KU",
     "SOUTHERN",
     "TVA",
+    "DESC",
+    "GPC",
 }
 KNOWN_PREFIXES = {"DU:", "GTC:", "MEAG:", "PS:", "SOCO:"}
 LOW_CONFIDENCE_WARNINGS = {

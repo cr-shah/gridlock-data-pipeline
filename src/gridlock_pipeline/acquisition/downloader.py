@@ -25,13 +25,20 @@ class DownloadedDocument:
     cache_hit: bool
 
 
-def _cache_path(cache_root: Path, candidate: SourceDocumentCandidate) -> Path:
+def _cache_path(
+    cache_root: Path, candidate: SourceDocumentCandidate, source: str = "sertp"
+) -> Path:
+    filename = (
+        "desc_current_projects.pdf"
+        if source == "scrtp"
+        else "preliminary_expansion_plan.pdf"
+    )
     return (
         cache_root
         / "pdf"
-        / "sertp"
+        / source
         / str(candidate.planning_year)
-        / "preliminary_expansion_plan.pdf"
+        / filename
     )
 
 
@@ -48,12 +55,18 @@ def _metadata(
     last_modified: str | None = None,
     refresh_status: str = "downloaded",
     redirect_chain: list[str] | None = None,
+    source: str = "sertp",
 ) -> SourceDocument:
+    is_desc = source == "scrtp"
     return SourceDocument(
-        document_id=f"sertp-{candidate.planning_year}-preliminary-non-ceii",
-        source="sertp",
+        document_id=(
+            f"scrtp-{candidate.planning_year}-desc-current-projects"
+            if is_desc
+            else f"sertp-{candidate.planning_year}-preliminary-non-ceii"
+        ),
+        source=source,
         planning_year=candidate.planning_year,
-        document_type="preliminary_expansion_plan",
+        document_type="planned_projects" if is_desc else "preliminary_expansion_plan",
         title=candidate.title,
         discovery_url=candidate.discovery_url,
         source_url=candidate.url,
@@ -165,9 +178,10 @@ def download_document(
     force: bool = False,
     clock: Callable[[], datetime] = lambda: datetime.now(UTC),
     sleeper: Callable[[float], None] = time.sleep,
+    source: str = "sertp",
 ) -> DownloadedDocument:
     requested_url = validate_public_url(candidate.url, policy)
-    path = _cache_path(cache_root, candidate)
+    path = _cache_path(cache_root, candidate, source)
     if path.exists() and not force:
         content_length = path.stat().st_size
         metadata = _metadata(
@@ -179,6 +193,7 @@ def download_document(
             digest=sha256_file(path),
             refresh_status="cache_hit",
             redirect_chain=[requested_url],
+            source=source,
         )
         return DownloadedDocument(path=path, metadata=metadata, cache_hit=True)
 
@@ -229,5 +244,6 @@ def download_document(
         last_modified=response.headers.get("Last-Modified"),
         refresh_status=refresh_status,
         redirect_chain=redirect_chain,
+        source=source,
     )
     return DownloadedDocument(path=path, metadata=metadata, cache_hit=False)

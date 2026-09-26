@@ -4,7 +4,9 @@ import re
 
 from gridlock_pipeline.models import FieldProvenance
 
-LENGTH_PATTERN = re.compile(r"~?\d+(?:\.\d+)?\s+miles?\b", re.IGNORECASE)
+LENGTH_PATTERN = re.compile(
+    r"~?(?:\d+(?:\.\d+)?|\.\d+)(?:\s+miles?|[-\u2011]mile)\b", re.IGNORECASE
+)
 
 
 def extract_lengths(value: str) -> tuple[list[str], list[float], FieldProvenance | None]:
@@ -14,7 +16,7 @@ def extract_lengths(value: str) -> tuple[list[str], list[float], FieldProvenance
         expression = match.group(0)
         if expression not in raw:
             raw.append(expression)
-            values.append(float(re.search(r"\d+(?:\.\d+)?", expression).group(0)))
+            values.append(float(re.search(r"(?:\d+(?:\.\d+)?|\.\d+)", expression).group(0)))
     provenance = None
     if values:
         provenance = FieldProvenance(
@@ -24,4 +26,3 @@ def extract_lengths(value: str) -> tuple[list[str], list[float], FieldProvenance
             notes="Values are preserved independently and are not summed.",
         )
     return raw, values, provenance
-

@@ -26,9 +26,10 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main(argv: Sequence[str] | None = None, *, root: Path | None = None) -> int:
     args = build_parser().parse_args(argv)
-    if args.source != "sertp" or args.year != 2026:
+    if args.source not in {"sertp", "scrtp", "georgia_power"} or args.year != 2026:
         print(
-            f"Phase 1 implements only 2026 for source sertp; received {args.source}/{args.year}",
+            "Implemented sources are sertp, scrtp, and georgia_power for only 2026; "
+            f"received {args.source}/{args.year}",
             file=sys.stderr,
         )
         return 2
@@ -56,4 +57,3 @@ def main(argv: Sequence[str] | None = None, *, root: Path | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

@@ -1,0 +1,1338 @@
+[
+  {
+    "balancing_authority_normalized": "GPC",
+    "balancing_authority_raw": "GPC",
+    "completion_target_raw": "Q4 2027 | Project Completion Target",
+    "confidence": "HIGH",
+    "construction_start_raw": [
+      "Q1 2026 | Tomochichi Substation Construction Began",
+      "Q1 2027 | Transmission Line Construction Begins"
+    ],
+    "county_region_raw": "Butts & Spalding counties",
+    "description_raw": "Georgia Power is planning the Tomochichi – Towaliga River Transmission Project in Butts and Spalding counties to support the electric needs of a large‑load customer that requires new transmission infrastructure, while also strengthening the local electric grid in a growing area. The project includes construction of new transmission lines and substations to add capacity, enhance reliability for homes and businesses, and support continued growth and evolving energy needs across the region.",
+    "document_id": "georgia-power-2026-current-transmission-projects",
+    "endpoint_candidates": [
+      "Tomochichi",
+      "Towaliga River"
+    ],
+    "extraction_confidence": "HIGH",
+    "extraction_engine": "BeautifulSoup",
+    "extraction_engine_version": "4.15.0",
+    "field_provenance": {
+      "balancing_authority_normalized": {
+        "notes": null,
+        "origin": "deterministic_rule",
+        "rule_id": "georgia_power_utility_v1",
+        "source_fields": [
+          "source"
+        ]
+      },
+      "endpoint_candidates": {
+        "notes": "Text candidates only; no geocoding or entity resolution applied.",
+        "origin": "derived_from_source",
+        "rule_id": "location_candidates_v1",
+        "source_fields": [
+          "project_name_raw"
+        ]
+      },
+      "length_miles": {
+        "notes": "Values are preserved independently and are not summed.",
+        "origin": "derived_from_source",
+        "rule_id": "length_miles_v1",
+        "source_fields": [
+          "description_raw"
+        ]
+      },
+      "location_mentions": {
+        "notes": "Published county/region text only; no geocoding applied.",
+        "origin": "derived_from_source",
+        "rule_id": "georgia_power_county_region_v1",
+        "source_fields": [
+          "county_region_raw"
+        ]
+      },
+      "project_name_normalized": {
+        "notes": null,
+        "origin": "normalized",
+        "rule_id": "project_name_v1",
+        "source_fields": [
+          "project_name_raw"
+        ]
+      },
+      "project_type": {
+        "notes": null,
+        "origin": "normalized",
+        "rule_id": "georgia_power_published_type_v1",
+        "source_fields": [
+          "project_type_raw"
+        ]
+      },
+      "voltage_kv": {
+        "notes": null,
+        "origin": "derived_from_source",
+        "rule_id": "voltage_kv_v1",
+        "source_fields": [
+          "project_name_raw",
+          "description_raw",
+          "supporting_statement_raw"
+        ]
+      }
+    },
+    "geometry": null,
+    "in_service_year": null,
+    "in_service_year_raw": "Q4 2027",
+    "latitude": null,
+    "length_miles": [
+      5.0
+    ],
+    "length_raw": [
+      "5‑mile"
+    ],
+    "location_mentions": [
+      "Butts & Spalding counties"
+    ],
+    "longitude": null,
+    "observation_id": "georgia-power-2026-a84d843ee3a3cc43ff5f",
+    "owner_prefix_raw": null,
+    "parser_version": "georgia_power_current_v1",
+    "pdf_page_end": 0,
+    "pdf_page_start": 0,
+    "pipeline_version": "0.1.0",
+    "planning_year": 2026,
+    "printed_page_end": null,
+    "printed_page_start": null,
+    "project_name_normalized": "Tomochichi - Towaliga River 230 kV",
+    "project_name_raw": "Tomochichi - Towaliga River 230 kV",
+    "project_type": "area_project",
+    "project_type_confidence": "HIGH",
+    "project_type_method": "georgia_power_published_type_v1",
+    "project_type_raw": "Area Project",
+    "raw_record_text": "Project Name: Tomochichi - Towaliga River 230 kV\nCounty/Region: Butts & Spalding counties\nType: Area Project\nAbout the Project: Georgia Power is planning the Tomochichi – Towaliga River Transmission Project in Butts and Spalding counties to support the electric needs of a large‑load customer that requires new transmission infrastructure, while also strengthening the local electric grid in a growing area. The project includes construction of new transmission lines and substations to add capacity, enhance reliability for homes and businesses, and support continued growth and evolving energy needs across the region.\nWhat's Included: Certain components of the project are being evaluated to support specific customer needs, while all improvements contribute to strengthening the overall transmission system. Some elements are currently in the planning phase, and details may be refined as the project progresses. Tomochichi – Towaliga River #1 230 kV Transmission Line : Construction of one new approximately 5‑mile 230 kV transmission line located in portions of Butts and Spalding counties. Tomochichi – Towaliga River #2 230 kV Transmission Line : Construction of one new approximately 5‑mile 230 kV transmission line located in portions of Butts and Spalding counties. Tomochichi Substation : Construction of a new substation to support the new transmission lines and enhance system capacity and reliability in the area. Tomochichi – Towaliga River #1 230 kV Transmission Line : Construction of one new approximately 5‑mile 230 kV transmission line located in portions of Butts and Spalding counties. Tomochichi – Towaliga River #2 230 kV Transmission Line : Construction of one new approximately 5‑mile 230 kV transmission line located in portions of Butts and Spalding counties. Tomochichi Substation : Construction of a new substation to support the new transmission lines and enhance system capacity and reliability in the area. the electric grid with added transmission capacity. large-load demands while reinforcing local system. for growing energy needs in Georgia\nTimeline: Q3 2025 | Tomochichi Substation Land Acquisition Activities Began\nTimeline: Q1 2026 | Tomochichi Substation Construction Began\nTimeline: Q2 2026 - Q1 2027 | Transmission Line Survey Notifications and Land Acquisition Activities\nTimeline: Q3 2026 | Transmission Line Clearing and Grading Begins\nTimeline: Q1 2027 | Transmission Line Construction Begins\nTimeline: Q3 2027 | Tomochichi Substation Complete\nTimeline: Q4 2027 | Project Completion Target",
+    "source": "georgia_power",
+    "source_sha256": "525618f39573a1aab22419abfae9ef595ae1a359d0db700a5dbd140182c66202",
+    "source_title": "Tomochichi - Towaliga River 230 kV",
+    "source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/tomochichi-towaliga.html",
+    "supporting_statement_raw": "Certain components of the project are being evaluated to support specific customer needs, while all improvements contribute to strengthening the overall transmission system. Some elements are currently in the planning phase, and details may be refined as the project progresses. Tomochichi – Towaliga River #1 230 kV Transmission Line : Construction of one new approximately 5‑mile 230 kV transmission line located in portions of Butts and Spalding counties. Tomochichi – Towaliga River #2 230 kV Transmission Line : Construction of one new approximately 5‑mile 230 kV transmission line located in portions of Butts and Spalding counties. Tomochichi Substation : Construction of a new substation to support the new transmission lines and enhance system capacity and reliability in the area. Tomochichi – Towaliga River #1 230 kV Transmission Line : Construction of one new approximately 5‑mile 230 kV transmission line located in portions of Butts and Spalding counties. Tomochichi – Towaliga River #2 230 kV Transmission Line : Construction of one new approximately 5‑mile 230 kV transmission line located in portions of Butts and Spalding counties. Tomochichi Substation : Construction of a new substation to support the new transmission lines and enhance system capacity and reliability in the area. the electric grid with added transmission capacity. large-load demands while reinforcing local system. for growing energy needs in Georgia",
+    "timeline_raw": [
+      "Q3 2025 | Tomochichi Substation Land Acquisition Activities Began",
+      "Q1 2026 | Tomochichi Substation Construction Began",
+      "Q2 2026 - Q1 2027 | Transmission Line Survey Notifications and Land Acquisition Activities",
+      "Q3 2026 | Transmission Line Clearing and Grading Begins",
+      "Q1 2027 | Transmission Line Construction Begins",
+      "Q3 2027 | Tomochichi Substation Complete",
+      "Q4 2027 | Project Completion Target"
+    ],
+    "utility": "GPC",
+    "validation_notes": [],
+    "validation_status": "valid",
+    "voltage_kv": [
+      230.0
+    ],
+    "voltage_raw": [
+      "230 kV"
+    ],
+    "warning_codes": []
+  },
+  {
+    "balancing_authority_normalized": "GPC",
+    "balancing_authority_raw": "GPC",
+    "completion_target_raw": null,
+    "confidence": "MEDIUM",
+    "construction_start_raw": [
+      "Q1 2027 | Substation Construction Begins",
+      "Q2 2027 | Line Construction Begins"
+    ],
+    "county_region_raw": "Chattahoochee, Clay, Early, Marion, Quitman, & Stewart counties",
+    "description_raw": "As part of Georgia Power’s ongoing investment in a stronger, more resilient transmission system, the Big Tazewell–Farley 500 kV Transmission Line Project includes construction of an approximately 102‑mile transmission line extending from the Farley Switching Station in Houston County, Alabama, to the new Big Tazewell 500 kV Substation in Marion County, Georgia. Crossing six Georgia counties and one Alabama county, the project will enhance grid reliability, support Georgia’s growing energy needs, and help ensure dependable electric service for customers while minimizing community impacts and maintaining ongoing engagement with local stakeholders.",
+    "document_id": "georgia-power-2026-current-transmission-projects",
+    "endpoint_candidates": [
+      "Big Tazewell",
+      "Farley"
+    ],
+    "extraction_confidence": "HIGH",
+    "extraction_engine": "BeautifulSoup",
+    "extraction_engine_version": "4.15.0",
+    "field_provenance": {
+      "balancing_authority_normalized": {
+        "notes": null,
+        "origin": "deterministic_rule",
+        "rule_id": "georgia_power_utility_v1",
+        "source_fields": [
+          "source"
+        ]
+      },
+      "endpoint_candidates": {
+        "notes": "Text candidates only; no geocoding or entity resolution applied.",
+        "origin": "derived_from_source",
+        "rule_id": "location_candidates_v1",
+        "source_fields": [
+          "project_name_raw"
+        ]
+      },
+      "length_miles": {
+        "notes": "Values are preserved independently and are not summed.",
+        "origin": "derived_from_source",
+        "rule_id": "length_miles_v1",
+        "source_fields": [
+          "description_raw"
+        ]
+      },
+      "location_mentions": {
+        "notes": "Published county/region text only; no geocoding applied.",
+        "origin": "derived_from_source",
+        "rule_id": "georgia_power_county_region_v1",
+        "source_fields": [
+          "county_region_raw"
+        ]
+      },
+      "project_name_normalized": {
+        "notes": null,
+        "origin": "normalized",
+        "rule_id": "project_name_v1",
+        "source_fields": [
+          "project_name_raw"
+        ]
+      },
+      "project_type": {
+        "notes": null,
+        "origin": "normalized",
+        "rule_id": "georgia_power_published_type_v1",
+        "source_fields": [
+          "project_type_raw"
+        ]
+      },
+      "voltage_kv": {
+        "notes": null,
+        "origin": "derived_from_source",
+        "rule_id": "voltage_kv_v1",
+        "source_fields": [
+          "project_name_raw",
+          "description_raw",
+          "supporting_statement_raw"
+        ]
+      }
+    },
+    "geometry": null,
+    "in_service_year": null,
+    "in_service_year_raw": null,
+    "latitude": null,
+    "length_miles": [
+      102.0
+    ],
+    "length_raw": [
+      "102‑mile"
+    ],
+    "location_mentions": [
+      "Chattahoochee, Clay, Early, Marion, Quitman, & Stewart counties"
+    ],
+    "longitude": null,
+    "observation_id": "georgia-power-2026-31e73b6a22013b33f193",
+    "owner_prefix_raw": null,
+    "parser_version": "georgia_power_current_v1",
+    "pdf_page_end": 1,
+    "pdf_page_start": 1,
+    "pipeline_version": "0.1.0",
+    "planning_year": 2026,
+    "printed_page_end": null,
+    "printed_page_start": null,
+    "project_name_normalized": "Big Tazewell - Farley 500 kV",
+    "project_name_raw": "Big Tazewell - Farley 500 kV",
+    "project_type": "new_transmission_line",
+    "project_type_confidence": "HIGH",
+    "project_type_method": "georgia_power_published_type_v1",
+    "project_type_raw": "New Transmission Line",
+    "raw_record_text": "Project Name: Big Tazewell - Farley 500 kV\nCounty/Region: Chattahoochee, Clay, Early, Marion, Quitman, & Stewart counties\nType: New Transmission Line\nAbout the Project: As part of Georgia Power’s ongoing investment in a stronger, more resilient transmission system, the Big Tazewell–Farley 500 kV Transmission Line Project includes construction of an approximately 102‑mile transmission line extending from the Farley Switching Station in Houston County, Alabama, to the new Big Tazewell 500 kV Substation in Marion County, Georgia. Crossing six Georgia counties and one Alabama county, the project will enhance grid reliability, support Georgia’s growing energy needs, and help ensure dependable electric service for customers while minimizing community impacts and maintaining ongoing engagement with local stakeholders.\nTimeline: Q3 2025 | Survey Notification for Line Began\nTimeline: Q4 2025 | Substation Land Acquisition Began\nTimeline: Q1 2026 | Land Acquisition Activities for Line Began\nTimeline: Q1-Q2 2026 | Community Meetings See Dates & Locations\nTimeline: Q3 2026 | Line Clearing and Grading Begins\nTimeline: Q1 2027 | Substation Construction Begins\nTimeline: Q2 2027 | Line Construction Begins\nTimeline: Q2 2028 | Substation Complete\nTimeline: Q4 2028 | Line Construction Complete",
+    "source": "georgia_power",
+    "source_sha256": "848953f0a53322baea72191763ca7e8c3f07cef72924173c81dedcc4341c77ae",
+    "source_title": "Big Tazewell - Farley 500 kV",
+    "source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/big-tazewell-farley.html",
+    "supporting_statement_raw": null,
+    "timeline_raw": [
+      "Q3 2025 | Survey Notification for Line Began",
+      "Q4 2025 | Substation Land Acquisition Began",
+      "Q1 2026 | Land Acquisition Activities for Line Began",
+      "Q1-Q2 2026 | Community Meetings See Dates & Locations",
+      "Q3 2026 | Line Clearing and Grading Begins",
+      "Q1 2027 | Substation Construction Begins",
+      "Q2 2027 | Line Construction Begins",
+      "Q2 2028 | Substation Complete",
+      "Q4 2028 | Line Construction Complete"
+    ],
+    "utility": "GPC",
+    "validation_notes": [
+      "The source record has no supporting statement."
+    ],
+    "validation_status": "review",
+    "voltage_kv": [
+      500.0
+    ],
+    "voltage_raw": [
+      "500 kV"
+    ],
+    "warning_codes": [
+      "MISSING_SUPPORTING_STATEMENT"
+    ]
+  },
+  {
+    "balancing_authority_normalized": "GPC",
+    "balancing_authority_raw": "GPC",
+    "completion_target_raw": "Q4 2027 | Project Completion",
+    "confidence": "MEDIUM",
+    "construction_start_raw": [
+      "Q1 2027 | Construction Begins"
+    ],
+    "county_region_raw": "Dekalb County",
+    "description_raw": "As part of long-term investments in Georgia Power’s statewide transmission system, this project includes rebuilding the existing approximately 2.5‑mile Decatur – Scottdale 115 kV transmission line between the Scottdale Substation in DeKalb County and the Decatur Substation on East College Avenue, as well as relocating approximately 0.7 miles of line. This is a rebuild project driven by the age of the existing infrastructure, which was originally constructed in 1965. This project is part of Georgia Power’s ongoing commitment to strengthen and expand the electric grid. By replacing aging infrastructure with more modern materials and design, the project will enhance system reliability, support Georgia’s evolving energy needs, and help ensure safe, resilient electric service for decades to come.",
+    "document_id": "georgia-power-2026-current-transmission-projects",
+    "endpoint_candidates": [
+      "Decatur",
+      "Scottdale"
+    ],
+    "extraction_confidence": "HIGH",
+    "extraction_engine": "BeautifulSoup",
+    "extraction_engine_version": "4.15.0",
+    "field_provenance": {
+      "balancing_authority_normalized": {
+        "notes": null,
+        "origin": "deterministic_rule",
+        "rule_id": "georgia_power_utility_v1",
+        "source_fields": [
+          "source"
+        ]
+      },
+      "endpoint_candidates": {
+        "notes": "Text candidates only; no geocoding or entity resolution applied.",
+        "origin": "derived_from_source",
+        "rule_id": "location_candidates_v1",
+        "source_fields": [
+          "project_name_raw"
+        ]
+      },
+      "length_miles": {
+        "notes": "Values are preserved independently and are not summed.",
+        "origin": "derived_from_source",
+        "rule_id": "length_miles_v1",
+        "source_fields": [
+          "description_raw"
+        ]
+      },
+      "location_mentions": {
+        "notes": "Published county/region text only; no geocoding applied.",
+        "origin": "derived_from_source",
+        "rule_id": "georgia_power_county_region_v1",
+        "source_fields": [
+          "county_region_raw"
+        ]
+      },
+      "project_name_normalized": {
+        "notes": null,
+        "origin": "normalized",
+        "rule_id": "project_name_v1",
+        "source_fields": [
+          "project_name_raw"
+        ]
+      },
+      "project_type": {
+        "notes": null,
+        "origin": "normalized",
+        "rule_id": "georgia_power_published_type_v1",
+        "source_fields": [
+          "project_type_raw"
+        ]
+      },
+      "voltage_kv": {
+        "notes": null,
+        "origin": "derived_from_source",
+        "rule_id": "voltage_kv_v1",
+        "source_fields": [
+          "project_name_raw",
+          "description_raw",
+          "supporting_statement_raw"
+        ]
+      }
+    },
+    "geometry": null,
+    "in_service_year": null,
+    "in_service_year_raw": "Q4 2027",
+    "latitude": null,
+    "length_miles": [
+      2.5,
+      0.7
+    ],
+    "length_raw": [
+      "2.5‑mile",
+      "0.7 miles"
+    ],
+    "location_mentions": [
+      "Dekalb County"
+    ],
+    "longitude": null,
+    "observation_id": "georgia-power-2026-f4697ce681309cdee657",
+    "owner_prefix_raw": null,
+    "parser_version": "georgia_power_current_v1",
+    "pdf_page_end": 2,
+    "pdf_page_start": 2,
+    "pipeline_version": "0.1.0",
+    "planning_year": 2026,
+    "printed_page_end": null,
+    "printed_page_start": null,
+    "project_name_normalized": "Decatur - Scottdale 115 kV",
+    "project_name_raw": "Decatur - Scottdale 115 kV",
+    "project_type": "transmission_line_upgrade",
+    "project_type_confidence": "HIGH",
+    "project_type_method": "georgia_power_published_type_v1",
+    "project_type_raw": "Transmission Line Upgrade",
+    "raw_record_text": "Project Name: Decatur - Scottdale 115 kV\nCounty/Region: Dekalb County\nType: Transmission Line Upgrade\nAbout the Project: As part of long-term investments in Georgia Power’s statewide transmission system, this project includes rebuilding the existing approximately 2.5‑mile Decatur – Scottdale 115 kV transmission line between the Scottdale Substation in DeKalb County and the Decatur Substation on East College Avenue, as well as relocating approximately 0.7 miles of line. This is a rebuild project driven by the age of the existing infrastructure, which was originally constructed in 1965. This project is part of Georgia Power’s ongoing commitment to strengthen and expand the electric grid. By replacing aging infrastructure with more modern materials and design, the project will enhance system reliability, support Georgia’s evolving energy needs, and help ensure safe, resilient electric service for decades to come.\nTimeline: Q4 2026 | Line Clearing Begins\nTimeline: Q1 2027 | Construction Begins\nTimeline: Q4 2027 | Project Completion",
+    "source": "georgia_power",
+    "source_sha256": "3014f6d9774fa4c719d6fdc9e8895b0b68c4fbb085a2e891f745eab137a3e8b6",
+    "source_title": "Decatur - Scottdale 115 kV",
+    "source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/decatur-scottdale.html",
+    "supporting_statement_raw": null,
+    "timeline_raw": [
+      "Q4 2026 | Line Clearing Begins",
+      "Q1 2027 | Construction Begins",
+      "Q4 2027 | Project Completion"
+    ],
+    "utility": "GPC",
+    "validation_notes": [
+      "The source record has no supporting statement."
+    ],
+    "validation_status": "review",
+    "voltage_kv": [
+      115.0
+    ],
+    "voltage_raw": [
+      "115 kV"
+    ],
+    "warning_codes": [
+      "MISSING_SUPPORTING_STATEMENT"
+    ]
+  },
+  {
+    "balancing_authority_normalized": "GPC",
+    "balancing_authority_raw": "GPC",
+    "completion_target_raw": null,
+    "confidence": "HIGH",
+    "construction_start_raw": [
+      "Spring 2027 | Substation Construction Begins Line Land Acquisition Begins",
+      "Summer 2027 | Line Clearing and Grading Begins Line Construction Begins"
+    ],
+    "county_region_raw": "Columbia & McDuffie counties",
+    "description_raw": "Georgia Power is planning the Callaway Road – Thomson Primary 500 kV Area Transmission Project. The project will include a new 500/230 kV Callaway Road Substation, approximately 17 miles of new 500 kV transmission infrastructure, and associated facilities in McDuffie and Columbia Counties. The project is being planned to provide the transmission infrastructure needed to serve a large-load customer while also strengthening the local electric grid in a rapidly growing area. These improvements are expected to add capacity, enhance reliability for homes and businesses, and help support continued growth and evolving energy needs. As planning progresses, project details will continue to be refined based on engineering, environmental, and routing studies.",
+    "document_id": "georgia-power-2026-current-transmission-projects",
+    "endpoint_candidates": [
+      "Callaway Road",
+      "Thomson Primary"
+    ],
+    "extraction_confidence": "HIGH",
+    "extraction_engine": "BeautifulSoup",
+    "extraction_engine_version": "4.15.0",
+    "field_provenance": {
+      "balancing_authority_normalized": {
+        "notes": null,
+        "origin": "deterministic_rule",
+        "rule_id": "georgia_power_utility_v1",
+        "source_fields": [
+          "source"
+        ]
+      },
+      "endpoint_candidates": {
+        "notes": "Text candidates only; no geocoding or entity resolution applied.",
+        "origin": "derived_from_source",
+        "rule_id": "location_candidates_v1",
+        "source_fields": [
+          "project_name_raw"
+        ]
+      },
+      "length_miles": {
+        "notes": "Values are preserved independently and are not summed.",
+        "origin": "derived_from_source",
+        "rule_id": "length_miles_v1",
+        "source_fields": [
+          "description_raw"
+        ]
+      },
+      "location_mentions": {
+        "notes": "Published county/region text only; no geocoding applied.",
+        "origin": "derived_from_source",
+        "rule_id": "georgia_power_county_region_v1",
+        "source_fields": [
+          "county_region_raw"
+        ]
+      },
+      "project_name_normalized": {
+        "notes": null,
+        "origin": "normalized",
+        "rule_id": "project_name_v1",
+        "source_fields": [
+          "project_name_raw"
+        ]
+      },
+      "project_type": {
+        "notes": null,
+        "origin": "normalized",
+        "rule_id": "georgia_power_published_type_v1",
+        "source_fields": [
+          "project_type_raw"
+        ]
+      },
+      "voltage_kv": {
+        "notes": null,
+        "origin": "derived_from_source",
+        "rule_id": "voltage_kv_v1",
+        "source_fields": [
+          "project_name_raw",
+          "description_raw",
+          "supporting_statement_raw"
+        ]
+      }
+    },
+    "geometry": null,
+    "in_service_year": null,
+    "in_service_year_raw": null,
+    "latitude": null,
+    "length_miles": [
+      17.0,
+      10.0,
+      7.0
+    ],
+    "length_raw": [
+      "17 miles",
+      "10 miles",
+      "7 miles"
+    ],
+    "location_mentions": [
+      "Columbia & McDuffie counties"
+    ],
+    "longitude": null,
+    "observation_id": "georgia-power-2026-4a60199d0029a784348e",
+    "owner_prefix_raw": null,
+    "parser_version": "georgia_power_current_v1",
+    "pdf_page_end": 3,
+    "pdf_page_start": 3,
+    "pipeline_version": "0.1.0",
+    "planning_year": 2026,
+    "printed_page_end": null,
+    "printed_page_start": null,
+    "project_name_normalized": "Callaway Road - Thomson Primary 500 kV",
+    "project_name_raw": "Callaway Road - Thomson Primary 500 kV",
+    "project_type": "area_project",
+    "project_type_confidence": "HIGH",
+    "project_type_method": "georgia_power_published_type_v1",
+    "project_type_raw": "Area Project",
+    "raw_record_text": "Project Name: Callaway Road - Thomson Primary 500 kV\nCounty/Region: Columbia & McDuffie counties\nType: Area Project\nAbout the Project: Georgia Power is planning the Callaway Road – Thomson Primary 500 kV Area Transmission Project. The project will include a new 500/230 kV Callaway Road Substation, approximately 17 miles of new 500 kV transmission infrastructure, and associated facilities in McDuffie and Columbia Counties. The project is being planned to provide the transmission infrastructure needed to serve a large-load customer while also strengthening the local electric grid in a rapidly growing area. These improvements are expected to add capacity, enhance reliability for homes and businesses, and help support continued growth and evolving energy needs. As planning progresses, project details will continue to be refined based on engineering, environmental, and routing studies.\nWhat's Included: Certain project components are designed to serve the large load customer site, while all improvements contribute to strengthening the overall transmission system. Callaway Road Substation : Construction of a new substation in Columbia County to support both 500 kV and 230 kV transmission infrastructure. Callaway Road–Thomson #1 500 kV Transmission Line : Approximately 10 miles of new 500 kV transmission line in McDuffie and Columbia counties. Callaway Road–Thomson #2 500 kV Transmission Line : Approximately 7 miles of new 500 kV transmission line in McDuffie and Columbia counties. the electric grid with added transmission capacity large-load demands while reinforcing local system for growing energy needs in Georgia.\nTimeline: Early Spring 2026 | Substation Location Process Began Line Location Process Began\nTimeline: Summer 2026 | Substation Survey Notification to Property Owners Line Survey Notification to Property Owners\nTimeline: Late Summer 2026 | Substation Land Acquisition Begins\nTimeline: Winter 2026 | Substation Clearing and Grading Begins\nTimeline: Spring 2027 | Substation Construction Begins Line Land Acquisition Begins\nTimeline: Summer 2027 | Line Clearing and Grading Begins Line Construction Begins",
+    "source": "georgia_power",
+    "source_sha256": "c0edd9cd6586ac514b6518d92225ff9f7855768b3b06f91497e23458d81411f8",
+    "source_title": "Callaway Road - Thomson Primary 500 kV",
+    "source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/callaway-thomson.html",
+    "supporting_statement_raw": "Certain project components are designed to serve the large load customer site, while all improvements contribute to strengthening the overall transmission system. Callaway Road Substation : Construction of a new substation in Columbia County to support both 500 kV and 230 kV transmission infrastructure. Callaway Road–Thomson #1 500 kV Transmission Line : Approximately 10 miles of new 500 kV transmission line in McDuffie and Columbia counties. Callaway Road–Thomson #2 500 kV Transmission Line : Approximately 7 miles of new 500 kV transmission line in McDuffie and Columbia counties. the electric grid with added transmission capacity large-load demands while reinforcing local system for growing energy needs in Georgia.",
+    "timeline_raw": [
+      "Early Spring 2026 | Substation Location Process Began Line Location Process Began",
+      "Summer 2026 | Substation Survey Notification to Property Owners Line Survey Notification to Property Owners",
+      "Late Summer 2026 | Substation Land Acquisition Begins",
+      "Winter 2026 | Substation Clearing and Grading Begins",
+      "Spring 2027 | Substation Construction Begins Line Land Acquisition Begins",
+      "Summer 2027 | Line Clearing and Grading Begins Line Construction Begins"
+    ],
+    "utility": "GPC",
+    "validation_notes": [],
+    "validation_status": "valid",
+    "voltage_kv": [
+      500.0,
+      230.0
+    ],
+    "voltage_raw": [
+      "500 kV",
+      "500/230 kV",
+      "230 kV"
+    ],
+    "warning_codes": []
+  },
+  {
+    "balancing_authority_normalized": "GPC",
+    "balancing_authority_raw": "GPC",
+    "completion_target_raw": null,
+    "confidence": "MEDIUM",
+    "construction_start_raw": [
+      "Fall 2027 | Substation construction activities begin"
+    ],
+    "county_region_raw": "Effingham County",
+    "description_raw": "The project is expected to include a new 500/230 kV Effingham County Substation , new 500 kV transmission infrastructure, and associated facilities. The project is being planned to provide the transmission infrastructure needed to serve a large-load customer while also strengthening the local electric grid in a rapidly growing area. These improvements will add capacity, enhance reliability for homes and businesses, and help support continued growth and evolving energy needs. Although some project elements are designed to meet specific customer requirements, the improvements are also expected to strengthen the transmission network and support future growth. As planning progresses, project details will be refined based on engineering, environmental, and routing studies.",
+    "document_id": "georgia-power-2026-current-transmission-projects",
+    "endpoint_candidates": [],
+    "extraction_confidence": "HIGH",
+    "extraction_engine": "BeautifulSoup",
+    "extraction_engine_version": "4.15.0",
+    "field_provenance": {
+      "balancing_authority_normalized": {
+        "notes": null,
+        "origin": "deterministic_rule",
+        "rule_id": "georgia_power_utility_v1",
+        "source_fields": [
+          "source"
+        ]
+      },
+      "location_mentions": {
+        "notes": "Published county/region text only; no geocoding applied.",
+        "origin": "derived_from_source",
+        "rule_id": "georgia_power_county_region_v1",
+        "source_fields": [
+          "county_region_raw"
+        ]
+      },
+      "project_name_normalized": {
+        "notes": null,
+        "origin": "normalized",
+        "rule_id": "project_name_v1",
+        "source_fields": [
+          "project_name_raw"
+        ]
+      },
+      "project_type": {
+        "notes": null,
+        "origin": "normalized",
+        "rule_id": "georgia_power_published_type_v1",
+        "source_fields": [
+          "project_type_raw"
+        ]
+      },
+      "voltage_kv": {
+        "notes": null,
+        "origin": "derived_from_source",
+        "rule_id": "voltage_kv_v1",
+        "source_fields": [
+          "project_name_raw",
+          "description_raw",
+          "supporting_statement_raw"
+        ]
+      }
+    },
+    "geometry": null,
+    "in_service_year": null,
+    "in_service_year_raw": null,
+    "latitude": null,
+    "length_miles": [],
+    "length_raw": [],
+    "location_mentions": [
+      "Effingham County"
+    ],
+    "longitude": null,
+    "observation_id": "georgia-power-2026-83a79bb18ac6d7434a20",
+    "owner_prefix_raw": null,
+    "parser_version": "georgia_power_current_v1",
+    "pdf_page_end": 4,
+    "pdf_page_start": 4,
+    "pipeline_version": "0.1.0",
+    "planning_year": 2026,
+    "printed_page_end": null,
+    "printed_page_start": null,
+    "project_name_normalized": "Effingham County 500 kV",
+    "project_name_raw": "Effingham County 500 kV",
+    "project_type": "area_project",
+    "project_type_confidence": "HIGH",
+    "project_type_method": "georgia_power_published_type_v1",
+    "project_type_raw": "Area Project",
+    "raw_record_text": "Project Name: Effingham County 500 kV\nCounty/Region: Effingham County\nType: Area Project\nAbout the Project: The project is expected to include a new 500/230 kV Effingham County Substation , new 500 kV transmission infrastructure, and associated facilities. The project is being planned to provide the transmission infrastructure needed to serve a large-load customer while also strengthening the local electric grid in a rapidly growing area. These improvements will add capacity, enhance reliability for homes and businesses, and help support continued growth and evolving energy needs. Although some project elements are designed to meet specific customer requirements, the improvements are also expected to strengthen the transmission network and support future growth. As planning progresses, project details will be refined based on engineering, environmental, and routing studies.\nTimeline: Summer 2026 | Substation survey notifications to property owners\nTimeline: Fall 2026 | Substation land acquisition activities begin\nTimeline: Spring 2027 | Substation clearing and grading begins\nTimeline: Fall 2027 | Substation construction activities begin",
+    "source": "georgia_power",
+    "source_sha256": "4dc353e1aa73a6a37489f24d8d1d025ffdaf3f3f63cdbd58dd751520273df820",
+    "source_title": "Effingham County 500 kV",
+    "source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/effingham-county.html",
+    "supporting_statement_raw": null,
+    "timeline_raw": [
+      "Summer 2026 | Substation survey notifications to property owners",
+      "Fall 2026 | Substation land acquisition activities begin",
+      "Spring 2027 | Substation clearing and grading begins",
+      "Fall 2027 | Substation construction activities begin"
+    ],
+    "utility": "GPC",
+    "validation_notes": [
+      "The source record has no supporting statement."
+    ],
+    "validation_status": "review",
+    "voltage_kv": [
+      500.0,
+      230.0
+    ],
+    "voltage_raw": [
+      "500 kV",
+      "500/230 kV"
+    ],
+    "warning_codes": [
+      "MISSING_SUPPORTING_STATEMENT"
+    ]
+  },
+  {
+    "balancing_authority_normalized": "GPC",
+    "balancing_authority_raw": "GPC",
+    "completion_target_raw": "Q4 2028 | Project Completion",
+    "confidence": "HIGH",
+    "construction_start_raw": [
+      "Q2 2026 | Construction Begins"
+    ],
+    "county_region_raw": "Clayton & Henry counties",
+    "description_raw": "Georgia Power is planning the Hills Bridge–Speedway 500 kV Transmission Project in Henry and Clayton counties to support the electric needs of a data center customer that requires new transmission infrastructure, while also strengthening the local electric grid in a rapidly growing area. The project currently includes construction of three transmission lines, one 500 kV line and two 230 kV lines, as well as two new substations, Hills Bridge 500/230 kV Substation and Speedway 230 kV Substation. Together, these improvements will add capacity, enhance reliability for homes and businesses, and position the region to support continued growth and evolving energy needs.",
+    "document_id": "georgia-power-2026-current-transmission-projects",
+    "endpoint_candidates": [
+      "Hills Bridge",
+      "Speedway"
+    ],
+    "extraction_confidence": "HIGH",
+    "extraction_engine": "BeautifulSoup",
+    "extraction_engine_version": "4.15.0",
+    "field_provenance": {
+      "balancing_authority_normalized": {
+        "notes": null,
+        "origin": "deterministic_rule",
+        "rule_id": "georgia_power_utility_v1",
+        "source_fields": [
+          "source"
+        ]
+      },
+      "endpoint_candidates": {
+        "notes": "Text candidates only; no geocoding or entity resolution applied.",
+        "origin": "derived_from_source",
+        "rule_id": "location_candidates_v1",
+        "source_fields": [
+          "project_name_raw"
+        ]
+      },
+      "length_miles": {
+        "notes": "Values are preserved independently and are not summed.",
+        "origin": "derived_from_source",
+        "rule_id": "length_miles_v1",
+        "source_fields": [
+          "description_raw"
+        ]
+      },
+      "location_mentions": {
+        "notes": "Published county/region text only; no geocoding applied.",
+        "origin": "derived_from_source",
+        "rule_id": "georgia_power_county_region_v1",
+        "source_fields": [
+          "county_region_raw"
+        ]
+      },
+      "project_name_normalized": {
+        "notes": null,
+        "origin": "normalized",
+        "rule_id": "project_name_v1",
+        "source_fields": [
+          "project_name_raw"
+        ]
+      },
+      "project_type": {
+        "notes": null,
+        "origin": "normalized",
+        "rule_id": "georgia_power_published_type_v1",
+        "source_fields": [
+          "project_type_raw"
+        ]
+      },
+      "voltage_kv": {
+        "notes": null,
+        "origin": "derived_from_source",
+        "rule_id": "voltage_kv_v1",
+        "source_fields": [
+          "project_name_raw",
+          "description_raw",
+          "supporting_statement_raw"
+        ]
+      }
+    },
+    "geometry": null,
+    "in_service_year": null,
+    "in_service_year_raw": "Q4 2028",
+    "latitude": null,
+    "length_miles": [
+      0.25,
+      1.5,
+      1.0
+    ],
+    "length_raw": [
+      ".25 mile",
+      "1.5 miles",
+      "1.0 mile"
+    ],
+    "location_mentions": [
+      "Clayton & Henry counties"
+    ],
+    "longitude": null,
+    "observation_id": "georgia-power-2026-c78a361d12a5667dd3a1",
+    "owner_prefix_raw": null,
+    "parser_version": "georgia_power_current_v1",
+    "pdf_page_end": 5,
+    "pdf_page_start": 5,
+    "pipeline_version": "0.1.0",
+    "planning_year": 2026,
+    "printed_page_end": null,
+    "printed_page_start": null,
+    "project_name_normalized": "Hills Bridge - Speedway 500/230 kV",
+    "project_name_raw": "Hills Bridge – Speedway 500/230 kV",
+    "project_type": "new_transmission_line",
+    "project_type_confidence": "HIGH",
+    "project_type_method": "georgia_power_published_type_v1",
+    "project_type_raw": "New Transmission Line",
+    "raw_record_text": "Project Name: Hills Bridge – Speedway 500/230 kV\nCounty/Region: Clayton & Henry counties\nType: New Transmission Line\nAbout the Project: Georgia Power is planning the Hills Bridge–Speedway 500 kV Transmission Project in Henry and Clayton counties to support the electric needs of a data center customer that requires new transmission infrastructure, while also strengthening the local electric grid in a rapidly growing area. The project currently includes construction of three transmission lines, one 500 kV line and two 230 kV lines, as well as two new substations, Hills Bridge 500/230 kV Substation and Speedway 230 kV Substation. Together, these improvements will add capacity, enhance reliability for homes and businesses, and position the region to support continued growth and evolving energy needs.\nWhat's Included: Certain components of the project are being evaluated to support customer-specific needs, while all improvements contribute to strengthening the overall transmission system. Some elements are in the planning phase, and details may be refined as the project progresses. Hills Bridge 500/230 kV Substation: Construction of a new substation in Clayton County to support both 500 kV and 230 kV transmission infrastructure. Speedway 230 kV Substation: Construction of a new substation in Henry County that will serve this new data customer on the customer’s property. O’Hara–Scherer 500 kV Transmission Line (Hills Bridge Loop): Approximately .25 mile of new 500 kV transmission line in Clayton County connecting the new substation to existing transmission facilities. Hills Bridge–Speedway #1 230 kV Transmission Line: Approximately 1.5 miles of new 230 kV transmission line in Henry and Clayton counties. Hills Bridge–Speedway #2 230 kV Transmission Line: Approximately 1.0 mile of new 230 kV transmission line connecting nearby substations and operating alongside other new facilities. the electric grid with added transmission capacity. large-load demands while reinforcing local system. for growing energy needs in Georgia\nTimeline: Q4 2025 | Easement Acquisition Begins\nTimeline: Q2 2026 | Construction Begins\nTimeline: Q4 2028 | Project Completion",
+    "source": "georgia_power",
+    "source_sha256": "41a6aee030e39325ab975fea6321fd5f31ae063d0272108863951b72c4afb82f",
+    "source_title": "Hills Bridge – Speedway 500/230 kV",
+    "source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/hills-bridge-speedway.html",
+    "supporting_statement_raw": "Certain components of the project are being evaluated to support customer-specific needs, while all improvements contribute to strengthening the overall transmission system. Some elements are in the planning phase, and details may be refined as the project progresses. Hills Bridge 500/230 kV Substation: Construction of a new substation in Clayton County to support both 500 kV and 230 kV transmission infrastructure. Speedway 230 kV Substation: Construction of a new substation in Henry County that will serve this new data customer on the customer’s property. O’Hara–Scherer 500 kV Transmission Line (Hills Bridge Loop): Approximately .25 mile of new 500 kV transmission line in Clayton County connecting the new substation to existing transmission facilities. Hills Bridge–Speedway #1 230 kV Transmission Line: Approximately 1.5 miles of new 230 kV transmission line in Henry and Clayton counties. Hills Bridge–Speedway #2 230 kV Transmission Line: Approximately 1.0 mile of new 230 kV transmission line connecting nearby substations and operating alongside other new facilities. the electric grid with added transmission capacity. large-load demands while reinforcing local system. for growing energy needs in Georgia",
+    "timeline_raw": [
+      "Q4 2025 | Easement Acquisition Begins",
+      "Q2 2026 | Construction Begins",
+      "Q4 2028 | Project Completion"
+    ],
+    "utility": "GPC",
+    "validation_notes": [],
+    "validation_status": "valid",
+    "voltage_kv": [
+      500.0,
+      230.0
+    ],
+    "voltage_raw": [
+      "500/230 kV",
+      "500 kV",
+      "230 kV"
+    ],
+    "warning_codes": []
+  },
+  {
+    "balancing_authority_normalized": "GPC",
+    "balancing_authority_raw": "GPC",
+    "completion_target_raw": "Q1 2027 | Project Completion",
+    "confidence": "MEDIUM",
+    "construction_start_raw": [
+      "Q2 2026 | Construction Begins"
+    ],
+    "county_region_raw": "Bartow County",
+    "description_raw": "As part of long-term investments in Georgia’s statewide transmission system, Georgia Power planned the Grassy Hollow–Great Valley 230 kV Transmission Project in Bartow County, which includes construction of a new Grassy Hollow substation and a new approximately 10.4-mile 230 kV transmission line connecting the Grassy Hollow Substation to the Great Valley substation. The project was developed to serve the electric needs of a large‑load customer that requires new transmission infrastructure, while also adding capacity and strengthening reliability for the local electric grid.",
+    "document_id": "georgia-power-2026-current-transmission-projects",
+    "endpoint_candidates": [
+      "Grassy Hollow",
+      "Great Valley"
+    ],
+    "extraction_confidence": "HIGH",
+    "extraction_engine": "BeautifulSoup",
+    "extraction_engine_version": "4.15.0",
+    "field_provenance": {
+      "balancing_authority_normalized": {
+        "notes": null,
+        "origin": "deterministic_rule",
+        "rule_id": "georgia_power_utility_v1",
+        "source_fields": [
+          "source"
+        ]
+      },
+      "endpoint_candidates": {
+        "notes": "Text candidates only; no geocoding or entity resolution applied.",
+        "origin": "derived_from_source",
+        "rule_id": "location_candidates_v1",
+        "source_fields": [
+          "project_name_raw"
+        ]
+      },
+      "length_miles": {
+        "notes": "Values are preserved independently and are not summed.",
+        "origin": "derived_from_source",
+        "rule_id": "length_miles_v1",
+        "source_fields": [
+          "description_raw"
+        ]
+      },
+      "location_mentions": {
+        "notes": "Published county/region text only; no geocoding applied.",
+        "origin": "derived_from_source",
+        "rule_id": "georgia_power_county_region_v1",
+        "source_fields": [
+          "county_region_raw"
+        ]
+      },
+      "project_name_normalized": {
+        "notes": null,
+        "origin": "normalized",
+        "rule_id": "project_name_v1",
+        "source_fields": [
+          "project_name_raw"
+        ]
+      },
+      "project_type": {
+        "notes": null,
+        "origin": "normalized",
+        "rule_id": "georgia_power_published_type_v1",
+        "source_fields": [
+          "project_type_raw"
+        ]
+      },
+      "voltage_kv": {
+        "notes": null,
+        "origin": "derived_from_source",
+        "rule_id": "voltage_kv_v1",
+        "source_fields": [
+          "project_name_raw",
+          "description_raw",
+          "supporting_statement_raw"
+        ]
+      }
+    },
+    "geometry": null,
+    "in_service_year": null,
+    "in_service_year_raw": "Q1 2027",
+    "latitude": null,
+    "length_miles": [
+      10.4
+    ],
+    "length_raw": [
+      "10.4-mile"
+    ],
+    "location_mentions": [
+      "Bartow County"
+    ],
+    "longitude": null,
+    "observation_id": "georgia-power-2026-aecc11f48e0f464e8c99",
+    "owner_prefix_raw": null,
+    "parser_version": "georgia_power_current_v1",
+    "pdf_page_end": 6,
+    "pdf_page_start": 6,
+    "pipeline_version": "0.1.0",
+    "planning_year": 2026,
+    "printed_page_end": null,
+    "printed_page_start": null,
+    "project_name_normalized": "Grassy Hollow - Great Valley 230 kV",
+    "project_name_raw": "Grassy Hollow – Great Valley 230 kV",
+    "project_type": "new_transmission_line",
+    "project_type_confidence": "HIGH",
+    "project_type_method": "georgia_power_published_type_v1",
+    "project_type_raw": "New Transmission Line",
+    "raw_record_text": "Project Name: Grassy Hollow – Great Valley 230 kV\nCounty/Region: Bartow County\nType: New Transmission Line\nAbout the Project: As part of long-term investments in Georgia’s statewide transmission system, Georgia Power planned the Grassy Hollow–Great Valley 230 kV Transmission Project in Bartow County, which includes construction of a new Grassy Hollow substation and a new approximately 10.4-mile 230 kV transmission line connecting the Grassy Hollow Substation to the Great Valley substation. The project was developed to serve the electric needs of a large‑load customer that requires new transmission infrastructure, while also adding capacity and strengthening reliability for the local electric grid.\nTimeline: Q1 2024 | Easement Acquisition Begins\nTimeline: Q2 2026 | Construction Begins\nTimeline: Q1 2027 | Project Completion",
+    "source": "georgia_power",
+    "source_sha256": "b50458045b10c28df6f8283dcbb501102b5de997ee4fb02187369da160e9fa0a",
+    "source_title": "Grassy Hollow – Great Valley 230 kV",
+    "source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/grassy-hollow-great-valley.html",
+    "supporting_statement_raw": null,
+    "timeline_raw": [
+      "Q1 2024 | Easement Acquisition Begins",
+      "Q2 2026 | Construction Begins",
+      "Q1 2027 | Project Completion"
+    ],
+    "utility": "GPC",
+    "validation_notes": [
+      "The source record has no supporting statement."
+    ],
+    "validation_status": "review",
+    "voltage_kv": [
+      230.0
+    ],
+    "voltage_raw": [
+      "230 kV"
+    ],
+    "warning_codes": [
+      "MISSING_SUPPORTING_STATEMENT"
+    ]
+  },
+  {
+    "balancing_authority_normalized": "GPC",
+    "balancing_authority_raw": "GPC",
+    "completion_target_raw": "Q1 2031 | Project Completion",
+    "confidence": "MEDIUM",
+    "construction_start_raw": [
+      "Q4 2028 | Line Construction Begins"
+    ],
+    "county_region_raw": "Appling, Emanuel, Jefferson, & Toombs counties",
+    "description_raw": "As part of long-term investments in Georgia’s statewide transmission system, this project includes construction of an approximately 75-mile transmission line connecting Plant Hatch in Appling County to the Wadley Primary Substation in Jefferson County, crossing Toombs and Emanuel counties. Included in the Integrated Resource Plan , the project will strengthen grid reliability and help ensure reliable electric service to support long-term energy needs across the region.",
+    "document_id": "georgia-power-2026-current-transmission-projects",
+    "endpoint_candidates": [
+      "Hatch",
+      "Wadley Primary"
+    ],
+    "extraction_confidence": "HIGH",
+    "extraction_engine": "BeautifulSoup",
+    "extraction_engine_version": "4.15.0",
+    "field_provenance": {
+      "balancing_authority_normalized": {
+        "notes": null,
+        "origin": "deterministic_rule",
+        "rule_id": "georgia_power_utility_v1",
+        "source_fields": [
+          "source"
+        ]
+      },
+      "endpoint_candidates": {
+        "notes": "Text candidates only; no geocoding or entity resolution applied.",
+        "origin": "derived_from_source",
+        "rule_id": "location_candidates_v1",
+        "source_fields": [
+          "project_name_raw"
+        ]
+      },
+      "length_miles": {
+        "notes": "Values are preserved independently and are not summed.",
+        "origin": "derived_from_source",
+        "rule_id": "length_miles_v1",
+        "source_fields": [
+          "description_raw"
+        ]
+      },
+      "location_mentions": {
+        "notes": "Published county/region text only; no geocoding applied.",
+        "origin": "derived_from_source",
+        "rule_id": "georgia_power_county_region_v1",
+        "source_fields": [
+          "county_region_raw"
+        ]
+      },
+      "project_name_normalized": {
+        "notes": null,
+        "origin": "normalized",
+        "rule_id": "project_name_v1",
+        "source_fields": [
+          "project_name_raw"
+        ]
+      },
+      "project_type": {
+        "notes": null,
+        "origin": "normalized",
+        "rule_id": "georgia_power_published_type_v1",
+        "source_fields": [
+          "project_type_raw"
+        ]
+      },
+      "voltage_kv": {
+        "notes": null,
+        "origin": "derived_from_source",
+        "rule_id": "voltage_kv_v1",
+        "source_fields": [
+          "project_name_raw",
+          "description_raw",
+          "supporting_statement_raw"
+        ]
+      }
+    },
+    "geometry": null,
+    "in_service_year": null,
+    "in_service_year_raw": "Q1 2031",
+    "latitude": null,
+    "length_miles": [
+      75.0
+    ],
+    "length_raw": [
+      "75-mile"
+    ],
+    "location_mentions": [
+      "Appling, Emanuel, Jefferson, & Toombs counties"
+    ],
+    "longitude": null,
+    "observation_id": "georgia-power-2026-57d55e09e3bd5e9f6cb2",
+    "owner_prefix_raw": null,
+    "parser_version": "georgia_power_current_v1",
+    "pdf_page_end": 7,
+    "pdf_page_start": 7,
+    "pipeline_version": "0.1.0",
+    "planning_year": 2026,
+    "printed_page_end": null,
+    "printed_page_start": null,
+    "project_name_normalized": "Hatch - Wadley Primary 500 kV",
+    "project_name_raw": "Hatch – Wadley Primary 500 kV",
+    "project_type": "new_transmission_line",
+    "project_type_confidence": "HIGH",
+    "project_type_method": "georgia_power_published_type_v1",
+    "project_type_raw": "New Transmission Line",
+    "raw_record_text": "Project Name: Hatch – Wadley Primary 500 kV\nCounty/Region: Appling, Emanuel, Jefferson, & Toombs counties\nType: New Transmission Line\nAbout the Project: As part of long-term investments in Georgia’s statewide transmission system, this project includes construction of an approximately 75-mile transmission line connecting Plant Hatch in Appling County to the Wadley Primary Substation in Jefferson County, crossing Toombs and Emanuel counties. Included in the Integrated Resource Plan , the project will strengthen grid reliability and help ensure reliable electric service to support long-term energy needs across the region.\nTimeline: Q3 2026 | Community Meetings\nTimeline: Q4 2026 | Easement Acquisition Begins\nTimeline: Q1 2027 | Line Clearing and Grading Begins\nTimeline: Q4 2028 | Line Construction Begins\nTimeline: Q1 2031 | Project Completion",
+    "source": "georgia_power",
+    "source_sha256": "a2fd04a6fb2c09771000c341768ba15793b0a7afc53c4fc4edb42e04e8ff1646",
+    "source_title": "Hatch – Wadley Primary 500 kV",
+    "source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/hatch-wadley.html",
+    "supporting_statement_raw": null,
+    "timeline_raw": [
+      "Q3 2026 | Community Meetings",
+      "Q4 2026 | Easement Acquisition Begins",
+      "Q1 2027 | Line Clearing and Grading Begins",
+      "Q4 2028 | Line Construction Begins",
+      "Q1 2031 | Project Completion"
+    ],
+    "utility": "GPC",
+    "validation_notes": [
+      "The source record has no supporting statement."
+    ],
+    "validation_status": "review",
+    "voltage_kv": [
+      500.0
+    ],
+    "voltage_raw": [
+      "500 kV"
+    ],
+    "warning_codes": [
+      "MISSING_SUPPORTING_STATEMENT"
+    ]
+  },
+  {
+    "balancing_authority_normalized": "GPC",
+    "balancing_authority_raw": "GPC",
+    "completion_target_raw": "Q1 2028 | Project complete",
+    "confidence": "MEDIUM",
+    "construction_start_raw": [
+      "Q1 2027 | Line Construction Begins"
+    ],
+    "county_region_raw": "Dekalb & Rockdale counties",
+    "description_raw": "The Conyers – Klondike 230 kV project consists of a new 8.5-mile transmission line that will run between the Conyers Substation in Rockdale County and the Klondike Substation in Dekalb County. In some locations, the Conyers–Klondike 230 kV transmission line will follow the existing Conyers - Klondike 230 kV transmission corridor. In other areas, a new corridor will be created where required by the project design. This project is part of our ongoing commitment to strengthen and expand the electric grid. This critical infrastructure is designed to enhance system reliability, support Georgia’s evolving energy needs, and ensure safe, resilient service for decades to come.",
+    "document_id": "georgia-power-2026-current-transmission-projects",
+    "endpoint_candidates": [
+      "Conyers",
+      "Klondike"
+    ],
+    "extraction_confidence": "HIGH",
+    "extraction_engine": "BeautifulSoup",
+    "extraction_engine_version": "4.15.0",
+    "field_provenance": {
+      "balancing_authority_normalized": {
+        "notes": null,
+        "origin": "deterministic_rule",
+        "rule_id": "georgia_power_utility_v1",
+        "source_fields": [
+          "source"
+        ]
+      },
+      "endpoint_candidates": {
+        "notes": "Text candidates only; no geocoding or entity resolution applied.",
+        "origin": "derived_from_source",
+        "rule_id": "location_candidates_v1",
+        "source_fields": [
+          "project_name_raw"
+        ]
+      },
+      "length_miles": {
+        "notes": "Values are preserved independently and are not summed.",
+        "origin": "derived_from_source",
+        "rule_id": "length_miles_v1",
+        "source_fields": [
+          "description_raw"
+        ]
+      },
+      "location_mentions": {
+        "notes": "Published county/region text only; no geocoding applied.",
+        "origin": "derived_from_source",
+        "rule_id": "georgia_power_county_region_v1",
+        "source_fields": [
+          "county_region_raw"
+        ]
+      },
+      "project_name_normalized": {
+        "notes": null,
+        "origin": "normalized",
+        "rule_id": "project_name_v1",
+        "source_fields": [
+          "project_name_raw"
+        ]
+      },
+      "project_type": {
+        "notes": null,
+        "origin": "normalized",
+        "rule_id": "georgia_power_published_type_v1",
+        "source_fields": [
+          "project_type_raw"
+        ]
+      },
+      "voltage_kv": {
+        "notes": null,
+        "origin": "derived_from_source",
+        "rule_id": "voltage_kv_v1",
+        "source_fields": [
+          "project_name_raw",
+          "description_raw",
+          "supporting_statement_raw"
+        ]
+      }
+    },
+    "geometry": null,
+    "in_service_year": null,
+    "in_service_year_raw": "Q1 2028",
+    "latitude": null,
+    "length_miles": [
+      8.5
+    ],
+    "length_raw": [
+      "8.5-mile"
+    ],
+    "location_mentions": [
+      "Dekalb & Rockdale counties"
+    ],
+    "longitude": null,
+    "observation_id": "georgia-power-2026-85c6d93852f8eda4b276",
+    "owner_prefix_raw": null,
+    "parser_version": "georgia_power_current_v1",
+    "pdf_page_end": 8,
+    "pdf_page_start": 8,
+    "pipeline_version": "0.1.0",
+    "planning_year": 2026,
+    "printed_page_end": null,
+    "printed_page_start": null,
+    "project_name_normalized": "Conyers - Klondike 230 kV",
+    "project_name_raw": "Conyers – Klondike 230 kV",
+    "project_type": "new_transmission_line",
+    "project_type_confidence": "HIGH",
+    "project_type_method": "georgia_power_published_type_v1",
+    "project_type_raw": "New Transmission Line",
+    "raw_record_text": "Project Name: Conyers – Klondike 230 kV\nCounty/Region: Dekalb & Rockdale counties\nType: New Transmission Line\nAbout the Project: The Conyers – Klondike 230 kV project consists of a new 8.5-mile transmission line that will run between the Conyers Substation in Rockdale County and the Klondike Substation in Dekalb County. In some locations, the Conyers–Klondike 230 kV transmission line will follow the existing Conyers - Klondike 230 kV transmission corridor. In other areas, a new corridor will be created where required by the project design. This project is part of our ongoing commitment to strengthen and expand the electric grid. This critical infrastructure is designed to enhance system reliability, support Georgia’s evolving energy needs, and ensure safe, resilient service for decades to come.\nTimeline: Q2-Q3 2026 | Community Meetings See Dates & Locations\nTimeline: Q3-Q4 2026 | Easement Acquisition Begins\nTimeline: Q4 2026 | Line Clearing and Grading Begins\nTimeline: Q1 2027 | Line Construction Begins\nTimeline: Q1 2028 | Project complete",
+    "source": "georgia_power",
+    "source_sha256": "9e17a3ab78a83556883641281c4ee9daf4653e7b419f9d5cb1292463f61cb1b9",
+    "source_title": "Conyers – Klondike 230 kV",
+    "source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/conyers-klondike.html",
+    "supporting_statement_raw": null,
+    "timeline_raw": [
+      "Q2-Q3 2026 | Community Meetings See Dates & Locations",
+      "Q3-Q4 2026 | Easement Acquisition Begins",
+      "Q4 2026 | Line Clearing and Grading Begins",
+      "Q1 2027 | Line Construction Begins",
+      "Q1 2028 | Project complete"
+    ],
+    "utility": "GPC",
+    "validation_notes": [
+      "The source record has no supporting statement."
+    ],
+    "validation_status": "review",
+    "voltage_kv": [
+      230.0
+    ],
+    "voltage_raw": [
+      "230 kV"
+    ],
+    "warning_codes": [
+      "MISSING_SUPPORTING_STATEMENT"
+    ]
+  },
+  {
+    "balancing_authority_normalized": "GPC",
+    "balancing_authority_raw": "GPC",
+    "completion_target_raw": "Q2 2028 | Project complete",
+    "confidence": "MEDIUM",
+    "construction_start_raw": [
+      "Q3 2027 | Line Construction begins"
+    ],
+    "county_region_raw": "Fayette & Heard counties",
+    "description_raw": "The Ashley Park – Wansley 500kV Transmission Project consists of a new 35-mile transmission line that will run between the Ashley Park Substation in Fayette County and Plant Wansley in Heard County, crossing through Fulton and Coweta counties. This project is part of our ongoing commitment to strengthen and expand the electric grid as identified in our Integrated Resource Plan. This critical infrastructure is designed to enhance system reliability, support Georgia’s evolving energy needs, and ensure safe, resilient service for decades to come.",
+    "document_id": "georgia-power-2026-current-transmission-projects",
+    "endpoint_candidates": [
+      "Ashley Park",
+      "Wansley"
+    ],
+    "extraction_confidence": "HIGH",
+    "extraction_engine": "BeautifulSoup",
+    "extraction_engine_version": "4.15.0",
+    "field_provenance": {
+      "balancing_authority_normalized": {
+        "notes": null,
+        "origin": "deterministic_rule",
+        "rule_id": "georgia_power_utility_v1",
+        "source_fields": [
+          "source"
+        ]
+      },
+      "endpoint_candidates": {
+        "notes": "Text candidates only; no geocoding or entity resolution applied.",
+        "origin": "derived_from_source",
+        "rule_id": "location_candidates_v1",
+        "source_fields": [
+          "project_name_raw"
+        ]
+      },
+      "length_miles": {
+        "notes": "Values are preserved independently and are not summed.",
+        "origin": "derived_from_source",
+        "rule_id": "length_miles_v1",
+        "source_fields": [
+          "description_raw"
+        ]
+      },
+      "location_mentions": {
+        "notes": "Published county/region text only; no geocoding applied.",
+        "origin": "derived_from_source",
+        "rule_id": "georgia_power_county_region_v1",
+        "source_fields": [
+          "county_region_raw"
+        ]
+      },
+      "project_name_normalized": {
+        "notes": null,
+        "origin": "normalized",
+        "rule_id": "project_name_v1",
+        "source_fields": [
+          "project_name_raw"
+        ]
+      },
+      "project_type": {
+        "notes": null,
+        "origin": "normalized",
+        "rule_id": "georgia_power_published_type_v1",
+        "source_fields": [
+          "project_type_raw"
+        ]
+      },
+      "voltage_kv": {
+        "notes": null,
+        "origin": "derived_from_source",
+        "rule_id": "voltage_kv_v1",
+        "source_fields": [
+          "project_name_raw",
+          "description_raw",
+          "supporting_statement_raw"
+        ]
+      }
+    },
+    "geometry": null,
+    "in_service_year": null,
+    "in_service_year_raw": "Q2 2028",
+    "latitude": null,
+    "length_miles": [
+      35.0
+    ],
+    "length_raw": [
+      "35-mile"
+    ],
+    "location_mentions": [
+      "Fayette & Heard counties"
+    ],
+    "longitude": null,
+    "observation_id": "georgia-power-2026-f86ec735e2182af8b86e",
+    "owner_prefix_raw": null,
+    "parser_version": "georgia_power_current_v1",
+    "pdf_page_end": 9,
+    "pdf_page_start": 9,
+    "pipeline_version": "0.1.0",
+    "planning_year": 2026,
+    "printed_page_end": null,
+    "printed_page_start": null,
+    "project_name_normalized": "Ashley Park - Wansley 500 kV",
+    "project_name_raw": "Ashley Park – Wansley 500 kV",
+    "project_type": "new_transmission_line",
+    "project_type_confidence": "HIGH",
+    "project_type_method": "georgia_power_published_type_v1",
+    "project_type_raw": "New Transmission Line",
+    "raw_record_text": "Project Name: Ashley Park – Wansley 500 kV\nCounty/Region: Fayette & Heard counties\nType: New Transmission Line\nAbout the Project: The Ashley Park – Wansley 500kV Transmission Project consists of a new 35-mile transmission line that will run between the Ashley Park Substation in Fayette County and Plant Wansley in Heard County, crossing through Fulton and Coweta counties. This project is part of our ongoing commitment to strengthen and expand the electric grid as identified in our Integrated Resource Plan. This critical infrastructure is designed to enhance system reliability, support Georgia’s evolving energy needs, and ensure safe, resilient service for decades to come.\nTimeline: Q1 2026 | Community Meetings See Dates & Locations\nTimeline: Q1 2027 | Line Clearing & Grading Begins\nTimeline: Q3 2027 | Line Construction begins\nTimeline: Q2 2028 | Project complete",
+    "source": "georgia_power",
+    "source_sha256": "e86d96a5eaf38d73ecfbad9d5aa0d183e8737841df3eb8abda8f6582d2e18915",
+    "source_title": "Ashley Park – Wansley 500 kV",
+    "source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/ashley-park.html",
+    "supporting_statement_raw": null,
+    "timeline_raw": [
+      "Q1 2026 | Community Meetings See Dates & Locations",
+      "Q1 2027 | Line Clearing & Grading Begins",
+      "Q3 2027 | Line Construction begins",
+      "Q2 2028 | Project complete"
+    ],
+    "utility": "GPC",
+    "validation_notes": [
+      "The source record has no supporting statement."
+    ],
+    "validation_status": "review",
+    "voltage_kv": [
+      500.0
+    ],
+    "voltage_raw": [
+      "500 kV",
+      "500kV"
+    ],
+    "warning_codes": [
+      "MISSING_SUPPORTING_STATEMENT"
+    ]
+  }
+]
