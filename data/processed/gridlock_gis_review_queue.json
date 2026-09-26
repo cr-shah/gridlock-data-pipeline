@@ -32,7 +32,7 @@
     "priority_region": true,
     "project_source_page": null,
     "project_source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/effingham-county.html",
-    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "review_reason": "The official Georgia Power project page states that a project map is not currently available; no substation site or route endpoints are published, so geometry remains null. Plant McIntosh generation work is not named on this page and is not used as a proxy location.",
     "utility": "GPC"
   },
   {
@@ -500,15 +500,6 @@
     "priority_region": false,
     "project_source_page": null,
     "project_source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/grassy-hollow-great-valley.html",
-    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
-    "utility": "GPC"
-  },
-  {
-    "id": "georgia-power-2026-57d55e09e3bd5e9f6cb2",
-    "name": "Hatch - Wadley Primary 500 kV",
-    "priority_region": false,
-    "project_source_page": null,
-    "project_source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/hatch-wadley.html",
     "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
     "utility": "GPC"
   },

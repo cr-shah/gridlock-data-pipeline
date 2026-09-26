@@ -17,6 +17,10 @@ CALLAWAY_SOURCE = (
     "https://www.georgiapower.com/about/grid-reliability/grid-improvements/"
     "grid-projects/transmission-projects/callaway-thomson.html"
 )
+HATCH_WADLEY_SOURCE = (
+    "https://www.georgiapower.com/about/grid-reliability/grid-improvements/"
+    "grid-projects/transmission-projects/hatch-wadley.html"
+)
 JASPER_OKATIE_SOURCE = (
     "https://www.dominionenergy.com/-/media/content/about/power-line-projects/"
     "jasper-okatie-riverport/pdfs/jor-final-route-selection-map.pdf"
@@ -89,6 +93,150 @@ GIS_EVIDENCE: dict[str, dict[str, Any]] = {
             "The page states that the route is preliminary and based on pre-engineering data."
         ),
     },
+    "georgia-power-2026-57d55e09e3bd5e9f6cb2": {
+        "geometry": [
+            [-82.34895510, 31.93446331],
+            [-82.35771848, 31.93442525],
+            [-82.35772461, 31.93442556],
+            [-82.35772484, 31.93442725],
+            [-82.35772488, 31.93442927],
+            [-82.35705132, 31.96413362],
+            [-82.35705084, 31.96413714],
+            [-82.35705083, 31.96413717],
+            [-82.35704909, 31.96414011],
+            [-82.35089777, 31.97237531],
+            [-82.34929211, 31.97489399],
+            [-82.34928948, 31.97489741],
+            [-82.34928861, 31.97489796],
+            [-82.34928456, 31.97490000],
+            [-82.33978411, 31.97916309],
+            [-82.33405941, 31.98174933],
+            [-82.32348495, 31.99264719],
+            [-82.32347699, 31.99265462],
+            [-82.30443692, 32.00877091],
+            [-82.30936770, 32.03496593],
+            [-82.30936826, 32.03497029],
+            [-82.30936826, 32.03497106],
+            [-82.30936780, 32.03497440],
+            [-82.30326106, 32.05832044],
+            [-82.30326065, 32.05832178],
+            [-82.30325976, 32.05832388],
+            [-82.30325705, 32.05832605],
+            [-82.29445664, 32.06401100],
+            [-82.29892983, 32.08618424],
+            [-82.29892983, 32.08618891],
+            [-82.29758327, 32.10084224],
+            [-82.29731005, 32.10381468],
+            [-82.29473557, 32.13181113],
+            [-82.29473499, 32.13181502],
+            [-82.29473472, 32.13181599],
+            [-82.29473332, 32.13181835],
+            [-82.29473297, 32.13181883],
+            [-82.29264204, 32.13449377],
+            [-82.29591998, 32.14598394],
+            [-82.29592011, 32.14598448],
+            [-82.29592048, 32.14598716],
+            [-82.29592029, 32.14598852],
+            [-82.29591951, 32.14599152],
+            [-82.29239051, 32.15717485],
+            [-82.29803867, 32.16477658],
+            [-82.29804051, 32.16477968],
+            [-82.29804051, 32.16478044],
+            [-82.29803997, 32.16478467],
+            [-82.29494258, 32.18137398],
+            [-82.29494133, 32.18137847],
+            [-82.29494113, 32.18137881],
+            [-82.29493789, 32.18138304],
+            [-82.27439727, 32.20530215],
+            [-82.28805975, 32.25798911],
+            [-82.28806046, 32.25799425],
+            [-82.28806059, 32.25800101],
+            [-82.28797567, 32.26095203],
+            [-82.28700062, 32.29488944],
+            [-82.28887809, 32.30798735],
+            [-82.29790492, 32.33733095],
+            [-82.29790603, 32.33733526],
+            [-82.29790662, 32.33733893],
+            [-82.30141813, 32.36761769],
+            [-82.30141868, 32.36762547],
+            [-82.30201135, 32.38990658],
+            [-82.30201131, 32.38990890],
+            [-82.30201107, 32.38991062],
+            [-82.30200677, 32.38991496],
+            [-82.29386373, 32.39717747],
+            [-82.28371277, 32.41046534],
+            [-82.27576768, 32.42639791],
+            [-82.26814481, 32.44167825],
+            [-82.26489308, 32.44819463],
+            [-82.27096513, 32.48773828],
+            [-82.27096528, 32.48773962],
+            [-82.27096528, 32.48774191],
+            [-82.27096470, 32.48774608],
+            [-82.26475045, 32.51387534],
+            [-82.26474946, 32.51387871],
+            [-82.26474701, 32.51388440],
+            [-82.24889409, 32.54384979],
+            [-82.26398417, 32.56927234],
+            [-82.26398539, 32.56927518],
+            [-82.26398574, 32.56927768],
+            [-82.26398576, 32.56927840],
+            [-82.26392292, 32.57754604],
+            [-82.26392249, 32.57754917],
+            [-82.26392111, 32.57755411],
+            [-82.25899115, 32.59099971],
+            [-82.25679028, 32.60939715],
+            [-82.27383937, 32.67787958],
+            [-82.27383989, 32.67788335],
+            [-82.27383970, 32.67788471],
+            [-82.27383891, 32.67788773],
+            [-82.27091180, 32.68710006],
+            [-82.28045187, 32.70358040],
+            [-82.33342212, 32.72317025],
+            [-82.33342520, 32.72317175],
+            [-82.33342643, 32.72317460],
+            [-82.34010177, 32.74637969],
+            [-82.34761471, 32.77543551],
+            [-82.34849027, 32.77849754],
+            [-82.41731017, 32.79403984],
+            [-82.42463691, 32.79591920],
+            [-82.42464326, 32.79592151],
+            [-82.42464377, 32.79592175],
+            [-82.44537860, 32.80614218],
+            [-82.45295947, 32.80956959],
+            [-82.45296282, 32.80957127],
+            [-82.45296400, 32.80957201],
+            [-82.45296547, 32.80957543],
+            [-82.45803857, 32.82594246],
+            [-82.45803917, 32.82594480],
+            [-82.45803941, 32.82594648],
+            [-82.45803754, 32.82594962],
+            [-82.43166530, 32.86129021],
+            [-82.43287761, 32.87177459],
+            [-82.43287761, 32.87177797],
+            [-82.43287745, 32.87177803],
+            [-82.43287155, 32.87177954],
+            [-82.42595201, 32.87321170],
+            [-82.42602388, 32.87761767],
+            [-82.42727145, 32.88316530],
+            [-82.42727209, 32.88316992],
+            [-82.42726815, 32.88317091],
+            [-82.42522057, 32.88351632],
+            [-82.42521006, 32.88351769],
+            [-82.41705634, 32.88427850],
+            [-82.41705003, 32.88427879],
+            [-82.41704969, 32.88427877],
+        ],
+        "geometry_type": "LineString",
+        "geometry_source": HATCH_WADLEY_SOURCE,
+        "geometry_method": "official_project_route_coordinates",
+        "geometry_confidence": "HIGH",
+        "geometry_notes": (
+            "Single official 500 kV route polyline embedded in the Georgia Power project page "
+            "map, running from Plant Hatch (Appling County) to Wadley Primary Substation "
+            "(Jefferson County). Coordinates are copied as published (rounded to 8 decimals); "
+            "they represent Georgia Power's mapped route, not an as-built survey."
+        ),
+    },
     "scrtp-desc-2026-6c4897da52154c18c1d1": {
         "geometry": [
             [-81.124490, 32.359587],
@@ -142,6 +290,17 @@ GIS_EVIDENCE: dict[str, dict[str, Any]] = {
             "named Urquhart endpoint, not the Toolebeck line route."
         ),
     },
+}
+
+
+# Record-specific explanations for why geometry stays null after a bounded source check.
+REVIEW_REASONS: dict[str, str] = {
+    "georgia-power-2026-83a79bb18ac6d7434a20": (
+        "The official Georgia Power project page states that a project map is not currently "
+        "available; no substation site or route endpoints are published, so geometry remains "
+        "null. Plant McIntosh generation work is not named on this page and is not used as a "
+        "proxy location."
+    ),
 }
 
 
@@ -284,7 +443,7 @@ def build_product_projects(
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     """Transform verified records without changing their project-source provenance."""
     record_ids = {record.get("observation_id") for record in records}
-    unknown_evidence = set(GIS_EVIDENCE) - record_ids
+    unknown_evidence = (set(GIS_EVIDENCE) | set(REVIEW_REASONS)) - record_ids
     if unknown_evidence:
         raise ValueError(f"GIS evidence refers to unknown project IDs: {sorted(unknown_evidence)}")
 
@@ -328,9 +487,10 @@ def build_product_projects(
                     "utility": record["utility"],
                     "name": project["name"],
                     "priority_region": _priority_region(record),
-                    "review_reason": (
+                    "review_reason": REVIEW_REASONS.get(
+                        project_id,
                         "No sufficiently precise public geometry was resolved within the bounded "
-                        "source-check limit; geometry remains null."
+                        "source-check limit; geometry remains null.",
                     ),
                     "project_source_url": record.get("source_url"),
                     "project_source_page": _source_page(record),

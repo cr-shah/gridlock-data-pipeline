@@ -96,6 +96,13 @@ def test_gis_evidence_is_small_explicit_valid_and_conservative(tmp_path: Path) -
         == "official_project_route_coordinates"
     )
     assert by_id["georgia-power-2026-83a79bb18ac6d7434a20"]["geometry"] is None
+    hatch_wadley = by_id["georgia-power-2026-57d55e09e3bd5e9f6cb2"]
+    assert hatch_wadley["geometry_type"] == "LineString"
+    assert hatch_wadley["geometry_method"] == "official_project_route_coordinates"
+    assert hatch_wadley["geometry_confidence"] == "HIGH"
+    assert hatch_wadley["geometry"][0] == [-82.3489551, 31.93446331]
+    assert hatch_wadley["geometry"][-1] == [-82.41704969, 32.88427877]
+    assert by_id["scrtp-desc-2026-51b7f3df6753d9825f1a"]["geometry"] == [-81.9111, 33.435]
     assert by_id["scrtp-desc-2026-3fcc16fb58dedf958023"]["geometry"] is None
 
     for project in projects:
