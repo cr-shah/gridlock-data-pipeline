@@ -1,0 +1,16 @@
+balancing_authorities:
+  SOUTHERN: SOUTHERN
+  DUKE: DUKE
+  TVA: TVA
+owner_prefixes:
+  - "SOCO:"
+  - "GTC:"
+rules:
+  project_name: project_name_v1
+  owner_prefix: owner_prefix_v1
+  voltage: voltage_kv_v1
+  project_type: project_type_rules_v1
+  locations: location_candidates_v1
+  lengths: length_miles_v1
+  in_service_year: in_service_year_v1
+

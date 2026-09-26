@@ -1,0 +1,20 @@
+sertp:
+  implemented_years: [2026]
+  discovery_pages:
+    - https://www.southeasternrtp.com/reference_library.cshtml
+  allowed_hosts:
+    - southeasternrtp.com
+    - www.southeasternrtp.com
+  blocked_path_fragments:
+    - secure_area
+    - login
+    - signin
+    - auth
+  title_keywords:
+    - preliminary expansion plan
+    - non-ceii
+  timeout_seconds: 30
+  max_content_bytes: 52428800
+  request_interval_seconds: 1.0
+  ambiguity_margin: 0
+

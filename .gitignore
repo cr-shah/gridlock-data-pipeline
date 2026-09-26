@@ -1,3 +1,13 @@
 .worktrees/
 .superpowers/
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.py[cod]
+data/raw/html/
+data/raw/pdf/
+data/extracted/text/
+data/intermediate/projects/
+data/processed/.staging-*/
 
