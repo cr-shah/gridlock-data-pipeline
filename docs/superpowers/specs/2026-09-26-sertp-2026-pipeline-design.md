@@ -74,6 +74,8 @@ gridlock-data-pipeline/
 │   ├── export/{__init__.py,csv_export.py,json_export.py,manifest.py}
 │   └── models/{__init__.py,source_document.py,project_observation.py}
 ├── scripts/inspect_pdf.py
+├── schemas/
+│   └── project_observation.schema.json
 ├── data/
 │   ├── raw/{html,pdf}/
 │   ├── extracted/text/
@@ -115,6 +117,8 @@ Cached source bytes are immutable by hash. A changed source is archived by hash 
 
 `PdfExtractor` consumes a verified local PDF and returns ordered `ExtractedPage` values. Every page stores the zero-based physical index, detected printed page number when available, complete raw text, and source SHA-256. The extractor writes deterministic JSON Lines without flattening page boundaries.
 
+Extraction provenance is tracked separately from source-document provenance. Extracted pages and downstream observations record `extraction_engine` and `extraction_engine_version` so changes caused by a PDF library upgrade can be distinguished from source-PDF changes.
+
 Nearly empty or unexpectedly unreadable pages generate warnings. OCR is not part of Phase 1.
 
 ### 4.4 Parsing
@@ -122,6 +126,8 @@ Nearly empty or unexpectedly unreadable pages generate warnings. OCR is not part
 `ProjectParser` is a protocol whose input is ordered extracted pages and source metadata and whose output is `ProjectObservation` values plus parser diagnostics.
 
 `Sertp2026Parser` is a source/version-specific state machine. It recognizes balancing-authority headers and the `In-Service Year`, `Project Name`, `Description`, and `Supporting Statement` transitions while tolerating line wrapping and page boundaries. Exact recurring headers and footers are removed only from a cleaned parsing stream; raw page text remains unchanged.
+
+Every observation also preserves `raw_record_text`: the complete cleaned-but-uninterpreted project block consumed by the parser. This permits future reparsing and boundary diagnosis without repeating PDF extraction.
 
 The parser must not classify the public report as restricted merely because its repeated template header contains `CEII`. Acquisition context determines public eligibility.
 
@@ -135,6 +141,8 @@ Normalization functions are pure and deterministic. They never replace raw sourc
 - Project type: rule-based classification with explicit method and confidence; uncertain cases remain `unknown`.
 - Locations: optional candidate station/end-point names only when syntax is sufficiently clear; no geocoding.
 - Length: preserve raw phrases and individual numeric components; do not sum ambiguous components.
+
+Derived values have machine-readable provenance. `field_provenance` maps each derived field to an origin, its source field or fields, and the deterministic rule identifier. Phase 1 requires entries for voltage, project type, normalized name, owner prefix, endpoint candidates, and length values when populated. Raw source facts do not masquerade as derived values.
 
 ### 4.6 Validation and Quality Gates
 
@@ -162,6 +170,7 @@ Required outputs:
 - `data/processed/review_queue.csv`
 - `data/processed/data_quality.json`
 - `data/processed/source_manifest.json`
+- `schemas/project_observation.schema.json`
 
 JSON uses stable key ordering and excludes volatile run timestamps from content whose determinism is asserted. Volatile acquisition timestamps remain in the source manifest but do not cause project-observation output drift.
 
@@ -173,7 +182,7 @@ Stores document identity, discovery provenance, source and final URLs, planning 
 
 ### 5.2 ExtractedPage
 
-Stores `pdf_page_index`, optional printed page number, raw page text, and source SHA-256.
+Stores `pdf_page_index`, optional printed page number, raw page text, source SHA-256, extraction engine, and extraction-engine version.
 
 ### 5.3 ProjectObservation
 
@@ -183,6 +192,7 @@ Stores:
 - raw and normalized balancing authority;
 - raw owner prefix;
 - raw and normalized project name;
+- the complete cleaned-but-uninterpreted `raw_record_text` block;
 - in-service year;
 - raw description and supporting statement;
 - raw and derived voltage fields;
@@ -191,11 +201,26 @@ Stores:
 - raw and derived length fields;
 - PDF and printed page ranges;
 - source URL, title, and hash;
+- extraction engine and extraction-engine version;
 - parser and pipeline versions;
 - extraction confidence, validation status, and warning notes;
+- machine-readable `field_provenance` for populated normalized or derived values;
 - explicitly null latitude, longitude, and geometry.
 
 IDs are derived from stable source facts rather than record order alone so reruns do not renumber unchanged observations.
+
+`ProjectObservation` is defined as a Pydantic model. Its JSON Schema is exported deterministically to `schemas/project_observation.schema.json` and validated in CI. Future SERTP, SCRTP, and DESC adapters must emit this contract or an explicitly versioned successor rather than inventing incompatible shapes.
+
+### 5.4 FieldProvenance
+
+Each derived-field provenance entry contains:
+
+- `origin`, such as `normalized`, `derived_from_source`, or `deterministic_rule`;
+- `source_fields`, listing the raw facts used;
+- optional `rule_id`, identifying the versioned deterministic rule;
+- optional `notes` for conservative ambiguity disclosures.
+
+For example, voltage parsed from `project_name_raw` records that source field and a rule such as `voltage_kv_v1`; a project type records `project_type_rules_v1`. This enables downstream consumers to distinguish official source facts from Gridlock-derived interpretations.
 
 ## 6. Command-Line Interface
 
@@ -229,6 +254,8 @@ Development follows test-driven implementation.
 
 Golden fixtures contain at least two SOUTHERN records, one SOCO-prefixed record, one GTC-prefixed record, one Duke record, one TVA record, a transformer, a line rebuild, and a multi-voltage record. At least ten real records are manually checked against their exact PDF pages before Phase 1 is declared complete.
 
+Tests also assert that `raw_record_text` spans the intended project block, extraction provenance survives through export, populated derived values have valid `field_provenance`, and the generated JSON Schema is stable and accepts every exported observation.
+
 ## 8. Operational and Security Rules
 
 - No authentication or Secure Area access.
@@ -254,8 +281,22 @@ Phase 1 stops after producing a verification packet containing:
 
 No 2025 work begins until the human reviewer accepts the 2026 sample.
 
-## 10. Acceptance Criteria
+## 10. Implementation Sequence
 
-Phase 1 is complete only when every item in the user-approved scope is implemented and verified, the full offline suite passes, the live 2026 pipeline succeeds against the official public document, processed outputs survive a deterministic rerun, and the manual verification packet is ready for review.
+Implementation prioritizes an early end-to-end vertical slice before secondary hardening:
+
+1. Define the minimal Pydantic contracts and configuration needed for one run.
+2. Discover the real public 2026 report.
+3. Download and minimally verify the PDF.
+4. Extract pages with PyMuPDF and inspect representative real text.
+5. Parse at least ten real observations with raw fields, `raw_record_text`, page provenance, and JSON/CSV export.
+6. Verify those observations manually against the official PDF.
+7. Harden acquisition, caching, source-change history, atomic promotion, validation, the full edge-case matrix, quality gates, schema export, and review workflow.
+
+This sequence does not waive security or correctness checks required to access the public document. It prevents secondary infrastructure polish from delaying proof that the 2026 extraction and parser design work on the actual source.
+
+## 11. Acceptance Criteria
+
+Phase 1 is complete only when every item in the user-approved scope is implemented and verified, the full offline suite passes, the live 2026 pipeline succeeds against the official public document, processed outputs survive a deterministic rerun, every observation preserves record and extraction provenance, the machine-readable schema validates the exports, and the manual verification packet is ready for review.
 
 Future year support must implement new adapters behind the shared discovery, acquisition, extraction, parser, validation, and export contracts. Parser-family boundaries will be proposed only after representative source documents are extracted and compared; no year family is assumed in this design.
