@@ -1,0 +1,31 @@
+{
+  "current": {
+    "access_notes": [
+      "anonymous public download from approved host"
+    ],
+    "acquired_at": "2026-09-26T06:13:18.047672Z",
+    "content_length": 1996939,
+    "content_type": "application/pdf",
+    "discovery_url": "https://www.southeasternrtp.com/reference_library.cshtml",
+    "document_id": "sertp-2026-preliminary-non-ceii",
+    "document_type": "preliminary_expansion_plan",
+    "etag": null,
+    "final_url": "https://www.southeasternrtp.com/docs/general/2026/2026_SERTP_Preliminary_Expansion_Plan_Report_(Non-CEII).pdf",
+    "http_status": 200,
+    "last_modified": null,
+    "page_count": 115,
+    "pipeline_version": "0.1.0",
+    "planning_year": 2026,
+    "public_access": true,
+    "redirect_chain": [
+      "https://www.southeasternrtp.com/docs/general/2026/2026_SERTP_Preliminary_Expansion_Plan_Report_(Non-CEII).pdf"
+    ],
+    "refresh_status": "cache_hit",
+    "sha256": "d3785576bb2f558f558931b7fea22503deaafc6d1f81cec25b8d471deb32cb2c",
+    "source": "sertp",
+    "source_url": "https://www.southeasternrtp.com/docs/general/2026/2026_SERTP_Preliminary_Expansion_Plan_Report_(Non-CEII).pdf",
+    "title": "2026 SERTP Preliminary Expansion Plan Report (Non-CEII)"
+  },
+  "history": [],
+  "schema_version": "1.0"
+}

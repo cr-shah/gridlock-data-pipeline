@@ -90,6 +90,10 @@
       "title": "Balancing Authority Raw",
       "type": "string"
     },
+    "confidence": {
+      "$ref": "#/$defs/ConfidenceLevel",
+      "default": "HIGH"
+    },
     "description_raw": {
       "anyOf": [
         {

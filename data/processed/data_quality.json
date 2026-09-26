@@ -1,0 +1,29 @@
+{
+  "balancing_authority_counts": {
+    "AECI": 3,
+    "DUKE CAROLINAS": 56,
+    "DUKE PROGRESS EAST": 17,
+    "DUKE PROGRESS WEST": 1,
+    "LG&E/KU": 10,
+    "SOUTHERN": 288,
+    "TVA": 51
+  },
+  "confidence_counts": {
+    "HIGH": 413,
+    "LOW": 10,
+    "MEDIUM": 3
+  },
+  "invalid_count": 0,
+  "parser_diagnostic_counts": {},
+  "review_queue_count": 13,
+  "schema_version": "1.0",
+  "total_observations": 426,
+  "validation_status_counts": {
+    "review": 13,
+    "valid": 413
+  },
+  "warning_counts": {
+    "AMBIGUOUS_ENDPOINTS": 3,
+    "SUSPICIOUS_PROJECT_NAME": 10
+  }
+}
