@@ -10,4 +10,5 @@ data/raw/pdf/
 data/extracted/text/
 data/intermediate/projects/
 data/processed/.staging-*/
+tmp/
 
