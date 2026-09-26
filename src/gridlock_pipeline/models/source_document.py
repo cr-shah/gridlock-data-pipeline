@@ -1,6 +1,7 @@
 """Source-document contracts."""
 
 from datetime import datetime
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -41,5 +42,6 @@ class SourceDocument(BaseModel):
     last_modified: str | None = None
     public_access: bool
     access_notes: list[str] = Field(default_factory=list)
+    refresh_status: Literal["downloaded", "cache_hit", "unchanged", "changed"] = "downloaded"
+    redirect_chain: list[str] = Field(default_factory=list)
     pipeline_version: str
-

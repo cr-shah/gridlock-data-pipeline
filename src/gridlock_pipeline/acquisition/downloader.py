@@ -1,9 +1,12 @@
 """Verified download and local cache for public PDFs."""
 
+import shutil
+import time
 from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
+from urllib.parse import urljoin
 
 from gridlock_pipeline import __version__
 from gridlock_pipeline.acquisition.hashing import sha256_bytes, sha256_file
@@ -43,6 +46,8 @@ def _metadata(
     status: int = 200,
     etag: str | None = None,
     last_modified: str | None = None,
+    refresh_status: str = "downloaded",
+    redirect_chain: list[str] | None = None,
 ) -> SourceDocument:
     return SourceDocument(
         document_id=f"sertp-{candidate.planning_year}-preliminary-non-ceii",
@@ -62,8 +67,93 @@ def _metadata(
         last_modified=last_modified,
         public_access=True,
         access_notes=["anonymous public download from approved host"],
+        refresh_status=refresh_status,
+        redirect_chain=redirect_chain or [],
         pipeline_version=__version__,
     )
+
+
+def _request_with_retries(
+    session,
+    url: str,
+    policy: SourcePolicy,
+    sleeper: Callable[[float], None],
+):
+    retryable = {429, 500, 502, 503, 504}
+    last_error: Exception | None = None
+    retry_already_paced = False
+    for attempt in range(3):
+        if attempt and not retry_already_paced:
+            sleeper(max(policy.request_interval_seconds, float(2 ** (attempt - 1))))
+        retry_already_paced = False
+        try:
+            response = session.get(
+                url,
+                timeout=policy.timeout_seconds,
+                headers={"User-Agent": "GridlockDataPipeline/0.1 (+public research)"},
+                allow_redirects=False,
+                stream=True,
+            )
+        except Exception as exc:
+            last_error = exc
+            continue
+        if response.status_code in retryable:
+            if attempt == 2:
+                raise DownloadError(
+                    f"source request failed after retries: HTTP {response.status_code}"
+                )
+            retry_after = response.headers.get("Retry-After")
+            if retry_after:
+                try:
+                    delay = float(retry_after)
+                except ValueError:
+                    delay = float(2**attempt)
+                sleeper(max(policy.request_interval_seconds, delay))
+                retry_already_paced = True
+            continue
+        if response.status_code >= 400:
+            raise DownloadError(f"source request failed: HTTP {response.status_code}")
+        return response
+    raise DownloadError(f"source request failed after retries: {last_error}") from last_error
+
+
+def _follow_public_redirects(
+    session,
+    requested_url: str,
+    policy: SourcePolicy,
+    sleeper: Callable[[float], None],
+):
+    current = requested_url
+    chain = [requested_url]
+    for redirect_count in range(6):
+        response = _request_with_retries(session, current, policy, sleeper)
+        if response.status_code not in {301, 302, 303, 307, 308}:
+            final_url = validate_public_url(response.url or current, policy)
+            if final_url != chain[-1]:
+                chain.append(final_url)
+            return response, final_url, chain
+        location = response.headers.get("Location")
+        if not location:
+            raise DownloadError("redirect response omitted Location header")
+        next_url = validate_public_url(urljoin(current, location), policy)
+        chain.append(next_url)
+        current = next_url
+        if redirect_count < 5 and policy.request_interval_seconds:
+            sleeper(policy.request_interval_seconds)
+    raise DownloadError("source exceeded redirect limit")
+
+
+def _read_limited_content(response, maximum: int) -> bytes:
+    content = bytearray()
+    iterator = getattr(response, "iter_content", None)
+    chunks = iterator(chunk_size=64 * 1024) if iterator else (response.content,)
+    for chunk in chunks:
+        if not chunk:
+            continue
+        content.extend(chunk)
+        if len(content) > maximum:
+            raise DownloadError("downloaded source size exceeds configured limit")
+    return bytes(content)
 
 
 def download_document(
@@ -74,6 +164,7 @@ def download_document(
     *,
     force: bool = False,
     clock: Callable[[], datetime] = lambda: datetime.now(UTC),
+    sleeper: Callable[[float], None] = time.sleep,
 ) -> DownloadedDocument:
     requested_url = validate_public_url(candidate.url, policy)
     path = _cache_path(cache_root, candidate)
@@ -86,45 +177,57 @@ def download_document(
             content_type="application/pdf",
             content_length=content_length,
             digest=sha256_file(path),
+            refresh_status="cache_hit",
+            redirect_chain=[requested_url],
         )
         return DownloadedDocument(path=path, metadata=metadata, cache_hit=True)
 
-    response = session.get(
-        requested_url,
-        timeout=policy.timeout_seconds,
-        headers={"User-Agent": "GridlockDataPipeline/0.1 (+public research)"},
+    response, final_url, redirect_chain = _follow_public_redirects(
+        session, requested_url, policy, sleeper
     )
-    try:
-        response.raise_for_status()
-    except Exception as exc:
-        raise DownloadError(f"source request failed: {exc}") from exc
-    final_url = validate_public_url(response.url, policy)
     raw_content_type = response.headers.get("Content-Type", "")
     content_type = raw_content_type.split(";", 1)[0].strip().casefold()
     if content_type not in {"application/pdf", "application/octet-stream"}:
         raise DownloadError(f"incompatible content type: {raw_content_type!r}")
     declared_length = response.headers.get("Content-Length")
-    if declared_length and int(declared_length) > policy.max_content_bytes:
+    try:
+        parsed_length = int(declared_length) if declared_length else None
+    except (TypeError, ValueError):
+        parsed_length = None
+    if parsed_length is not None and parsed_length > policy.max_content_bytes:
         raise DownloadError("declared source size exceeds configured limit")
-    content = response.content
-    if len(content) > policy.max_content_bytes:
-        raise DownloadError("downloaded source size exceeds configured limit")
+    content = _read_limited_content(response, policy.max_content_bytes)
     if not content.startswith(b"%PDF"):
         raise DownloadError("downloaded content failed PDF magic-byte validation")
 
     path.parent.mkdir(parents=True, exist_ok=True)
     staged = path.with_suffix(".pdf.part")
     staged.write_bytes(content)
-    staged.replace(path)
+    old_digest = sha256_file(path) if path.exists() else None
+    new_digest = sha256_bytes(content)
+    refresh_status = "downloaded"
+    if old_digest == new_digest:
+        refresh_status = "unchanged"
+        staged.unlink()
+    else:
+        if old_digest is not None:
+            archive = path.parent / "archive" / f"{old_digest}.pdf"
+            archive.parent.mkdir(parents=True, exist_ok=True)
+            if not archive.exists():
+                shutil.copyfile(path, archive)
+            refresh_status = "changed"
+        staged.replace(path)
     metadata = _metadata(
         candidate,
         final_url=final_url,
         acquired_at=clock(),
         content_type=content_type,
         content_length=len(content),
-        digest=sha256_bytes(content),
+        digest=new_digest,
         status=response.status_code,
         etag=response.headers.get("ETag"),
         last_modified=response.headers.get("Last-Modified"),
+        refresh_status=refresh_status,
+        redirect_chain=redirect_chain,
     )
     return DownloadedDocument(path=path, metadata=metadata, cache_hit=False)

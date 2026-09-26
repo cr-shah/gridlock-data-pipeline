@@ -33,6 +33,10 @@ class FakeResponse:
         if self.status_code >= 400:
             raise RuntimeError(f"HTTP {self.status_code}")
 
+    def iter_content(self, chunk_size: int = 65536):
+        for start in range(0, len(self.content), chunk_size):
+            yield self.content[start : start + chunk_size]
+
 
 class FakeSession:
     def __init__(self, response: FakeResponse):
@@ -42,6 +46,19 @@ class FakeSession:
     def get(self, *_args, **_kwargs) -> FakeResponse:
         self.calls += 1
         return self.response
+
+
+class SequenceSession:
+    def __init__(self, responses):
+        self.responses = list(responses)
+        self.calls: list[tuple[str, dict]] = []
+
+    def get(self, url: str, **kwargs):
+        self.calls.append((url, kwargs))
+        response = self.responses.pop(0)
+        if isinstance(response, Exception):
+            raise response
+        return response
 
 
 @pytest.fixture
@@ -130,3 +147,124 @@ def test_download_rejects_declared_oversize(tmp_path, candidate, policy) -> None
             clock=lambda: NOW,
         )
 
+
+def test_timeout_retries_are_bounded_with_exponential_backoff(
+    tmp_path, candidate, policy
+) -> None:
+    sleeps: list[float] = []
+    session = SequenceSession([TimeoutError("one"), TimeoutError("two"), FakeResponse()])
+
+    result = download_document(
+        candidate,
+        session,
+        tmp_path,
+        policy,
+        clock=lambda: NOW,
+        sleeper=sleeps.append,
+    )
+
+    assert result.metadata.sha256 == sha256(PDF_BYTES).hexdigest()
+    assert len(session.calls) == 3
+    assert sleeps == [1.0, 2.0]
+
+
+def test_retry_after_is_honored_but_terminal_status_is_not_retried(
+    tmp_path, candidate, policy
+) -> None:
+    retry = FakeResponse(status_code=429)
+    retry.headers["Retry-After"] = "3"
+    sleeps: list[float] = []
+    retry_session = SequenceSession([retry, FakeResponse()])
+
+    download_document(
+        candidate,
+        retry_session,
+        tmp_path,
+        policy,
+        clock=lambda: NOW,
+        sleeper=sleeps.append,
+    )
+    assert sleeps == [3.0]
+
+    terminal = SequenceSession([FakeResponse(status_code=404)])
+    with pytest.raises(DownloadError, match="404"):
+        download_document(
+            candidate,
+            terminal,
+            tmp_path / "terminal",
+            policy,
+            clock=lambda: NOW,
+            sleeper=sleeps.append,
+        )
+    assert len(terminal.calls) == 1
+
+
+def test_streamed_size_limit_applies_when_content_length_is_missing_or_false(
+    tmp_path, candidate, policy
+) -> None:
+    response = FakeResponse(content=b"%PDF" + b"x" * 32)
+    response.headers.pop("Content-Length")
+    small_policy = policy.model_copy(update={"max_content_bytes": 16})
+
+    with pytest.raises(DownloadError, match="size"):
+        download_document(
+            candidate,
+            FakeSession(response),
+            tmp_path,
+            small_policy,
+            clock=lambda: NOW,
+        )
+
+
+def test_redirect_to_secure_area_is_rejected_before_destination_request(
+    tmp_path, candidate, policy
+) -> None:
+    first = FakeResponse(status_code=302, url=candidate.url)
+    first.headers["Location"] = "https://www.southeasternrtp.com/public/intermediate.pdf"
+    second = FakeResponse(
+        status_code=302,
+        url="https://www.southeasternrtp.com/public/intermediate.pdf",
+    )
+    second.headers["Location"] = "https://www.southeasternrtp.com/secure_area/report.pdf"
+    session = SequenceSession([first, second])
+
+    with pytest.raises(Exception, match="blocked"):
+        download_document(candidate, session, tmp_path, policy, clock=lambda: NOW)
+
+    assert [call[0] for call in session.calls] == [
+        candidate.url,
+        "https://www.southeasternrtp.com/public/intermediate.pdf",
+    ]
+    assert all(call[1]["allow_redirects"] is False for call in session.calls)
+
+
+def test_changed_source_archives_prior_hash_and_failed_refresh_preserves_cache(
+    tmp_path, candidate, policy
+) -> None:
+    first_session = FakeSession(FakeResponse(content=PDF_BYTES))
+    first = download_document(candidate, first_session, tmp_path, policy, clock=lambda: NOW)
+    changed_bytes = b"%PDF-1.7\nchanged bytes\n%%EOF\n"
+    changed = download_document(
+        candidate,
+        FakeSession(FakeResponse(content=changed_bytes)),
+        tmp_path,
+        policy,
+        force=True,
+        clock=lambda: NOW,
+    )
+
+    archive = changed.path.parent / "archive" / f"{first.metadata.sha256}.pdf"
+    assert archive.read_bytes() == PDF_BYTES
+    assert changed.path.read_bytes() == changed_bytes
+    assert changed.metadata.sha256 != first.metadata.sha256
+
+    with pytest.raises(DownloadError, match="magic"):
+        download_document(
+            candidate,
+            FakeSession(FakeResponse(content=b"<html>error</html>")),
+            tmp_path,
+            policy,
+            force=True,
+            clock=lambda: NOW,
+        )
+    assert changed.path.read_bytes() == changed_bytes
