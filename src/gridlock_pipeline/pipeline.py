@@ -17,6 +17,15 @@ from gridlock_pipeline.export import (
 from gridlock_pipeline.extraction import ExtractedPage, extract_pdf_pages, write_pages_jsonl
 from gridlock_pipeline.models import ProjectObservation, SourceDocument, SourceDocumentCandidate
 from gridlock_pipeline.parsers import ParseResult, Sertp2026Parser
+from gridlock_pipeline.validation import (
+    DataQualityReport,
+    build_quality_report,
+    enforce_run_gates,
+    flag_duplicate_candidates,
+    validate_observation,
+    write_data_quality,
+    write_review_queue,
+)
 
 
 @dataclass(frozen=True)
@@ -25,6 +34,7 @@ class PipelineRunResult:
     pages: list[ExtractedPage]
     observations: list[ProjectObservation]
     diagnostics: list
+    quality_report: DataQualityReport
 
 
 class PipelineRunner:
@@ -85,12 +95,15 @@ class PipelineRunner:
         self,
         observations: list[ProjectObservation],
         document: SourceDocument,
+        quality_report: DataQualityReport,
     ) -> None:
         processed = self.root / "data/processed"
         export_observations_json(observations, processed / "sertp_2026_projects.json")
         export_observations_csv(observations, processed / "sertp_2026_projects.csv")
         export_project_schema(self.root / "schemas/project_observation.schema.json")
         write_source_manifest(document, processed / "source_manifest.json")
+        write_review_queue(observations, processed / "review_queue.csv")
+        write_data_quality(quality_report, processed / "data_quality.json")
 
     def run(
         self,
@@ -103,11 +116,16 @@ class PipelineRunner:
         downloaded = self.download(candidate, force=force)
         pages = self.extract(downloaded)
         parsed = self.parse(pages, downloaded.metadata)
-        self.export(parsed.observations, downloaded.metadata)
+        observations = [validate_observation(item) for item in parsed.observations]
+        observations = flag_duplicate_candidates(observations)
+        quality_report = build_quality_report(observations, diagnostics=parsed.diagnostics)
+        minimum_records = 10 if len(pages) >= 50 else 1
+        enforce_run_gates(quality_report, minimum_records=minimum_records)
+        self.export(observations, downloaded.metadata, quality_report)
         return PipelineRunResult(
             document=downloaded.metadata,
             pages=pages,
-            observations=parsed.observations,
+            observations=observations,
             diagnostics=parsed.diagnostics,
+            quality_report=quality_report,
         )
-

@@ -66,6 +66,7 @@ class ProjectObservation(BaseModel):
     extraction_engine_version: str
     parser_version: str
     pipeline_version: str
+    confidence: ConfidenceLevel = ConfidenceLevel.HIGH
     extraction_confidence: ConfidenceLevel
     validation_status: ValidationStatus
     warning_codes: list[str] = Field(default_factory=list)
@@ -113,4 +114,3 @@ class ProjectObservation(BaseModel):
     @staticmethod
     def _is_populated(value: Any) -> bool:
         return value is not None and value != "" and value != []
-
