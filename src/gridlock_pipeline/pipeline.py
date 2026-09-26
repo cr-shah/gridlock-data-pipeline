@@ -28,6 +28,7 @@ from gridlock_pipeline.export import (
     write_output_bundle_manifest,
     write_source_manifest,
 )
+from gridlock_pipeline.export.gpc_planning_projects import write_gpc_records
 from gridlock_pipeline.extraction import ExtractedPage, extract_pdf_pages, write_pages_jsonl
 from gridlock_pipeline.models import ProjectObservation, SourceDocument, SourceDocumentCandidate
 from gridlock_pipeline.parsers import (
@@ -156,12 +157,9 @@ class PipelineRunner:
             return
         if document.source == "georgia_power":
             try:
-                export_observations_json(
+                write_gpc_records(
                     observations,
                     staged_processed / "georgia_power_current_projects.json",
-                )
-                export_observations_csv(
-                    observations,
                     staged_processed / "georgia_power_current_projects.csv",
                 )
                 fsync_output_bundle(staging)

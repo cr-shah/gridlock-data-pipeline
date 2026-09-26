@@ -20,6 +20,12 @@ REQUIRED_FIELDS = {
     "geometry_type",
     "source_url",
     "source_page",
+    "source_scope",
+    "source_project_name",
+    "source_owner_label",
+    "status_as_of_source",
+    "status_verification_needed",
+    "utility_attribution_confidence",
     "data_confidence",
     "geometry_source",
     "geometry_method",
@@ -48,9 +54,9 @@ def test_product_export_has_required_inventory_schema_and_schedule_semantics(
         queue_path,
     )
 
-    assert len(projects) == 64
-    assert Counter(project["utility"] for project in projects) == {"DESC": 54, "GPC": 10}
-    assert len({project["id"] for project in projects}) == 64
+    assert len(projects) == 78
+    assert Counter(project["utility"] for project in projects) == {"DESC": 54, "GPC": 24}
+    assert len({project["id"] for project in projects}) == 78
     assert all(REQUIRED_FIELDS <= project.keys() for project in projects)
 
     desc = [project for project in projects if project["utility"] == "DESC"]
@@ -76,6 +82,19 @@ def test_product_export_has_required_inventory_schema_and_schedule_semantics(
         project["in_service_year"] is None
         for project in projects
         if project["utility"] == "GPC"
+        and project["source_scope"] == "Georgia Power current transmission projects page"
+    )
+    planning = [
+        project
+        for project in projects
+        if project["source_scope"] == "SERTP 2025 Regional Transmission Plan"
+    ]
+    assert len(planning) == 14
+    assert all(project["source_page"] for project in planning)
+    assert all(project["in_service_year"] == project["planned_end_year"] for project in planning)
+    assert all(
+        project["status_verification_needed"] == (project["in_service_year"] == 2026)
+        for project in planning
     )
 
 

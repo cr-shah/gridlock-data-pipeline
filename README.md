@@ -1,6 +1,10 @@
 # Gridlock public-data pipeline
 
-This repository turns the official public **2026 SERTP Preliminary Expansion Plan Report (Non-CEII)** into auditable project observations. Phase 1 is deliberately limited to 2026: accuracy, reproducibility, and page-level provenance come before historical coverage.
+This repository turns public non-CEII transmission sources into auditable project observations.
+The automated regional-plan parser remains deliberately limited to the official **2026 SERTP
+Preliminary Expansion Plan Report (Non-CEII)**. The verified product inventory also includes the
+Georgia Power current-project page, the DESC current-project report, and a bounded 14-record
+Georgia Power planning expansion curated from the final 2025 SERTP plan.
 
 The pipeline uses anonymous public pages and PDFs only. It rejects credential-bearing URLs, authentication paths, and SERTP Secure Area links. It does not log in, bypass access controls, or acquire CEII material.
 
@@ -47,6 +51,11 @@ Successful runs atomically publish:
 - `data/processed/bundle_manifest.json`: the atomic snapshot boundary and hashes for coherent multi-file reads;
 - `schemas/project_observation.schema.json`: the Pydantic-generated machine-readable contract.
 
+The challenge-ready verified inventory contains 54 DESC and 24 GPC records. The GPC total is the
+10 projects on Georgia Power's public current-project page plus 14 separately source-scoped final
+2025 SERTP planning records. Legacy `SAV` owner labels remain in provenance while their utility is
+normalized to GPC; the MEAG line in the Goshen joint solution is not included.
+
 Each observation preserves the complete cleaned `raw_record_text`, individual raw fields, separately normalized or derived values, source PDF SHA-256, zero-based PDF page range, printed-page range where detected, parser/pipeline versions, and PDF extraction engine/version. `field_provenance` identifies the raw source fields and deterministic rule behind derived values. `SOUTHERN` remains a balancing authority, while prefixes such as `SOCO:` and `GTC:` are preserved without attributing projects to Georgia Power. Multi-file consumers can use `read_verified_output_bundle` to accept a snapshot only when every file matches the manifest published last.
 
 Before publication, records are validated, duplicate candidates are flagged, and run-level gates reject empty or implausibly small results, absent authorities, excessive invalid records, or cross-format count mismatches. Warnings lower confidence and send records to the review queue rather than silently inventing facts. Candidate exports are staged and cross-checked; an error leaves the last known-good bundle unchanged.
@@ -73,4 +82,5 @@ See [`docs/verification/sertp-2026-phase-1.md`](docs/verification/sertp-2026-pha
 - Phase 1 has no OCR; it relies on the PDF text layer.
 - Location endpoints and project types are conservative deterministic interpretations, not official fields; ambiguous endpoints are review-queued.
 - No geocoding, geometry fabrication, ML/LLM extraction, canonical-project matching, schedule-drift analysis, DESC/SCRTP ingestion, dashboard work, or automatic maintenance prediction is included.
-- No 2009–2025 document has been acquired or parsed. The next permitted step is human validation of 2026, followed by 2025 only after explicit approval. Parser-family boundaries for earlier years must be inferred from their actual layouts, not assumed in advance.
+- Historical SERTP documents do not have a generalized parser. The 14 final-2025 planning records
+  are a bounded, page-cited curated layer; additional years require separate source review.

@@ -27,12 +27,138 @@
     "utility": "DESC"
   },
   {
+    "id": "gpc-sertp-2025-big-ogeechee-new-substation",
+    "name": "Big Ogeechee New Substation",
+    "priority_region": true,
+    "project_source_page": "74",
+    "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "GPC"
+  },
+  {
+    "id": "gpc-sertp-2025-boulevard-deptford-reconductor",
+    "name": "Boulevard–Deptford Reconductor",
+    "priority_region": true,
+    "project_source_page": "74–75",
+    "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "GPC"
+  },
+  {
+    "id": "gpc-sertp-2025-boulevard-magnolia-truman-parkway-rebuilds",
+    "name": "Boulevard–Magnolia–Truman Parkway Rebuilds",
+    "priority_region": true,
+    "project_source_page": "129–130",
+    "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "GPC"
+  },
+  {
+    "id": "gpc-sertp-2025-coleman-dean-forest-rebuild",
+    "name": "Coleman–Dean Forest Rebuild",
+    "priority_region": true,
+    "project_source_page": "109–110",
+    "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "GPC"
+  },
+  {
+    "id": "gpc-sertp-2025-coleman-meldrim-rebuild",
+    "name": "Coleman–Meldrim Rebuild",
+    "priority_region": true,
+    "project_source_page": "130",
+    "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "GPC"
+  },
+  {
+    "id": "gpc-sertp-2025-dean-forest-little-ogeechee-rebuild",
+    "name": "Dean Forest–Little Ogeechee Rebuild",
+    "priority_region": true,
+    "project_source_page": "130",
+    "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "GPC"
+  },
+  {
     "id": "georgia-power-2026-83a79bb18ac6d7434a20",
     "name": "Effingham County 500 kV",
     "priority_region": true,
     "project_source_page": null,
     "project_source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/effingham-county.html",
     "review_reason": "The official Georgia Power project page states that a project map is not currently available; no substation site or route endpoints are published, so geometry remains null. Plant McIntosh generation work is not named on this page and is not used as a proxy location.",
+    "utility": "GPC"
+  },
+  {
+    "id": "gpc-sertp-2025-goldens-creek-warrenton-primary-rebuild",
+    "name": "Goldens Creek–Warrenton Primary Rebuild",
+    "priority_region": true,
+    "project_source_page": "140–141",
+    "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "GPC"
+  },
+  {
+    "id": "gpc-sertp-2025-goshen-kraft-first-segment",
+    "name": "Goshen (Savannah)–Kraft Rebuild, First Segment",
+    "priority_region": true,
+    "project_source_page": "92",
+    "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "GPC"
+  },
+  {
+    "id": "gpc-sertp-2025-goshen-kraft-rice-hope-segment",
+    "name": "Goshen (Savannah)–Kraft Rebuild, Rice Hope Segment",
+    "priority_region": true,
+    "project_source_page": "156–157",
+    "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "GPC"
+  },
+  {
+    "id": "gpc-sertp-2025-goshen-mcintosh-rebuild",
+    "name": "Goshen (Savannah)–McIntosh Rebuild",
+    "priority_region": true,
+    "project_source_page": "110",
+    "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "GPC"
+  },
+  {
+    "id": "gpc-sertp-2025-goshen-area-gpc-switching-station",
+    "name": "Goshen Area Strategic Solution — GPC Switching-Station Component",
+    "priority_region": true,
+    "project_source_page": "149",
+    "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "GPC"
+  },
+  {
+    "id": "gpc-sertp-2025-little-ogeechee-autotransformer-replacement",
+    "name": "Little Ogeechee Autotransformer Replacement",
+    "priority_region": true,
+    "project_source_page": "130–131",
+    "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "GPC"
+  },
+  {
+    "id": "gpc-sertp-2025-meldrim-bank-d-replacement",
+    "name": "Meldrim Bank D Replacement",
+    "priority_region": true,
+    "project_source_page": "162",
+    "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "utility": "GPC"
+  },
+  {
+    "id": "gpc-sertp-2025-rice-hope-autotransformer",
+    "name": "Rice Hope Autotransformer",
+    "priority_region": true,
+    "project_source_page": "110",
+    "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
+    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
     "utility": "GPC"
   },
   {

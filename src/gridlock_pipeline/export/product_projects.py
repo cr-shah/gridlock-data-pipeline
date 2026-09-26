@@ -8,7 +8,7 @@ from typing import Any
 
 ALLOWED_UTILITIES = frozenset({"DESC", "GPC"})
 ALLOWED_CONFIDENCE = frozenset({"HIGH", "MEDIUM", "LOW"})
-EXPECTED_COUNTS = {"DESC": 54, "GPC": 10}
+EXPECTED_COUNTS = {"DESC": 54, "GPC": 24}
 YEAR_PATTERN = re.compile(r"\b(20\d{2})\b")
 PROJECT_LONGITUDE_BOUNDS = (-86.0, -78.0)
 PROJECT_LATITUDE_BOUNDS = (30.0, 36.0)
@@ -794,10 +794,15 @@ def _gpc_schedule(record: dict[str, Any]) -> tuple[int | None, int | None]:
             if "complete" in str(item).casefold() or "completion" in str(item).casefold()
         ]
         end_years = _years(completion_entries)
+    planned_year = record.get("planned_in_service_year")
+    if not end_years and isinstance(planned_year, int):
+        end_years = [planned_year]
     return (min(start_years) if start_years else None, max(end_years) if end_years else None)
 
 
 def _source_page(record: dict[str, Any]) -> int | str | None:
+    if record.get("source_page") is not None:
+        return record["source_page"]
     source_url = record.get("source_url")
     if isinstance(source_url, str) and source_url.casefold().endswith(".pdf"):
         return record.get("pdf_page_start")
@@ -849,8 +854,8 @@ def _is_number(value: Any) -> bool:
 
 def _validate_projects(projects: list[dict[str, Any]]) -> None:
     counts = Counter(project["utility"] for project in projects)
-    if len(projects) != 64 or counts != EXPECTED_COUNTS:
-        raise ValueError(f"expected 64 projects with {EXPECTED_COUNTS}; found {dict(counts)}")
+    if len(projects) != 78 or counts != EXPECTED_COUNTS:
+        raise ValueError(f"expected 78 projects with {EXPECTED_COUNTS}; found {dict(counts)}")
     ids = [project["id"] for project in projects]
     if len(ids) != len(set(ids)):
         raise ValueError("product project IDs must be unique")
@@ -938,14 +943,28 @@ def build_product_projects(
             "planned_start_year": planned_start_year,
             "planned_end_year": planned_end_year,
             "in_service_year": (
-                record.get("in_service_year") if record["utility"] == "DESC" else None
+                record.get("in_service_year")
+                if record["utility"] == "DESC" or record.get("source_scope")
+                == "SERTP 2025 Regional Transmission Plan"
+                else None
             ),
             "voltage_kv": record.get("voltage_kv") or [],
             "geometry": evidence["geometry"] if evidence else None,
             "geometry_type": evidence["geometry_type"] if evidence else None,
             "source_url": record.get("source_url"),
             "source_page": _source_page(record),
-            "data_confidence": record.get("confidence"),
+            "data_confidence": record.get("data_confidence") or record.get("confidence"),
+            "endpoint_candidates": record.get("endpoint_candidates") or [],
+            "county_region": record.get("county_region_raw"),
+            "plan_year": record.get("plan_year") or record.get("planning_year"),
+            "status": record.get("status"),
+            "source_scope": record.get("source_scope"),
+            "source_project_name": record.get("source_project_name"),
+            "source_owner_label": record.get("source_owner_label"),
+            "status_as_of_source": record.get("status_as_of_source"),
+            "status_verification_needed": record.get("status_verification_needed", False),
+            "utility_attribution_confidence": record.get("utility_attribution_confidence"),
+            "ownership_provenance_note": record.get("ownership_provenance_note"),
             "geometry_source": evidence["geometry_source"] if evidence else None,
             "geometry_method": evidence["geometry_method"] if evidence else None,
             "geometry_confidence": evidence["geometry_confidence"] if evidence else None,
