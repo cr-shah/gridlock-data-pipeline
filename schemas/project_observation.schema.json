@@ -1,0 +1,394 @@
+{
+  "$defs": {
+    "ConfidenceLevel": {
+      "enum": [
+        "HIGH",
+        "MEDIUM",
+        "LOW"
+      ],
+      "title": "ConfidenceLevel",
+      "type": "string"
+    },
+    "FieldProvenance": {
+      "additionalProperties": false,
+      "properties": {
+        "notes": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Notes"
+        },
+        "origin": {
+          "enum": [
+            "normalized",
+            "derived_from_source",
+            "deterministic_rule"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "rule_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rule Id"
+        },
+        "source_fields": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Source Fields",
+          "type": "array"
+        }
+      },
+      "required": [
+        "origin",
+        "source_fields"
+      ],
+      "title": "FieldProvenance",
+      "type": "object"
+    },
+    "ValidationStatus": {
+      "enum": [
+        "valid",
+        "review",
+        "invalid"
+      ],
+      "title": "ValidationStatus",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "One source-faithful transmission project observation.",
+  "properties": {
+    "balancing_authority_normalized": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Balancing Authority Normalized"
+    },
+    "balancing_authority_raw": {
+      "title": "Balancing Authority Raw",
+      "type": "string"
+    },
+    "description_raw": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Description Raw"
+    },
+    "document_id": {
+      "title": "Document Id",
+      "type": "string"
+    },
+    "endpoint_candidates": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Endpoint Candidates",
+      "type": "array"
+    },
+    "extraction_confidence": {
+      "$ref": "#/$defs/ConfidenceLevel"
+    },
+    "extraction_engine": {
+      "title": "Extraction Engine",
+      "type": "string"
+    },
+    "extraction_engine_version": {
+      "title": "Extraction Engine Version",
+      "type": "string"
+    },
+    "field_provenance": {
+      "additionalProperties": {
+        "$ref": "#/$defs/FieldProvenance"
+      },
+      "title": "Field Provenance",
+      "type": "object"
+    },
+    "geometry": {
+      "default": null,
+      "title": "Geometry",
+      "type": "null"
+    },
+    "in_service_year": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "In Service Year"
+    },
+    "in_service_year_raw": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "In Service Year Raw"
+    },
+    "latitude": {
+      "default": null,
+      "title": "Latitude",
+      "type": "null"
+    },
+    "length_miles": {
+      "items": {
+        "type": "number"
+      },
+      "title": "Length Miles",
+      "type": "array"
+    },
+    "length_raw": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Length Raw",
+      "type": "array"
+    },
+    "location_mentions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Location Mentions",
+      "type": "array"
+    },
+    "longitude": {
+      "default": null,
+      "title": "Longitude",
+      "type": "null"
+    },
+    "observation_id": {
+      "title": "Observation Id",
+      "type": "string"
+    },
+    "owner_prefix_raw": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Owner Prefix Raw"
+    },
+    "parser_version": {
+      "title": "Parser Version",
+      "type": "string"
+    },
+    "pdf_page_end": {
+      "minimum": 0,
+      "title": "Pdf Page End",
+      "type": "integer"
+    },
+    "pdf_page_start": {
+      "minimum": 0,
+      "title": "Pdf Page Start",
+      "type": "integer"
+    },
+    "pipeline_version": {
+      "title": "Pipeline Version",
+      "type": "string"
+    },
+    "planning_year": {
+      "title": "Planning Year",
+      "type": "integer"
+    },
+    "printed_page_end": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Printed Page End"
+    },
+    "printed_page_start": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Printed Page Start"
+    },
+    "project_name_normalized": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Project Name Normalized"
+    },
+    "project_name_raw": {
+      "title": "Project Name Raw",
+      "type": "string"
+    },
+    "project_type": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Project Type"
+    },
+    "project_type_confidence": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ConfidenceLevel"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "project_type_method": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Project Type Method"
+    },
+    "raw_record_text": {
+      "title": "Raw Record Text",
+      "type": "string"
+    },
+    "source": {
+      "title": "Source",
+      "type": "string"
+    },
+    "source_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Source Sha256",
+      "type": "string"
+    },
+    "source_title": {
+      "title": "Source Title",
+      "type": "string"
+    },
+    "source_url": {
+      "title": "Source Url",
+      "type": "string"
+    },
+    "supporting_statement_raw": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Supporting Statement Raw"
+    },
+    "validation_notes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Validation Notes",
+      "type": "array"
+    },
+    "validation_status": {
+      "$ref": "#/$defs/ValidationStatus"
+    },
+    "voltage_kv": {
+      "items": {
+        "type": "number"
+      },
+      "title": "Voltage Kv",
+      "type": "array"
+    },
+    "voltage_raw": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Voltage Raw",
+      "type": "array"
+    },
+    "warning_codes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Warning Codes",
+      "type": "array"
+    }
+  },
+  "required": [
+    "observation_id",
+    "source",
+    "planning_year",
+    "document_id",
+    "balancing_authority_raw",
+    "project_name_raw",
+    "raw_record_text",
+    "pdf_page_start",
+    "pdf_page_end",
+    "source_url",
+    "source_title",
+    "source_sha256",
+    "extraction_engine",
+    "extraction_engine_version",
+    "parser_version",
+    "pipeline_version",
+    "extraction_confidence",
+    "validation_status"
+  ],
+  "title": "ProjectObservation",
+  "type": "object"
+}
