@@ -39,7 +39,7 @@ def test_parser_extracts_ten_plus_real_records_with_raw_and_derived_fields() -> 
 
     result = Sertp2026Parser().parse(pages, source_document())
 
-    assert len(result.observations) == 18
+    assert len(result.observations) == 22
     first = result.observations[0]
     assert first.project_name_raw == (
         "GAINESVILLE #2 - BULL SHOALS 161 KV TRANSMISSION LINE, REBUILD"
@@ -139,4 +139,61 @@ def test_observation_ids_are_stable_across_reruns() -> None:
     assert [item.observation_id for item in first.observations] == [
         item.observation_id for item in second.observations
     ]
-    assert len({item.observation_id for item in first.observations}) == 18
+    assert len({item.observation_id for item in first.observations}) == 22
+
+
+def test_supporting_statement_continues_across_page_header() -> None:
+    first_page = ExtractedPage(
+        pdf_page_index=300,
+        printed_page_number=301,
+        text=(
+            "SERTP TRANSMISSION PROJECTS\nTVASERTP PROJECTS(CEII)AuthorityArea\n"
+            "Balancing Authority\nIn-Service 2031\nYear:\nProject Name: TS25-422\n"
+            "Description: Preserve an official typo equpiment.\n"
+            "Supporting First half of the supporting statement"
+        ),
+        source_sha256=SHA,
+        extraction_engine="PyMuPDF",
+        extraction_engine_version="1.28.2",
+    )
+    second_page = ExtractedPage(
+        pdf_page_index=301,
+        printed_page_number=302,
+        text=(
+            "SERTP TRANSMISSION PROJECTS\nTVASERTP PROJECTS(CEII)AuthorityArea\n"
+            "Balancing Authority\nsecond half with   malformed whitespace.\n"
+            "06/12/2026 Page 302 of 302"
+        ),
+        source_sha256=SHA,
+        extraction_engine="PyMuPDF",
+        extraction_engine_version="1.28.2",
+    )
+
+    observation = Sertp2026Parser().parse(
+        [first_page, second_page], source_document()
+    ).observations[0]
+
+    assert observation.supporting_statement_raw == (
+        "First half of the supporting statement second half with malformed whitespace."
+    )
+    assert "equpiment" in observation.description_raw
+    assert observation.pdf_page_range == [300, 301]
+
+
+def test_missing_optional_fields_remain_null_instead_of_being_invented() -> None:
+    page = ExtractedPage(
+        pdf_page_index=400,
+        printed_page_number=401,
+        text=(
+            "SERTP TRANSMISSION PROJECTS\nAECISERTP PROJECTS(CEII)AuthorityArea\n"
+            "Balancing Authority\nIn-Service 2032\nYear:\nProject Name: ID-ONLY"
+        ),
+        source_sha256=SHA,
+        extraction_engine="PyMuPDF",
+        extraction_engine_version="1.28.2",
+    )
+
+    observation = Sertp2026Parser().parse([page], source_document()).observations[0]
+
+    assert observation.description_raw is None
+    assert observation.supporting_statement_raw is None

@@ -13,6 +13,7 @@ def classify_project_type(
         ("rebuild", "line_rebuild"),
         ("replace", "equipment_replacement"),
         ("construct", "new_construction"),
+        ("build", "new_construction"),
         ("install", "equipment_installation"),
         ("upgrade", "equipment_upgrade"),
         ("uprate", "line_uprate"),
@@ -31,4 +32,3 @@ def classify_project_type(
         rule_id="project_type_rules_v1",
     )
     return project_type, confidence, "project_type_rules_v1", provenance
-

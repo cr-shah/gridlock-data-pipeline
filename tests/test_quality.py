@@ -51,8 +51,13 @@ def test_quality_report_contains_authority_confidence_warning_and_parser_counts(
 
     report = build_quality_report(observations, diagnostics=diagnostics)
 
-    assert report.total_observations == 18
-    assert report.balancing_authority_counts == {"AECI": 1, "SOUTHERN": 15, "TVA": 2}
+    assert report.total_observations == 22
+    assert report.balancing_authority_counts == {
+        "AECI": 1,
+        "DUKE CAROLINAS": 1,
+        "SOUTHERN": 18,
+        "TVA": 2,
+    }
     assert report.confidence_counts["MEDIUM"] >= 1
     assert report.warning_counts["MISSING_DESCRIPTION"] == 1
     assert report.parser_diagnostic_counts == {"TEST_DIAGNOSTIC": 1}
@@ -86,5 +91,5 @@ def test_quality_and_review_outputs_are_written(tmp_path: Path) -> None:
     write_data_quality(report, tmp_path / "data_quality.json")
     write_review_queue(observations, tmp_path / "review_queue.csv")
 
-    assert '"total_observations": 18' in (tmp_path / "data_quality.json").read_text()
+    assert '"total_observations": 22' in (tmp_path / "data_quality.json").read_text()
     assert "MISSING_SUPPORTING_STATEMENT" in (tmp_path / "review_queue.csv").read_text()
