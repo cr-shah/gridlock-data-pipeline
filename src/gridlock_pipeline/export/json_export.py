@@ -1,6 +1,7 @@
 """Deterministic JSON observation export."""
 
 import json
+import os
 from collections.abc import Sequence
 from pathlib import Path
 
@@ -27,7 +28,7 @@ def export_observations_json(
         for item in sorted(observations, key=observation_sort_key)
     ]
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(
-        json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
-        encoding="utf-8",
-    )
+    with path.open("w", encoding="utf-8") as stream:
+        stream.write(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n")
+        stream.flush()
+        os.fsync(stream.fileno())

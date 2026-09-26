@@ -2,6 +2,7 @@
 
 import csv
 import json
+import os
 from collections.abc import Sequence
 from pathlib import Path
 from typing import Any
@@ -32,4 +33,5 @@ def export_observations_csv(
         for observation in sorted(observations, key=observation_sort_key):
             row = observation.model_dump(mode="json")
             writer.writerow({name: _csv_value(row[name]) for name in fieldnames})
-
+        stream.flush()
+        os.fsync(stream.fileno())

@@ -1,5 +1,8 @@
 """Phase 1 SERTP 2026 pipeline orchestration."""
 
+import json
+import shutil
+import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -12,6 +15,9 @@ from gridlock_pipeline.export import (
     export_observations_csv,
     export_observations_json,
     export_project_schema,
+    fsync_output_bundle,
+    promote_output_bundle,
+    validate_output_bundle,
     write_source_manifest,
 )
 from gridlock_pipeline.extraction import ExtractedPage, extract_pdf_pages, write_pages_jsonl
@@ -97,13 +103,48 @@ class PipelineRunner:
         document: SourceDocument,
         quality_report: DataQualityReport,
     ) -> None:
-        processed = self.root / "data/processed"
-        export_observations_json(observations, processed / "sertp_2026_projects.json")
-        export_observations_csv(observations, processed / "sertp_2026_projects.csv")
-        export_project_schema(self.root / "schemas/project_observation.schema.json")
-        write_source_manifest(document, processed / "source_manifest.json")
-        write_review_queue(observations, processed / "review_queue.csv")
-        write_data_quality(quality_report, processed / "data_quality.json")
+        staging = Path(tempfile.mkdtemp(prefix=".staging-", dir=self.root))
+        staged_processed = staging / "data/processed"
+        published_manifest = self.root / "data/processed/source_manifest.json"
+        previous_manifest = None
+        if published_manifest.exists():
+            previous_manifest = json.loads(published_manifest.read_text(encoding="utf-8"))
+        try:
+            export_observations_json(
+                observations, staged_processed / "sertp_2026_projects.json"
+            )
+            export_observations_csv(
+                observations, staged_processed / "sertp_2026_projects.csv"
+            )
+            export_project_schema(staging / "schemas/project_observation.schema.json")
+            write_source_manifest(
+                document,
+                staged_processed / "source_manifest.json",
+                previous=previous_manifest,
+            )
+            write_review_queue(observations, staged_processed / "review_queue.csv")
+            write_data_quality(quality_report, staged_processed / "data_quality.json")
+            validate_output_bundle(staging)
+            fsync_output_bundle(staging)
+            promote_output_bundle(staging, self.root)
+        except Exception as error:
+            self._write_failure_diagnostic(error)
+            raise
+        finally:
+            shutil.rmtree(staging, ignore_errors=True)
+
+    def _write_failure_diagnostic(self, error: Exception) -> None:
+        path = self.root / "data/failed_runs/latest.json"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(
+            json.dumps(
+                {"error_type": type(error).__name__, "message": str(error)},
+                indent=2,
+                sort_keys=True,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
 
     def run(
         self,
