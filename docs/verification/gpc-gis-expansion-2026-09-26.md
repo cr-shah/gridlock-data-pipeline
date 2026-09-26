@@ -45,3 +45,28 @@ Geometry count: 5 → 6 total; GPC 1 → 2.
 
 Note: seven other GPC pages (outside the host regions) also embed official route polylines and
 could be added the same way in a later pass.
+
+## Second pass — official embedded GPC routes
+
+Each remaining GPC page (canonical URL = the record's project source URL) was parsed for its
+embedded map config. A route was accepted only when the page exposes exactly one polyline whose
+two ends each fall within 0.5 km of a different labelled endpoint marker on the same map.
+
+| Project | Vertices | Endpoint marker offsets |
+| --- | --- | --- |
+| Ashley Park – Wansley 500 kV | 94 | 151 m / 228 m |
+| Big Tazewell – Farley 500 kV | 68 | 0 m / 0 m |
+| Conyers – Klondike 230 kV | 116 | 82 m / 12 m |
+| Decatur – Scottdale 115 kV | 41 | 0 m / 0 m |
+| Grassy Hollow – Great Valley 230 kV | 64 | 0 m / 47 m |
+
+Not converted (geometry stays null, specific review reasons recorded):
+- Tomochichi – Towaliga River 230 kV: two separate route polylines with no shared endpoint
+  (closest ends ~63 m apart).
+- Hills Bridge – Speedway 500/230 kV: four separate route polylines (closest ends 46–420 m
+  apart) plus facility polygons, and no endpoint markers.
+Joining either into one LineString would require an invented connector, and the product
+contract only allows Point and LineString.
+- Effingham County 500 kV: the official page states that no project map is available yet.
+
+Geometry count after second pass: 11 total; GPC 7.

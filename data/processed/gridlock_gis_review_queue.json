@@ -459,57 +459,12 @@
     "utility": "DESC"
   },
   {
-    "id": "georgia-power-2026-f86ec735e2182af8b86e",
-    "name": "Ashley Park - Wansley 500 kV",
-    "priority_region": false,
-    "project_source_page": null,
-    "project_source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/ashley-park.html",
-    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
-    "utility": "GPC"
-  },
-  {
-    "id": "georgia-power-2026-31e73b6a22013b33f193",
-    "name": "Big Tazewell - Farley 500 kV",
-    "priority_region": false,
-    "project_source_page": null,
-    "project_source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/big-tazewell-farley.html",
-    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
-    "utility": "GPC"
-  },
-  {
-    "id": "georgia-power-2026-85c6d93852f8eda4b276",
-    "name": "Conyers - Klondike 230 kV",
-    "priority_region": false,
-    "project_source_page": null,
-    "project_source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/conyers-klondike.html",
-    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
-    "utility": "GPC"
-  },
-  {
-    "id": "georgia-power-2026-f4697ce681309cdee657",
-    "name": "Decatur - Scottdale 115 kV",
-    "priority_region": false,
-    "project_source_page": null,
-    "project_source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/decatur-scottdale.html",
-    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
-    "utility": "GPC"
-  },
-  {
-    "id": "georgia-power-2026-aecc11f48e0f464e8c99",
-    "name": "Grassy Hollow - Great Valley 230 kV",
-    "priority_region": false,
-    "project_source_page": null,
-    "project_source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/grassy-hollow-great-valley.html",
-    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
-    "utility": "GPC"
-  },
-  {
     "id": "georgia-power-2026-c78a361d12a5667dd3a1",
     "name": "Hills Bridge - Speedway 500/230 kV",
     "priority_region": false,
     "project_source_page": null,
     "project_source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/hills-bridge-speedway.html",
-    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "review_reason": "The official Georgia Power project page map embeds four separate route polylines (one 500 kV and 230 kV routes) plus facility polygons, with no shared endpoints. They cannot be represented as one LineString without inventing connecting segments, so geometry remains null.",
     "utility": "GPC"
   },
   {
@@ -518,7 +473,7 @@
     "priority_region": false,
     "project_source_page": null,
     "project_source_url": "https://www.georgiapower.com/about/grid-reliability/grid-improvements/grid-projects/transmission-projects/tomochichi-towaliga.html",
-    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "review_reason": "The official Georgia Power project page map embeds two separate route polylines (new transmission lines) that do not share an endpoint. They cannot be represented as one LineString without inventing a connecting segment, so geometry remains null.",
     "utility": "GPC"
   }
 ]

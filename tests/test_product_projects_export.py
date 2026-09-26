@@ -88,7 +88,7 @@ def test_gis_evidence_is_small_explicit_valid_and_conservative(tmp_path: Path) -
     )
     by_id = {project["id"]: project for project in projects}
 
-    assert 1 <= len(module.GIS_EVIDENCE) <= 8
+    assert 1 <= len(module.GIS_EVIDENCE) <= 12
     assert set(module.GIS_EVIDENCE) <= set(by_id)
     assert by_id["georgia-power-2026-4a60199d0029a784348e"]["geometry_confidence"] == "HIGH"
     assert (
@@ -180,3 +180,92 @@ def test_product_and_review_exports_are_deterministic(tmp_path: Path) -> None:
     assert first_queue.read_bytes() == second_queue.read_bytes()
     assert json.loads(first_product.read_text(encoding="utf-8"))
     assert json.loads(first_queue.read_text(encoding="utf-8"))
+
+
+OFFICIAL_GPC_ROUTES = [
+        (
+            "georgia-power-2026-f86ec735e2182af8b86e",
+            "ashley-park",
+            [-84.48891181, 33.51429517],
+            [-85.03056406, 33.41102843],
+            94,
+        ),
+        (
+            "georgia-power-2026-31e73b6a22013b33f193",
+            "big-tazewell-farley",
+            [-85.11344023, 31.23258365],
+            [-84.48428053, 32.36332714],
+            68,
+        ),
+        (
+            "georgia-power-2026-85c6d93852f8eda4b276",
+            "conyers-klondike",
+            [-84.04183998, 33.69766832],
+            [-84.12597549, 33.63814738],
+            116,
+        ),
+        (
+            "georgia-power-2026-f4697ce681309cdee657",
+            "decatur-scottdale",
+            [-84.27152587, 33.7912509],
+            [-84.29155805, 33.77069199],
+            41,
+        ),
+        (
+            "georgia-power-2026-aecc11f48e0f464e8c99",
+            "grassy-hollow-great-valley",
+            [-84.80266586, 34.28387466],
+            [-84.67523952, 34.24458222],
+            64,
+        ),
+]
+
+
+@pytest.mark.parametrize(("project_id", "slug", "first", "last", "vertices"), OFFICIAL_GPC_ROUTES)
+def test_official_gpc_route_geometry(
+    tmp_path: Path, project_id: str, slug: str, first: list, last: list, vertices: int
+) -> None:
+    module = _product_export_module()
+    projects, review_queue = module.write_product_exports(
+        PROCESSED / "gridlock_verified_projects.json",
+        tmp_path / "projects.json",
+        tmp_path / "queue.json",
+    )
+    project = {item["id"]: item for item in projects}[project_id]
+    official_url = (
+        "https://www.georgiapower.com/about/grid-reliability/grid-improvements/"
+        f"grid-projects/transmission-projects/{slug}.html"
+    )
+
+    assert project["utility"] == "GPC"
+    assert project["source_url"] == official_url
+    assert project["geometry_source"] == official_url
+    assert project["geometry_type"] == "LineString"
+    assert project["geometry_method"] == "official_project_route_coordinates"
+    assert project["geometry_confidence"] == "HIGH"
+    assert len(project["geometry"]) == vertices
+    assert project["geometry"][0] == first
+    assert project["geometry"][-1] == last
+    for longitude, latitude in project["geometry"]:
+        assert -86.0 <= longitude <= -80.0
+        assert 30.0 <= latitude <= 35.5
+    assert project_id not in {item["id"] for item in review_queue}
+
+
+def test_multi_route_and_mapless_gpc_projects_stay_null(tmp_path: Path) -> None:
+    module = _product_export_module()
+    projects, review_queue = module.write_product_exports(
+        PROCESSED / "gridlock_verified_projects.json",
+        tmp_path / "projects.json",
+        tmp_path / "queue.json",
+    )
+    by_id = {project["id"]: project for project in projects}
+    reasons = {item["id"]: item["review_reason"] for item in review_queue}
+    for project_id in (
+        "georgia-power-2026-83a79bb18ac6d7434a20",
+        "georgia-power-2026-a84d843ee3a3cc43ff5f",
+        "georgia-power-2026-c78a361d12a5667dd3a1",
+    ):
+        assert by_id[project_id]["geometry"] is None
+        assert project_id in reasons
+    assert "map is not currently" in reasons["georgia-power-2026-83a79bb18ac6d7434a20"]
