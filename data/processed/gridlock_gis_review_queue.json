@@ -32,7 +32,7 @@
     "priority_region": true,
     "project_source_page": "74",
     "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
-    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "review_reason": "Georgia Power describes a new 500/230 kV substation in West Chatham on Little Ogeechee Road, but no site coordinates or route map are public, and the existing Little Ogeechee substation is a different facility, so no proxy point is used.",
     "utility": "GPC"
   },
   {
@@ -41,16 +41,7 @@
     "priority_region": true,
     "project_source_page": "74–75",
     "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
-    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
-    "utility": "GPC"
-  },
-  {
-    "id": "gpc-sertp-2025-boulevard-magnolia-truman-parkway-rebuilds",
-    "name": "Boulevard–Magnolia–Truman Parkway Rebuilds",
-    "priority_region": true,
-    "project_source_page": "129–130",
-    "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
-    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "review_reason": "The Boulevard-Deptford 115 kV line is not a single named public line: HIFLD has Boulevard-Magnolia (4.66 mi) and Magnolia-Deptford (5.12 mi) but their total does not match the approximately 8 miles in the project text, so the route is ambiguous.",
     "utility": "GPC"
   },
   {
@@ -59,7 +50,7 @@
     "priority_region": true,
     "project_source_page": "109–110",
     "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
-    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "review_reason": "No public HIFLD line or substation is named Coleman in the Savannah area, so the Coleman endpoint cannot be verified and the line is not drawn.",
     "utility": "GPC"
   },
   {
@@ -68,16 +59,7 @@
     "priority_region": true,
     "project_source_page": "130",
     "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
-    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
-    "utility": "GPC"
-  },
-  {
-    "id": "gpc-sertp-2025-dean-forest-little-ogeechee-rebuild",
-    "name": "Dean Forest–Little Ogeechee Rebuild",
-    "priority_region": true,
-    "project_source_page": "130",
-    "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
-    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "review_reason": "The named Four Lakes, Structure 76A and Quacco Road endpoints have no matching public GIS features, so no route can be verified.",
     "utility": "GPC"
   },
   {
@@ -95,7 +77,7 @@
     "priority_region": true,
     "project_source_page": "140–141",
     "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
-    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "review_reason": "No public GIS feature named Goldens Creek was found and the rebuild is only about 0.34 miles, so it cannot be located from named endpoints.",
     "utility": "GPC"
   },
   {
@@ -104,7 +86,7 @@
     "priority_region": true,
     "project_source_page": "92",
     "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
-    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "review_reason": "HIFLD has no Goshen (Savannah) substation (its Goshen is in the Augusta area); the Goshen (Savannah) endpoint cannot be verified, so no line is drawn.",
     "utility": "GPC"
   },
   {
@@ -113,7 +95,7 @@
     "priority_region": true,
     "project_source_page": "156–157",
     "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
-    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "review_reason": "HIFLD has no Goshen (Savannah) or Rice Hope substation, so neither endpoint can be verified and no line is drawn.",
     "utility": "GPC"
   },
   {
@@ -122,7 +104,7 @@
     "priority_region": true,
     "project_source_page": "110",
     "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
-    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "review_reason": "The Goshen (Savannah) and Georgia Pacific (Rincon) endpoints have no matching public GIS features, so the 6.7-mile section cannot be located.",
     "utility": "GPC"
   },
   {
@@ -131,25 +113,7 @@
     "priority_region": true,
     "project_source_page": "149",
     "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
-    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
-    "utility": "GPC"
-  },
-  {
-    "id": "gpc-sertp-2025-little-ogeechee-autotransformer-replacement",
-    "name": "Little Ogeechee Autotransformer Replacement",
-    "priority_region": true,
-    "project_source_page": "130–131",
-    "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
-    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
-    "utility": "GPC"
-  },
-  {
-    "id": "gpc-sertp-2025-meldrim-bank-d-replacement",
-    "name": "Meldrim Bank D Replacement",
-    "priority_region": true,
-    "project_source_page": "162",
-    "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
-    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "review_reason": "The switching station is new and sited on the Waynesboro-Wilson 230 kV line at an unpublished location; no public coordinates exist and the line has no Waynesboro endpoint in HIFLD.",
     "utility": "GPC"
   },
   {
@@ -158,7 +122,7 @@
     "priority_region": true,
     "project_source_page": "110",
     "project_source_url": "https://www.southeasternrtp.com/docs/general/2025/2025%20Regional%20Transmission%20Plan%20and%20Input%20Assumptions.pdf",
-    "review_reason": "No sufficiently precise public geometry was resolved within the bounded source-check limit; geometry remains null.",
+    "review_reason": "No public GIS feature named Rice Hope or Crossgate was found, so the substation location cannot be verified.",
     "utility": "GPC"
   },
   {

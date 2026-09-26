@@ -110,9 +110,19 @@ def test_existing_gis_geometry_evidence_is_preserved() -> None:
         "scrtp-desc-2026-99cdb225cd296159f73c": "Point",
     }
     assert {project_id: by_id[project_id]["geometry_type"] for project_id in expected} == expected
-    assert all(
-        by_id[record["observation_id"]]["geometry"] is None for record in PLANNING_RECORDS
-    )
+    # Only planning records with a defensible public existing-corridor or facility match carry
+    # geometry; every other SERTP planning record must remain null.
+    with_geometry = {
+        record["observation_id"]
+        for record in PLANNING_RECORDS
+        if by_id[record["observation_id"]]["geometry"] is not None
+    }
+    assert with_geometry == {
+        "gpc-sertp-2025-dean-forest-little-ogeechee-rebuild",
+        "gpc-sertp-2025-boulevard-magnolia-truman-parkway-rebuilds",
+        "gpc-sertp-2025-little-ogeechee-autotransformer-replacement",
+        "gpc-sertp-2025-meldrim-bank-d-replacement",
+    }
 
 
 def test_reference_only_and_excluded_projects_are_not_in_production() -> None:

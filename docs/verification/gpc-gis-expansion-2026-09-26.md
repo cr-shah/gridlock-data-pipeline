@@ -70,3 +70,24 @@ contract only allows Point and LineString.
 - Effingham County 500 kV: the official page states that no project map is available yet.
 
 Geometry count after second pass: 11 total; GPC 7.
+
+## Targeted Savannah/Augusta geometry recovery (HIFLD existing corridors)
+
+Source: HIFLD Open "Electric Power Transmission Lines" public layer
+(`services1.arcgis.com/Hp6G80Pky0om7QvQ/.../Electric_Power_Transmission_Lines/FeatureServer/0`),
+matched by named endpoints, owner, voltage and line length. Confidence is MEDIUM (imagery-derived
+line work, not a survey). Only rebuild/reconductor/substation projects were mapped; no greenfield
+line was drawn from HIFLD.
+
+| Project | Method | Evidence |
+| --- | --- | --- |
+| Dean Forest–Little Ogeechee Rebuild | existing_corridor_hifld | ID 107636, GPC 230 kV, 8.05 mi vs ~8 mi in plan |
+| Boulevard–Magnolia–Truman Parkway Rebuilds | existing_corridor_hifld | ID 131525, GPC 115 kV, 4.66 mi vs 4.56 mi; Truman Parkway section not located |
+| Little Ogeechee Autotransformer Replacement | public_facility_endpoint_point | shared terminal of ten HIFLD lines |
+| Meldrim Bank D Replacement | public_facility_endpoint_point | shared terminal of five HIFLD lines |
+
+Still null (see review queue reasons): Big Ogeechee, Boulevard–Deptford (line length ambiguous),
+Coleman–Dean Forest, Coleman–Meldrim, Goshen (Savannah)–Kraft (both segments), Goshen–McIntosh, Rice
+Hope, Goldens Creek–Warrenton, Goshen Area switching station, Effingham 500 kV, and all DESC
+Savannah/Augusta projects other than the four already mapped (Toolebeck, Aiken PSA 46 kV,
+Riverport, Okatie–McIntosh have no public line feature).

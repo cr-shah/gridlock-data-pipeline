@@ -107,7 +107,7 @@ def test_gis_evidence_is_small_explicit_valid_and_conservative(tmp_path: Path) -
     )
     by_id = {project["id"]: project for project in projects}
 
-    assert 1 <= len(module.GIS_EVIDENCE) <= 12
+    assert 1 <= len(module.GIS_EVIDENCE) <= 20
     assert set(module.GIS_EVIDENCE) <= set(by_id)
     assert by_id["georgia-power-2026-4a60199d0029a784348e"]["geometry_confidence"] == "HIGH"
     assert (
@@ -136,7 +136,7 @@ def test_gis_evidence_is_small_explicit_valid_and_conservative(tmp_path: Path) -
         assert project["geometry_type"] in {"Point", "LineString"}
         assert project["geometry_source"].startswith("https://")
         assert project["geometry_method"]
-        assert project["geometry_confidence"] in {"HIGH", "MEDIUM"}
+        assert project["geometry_confidence"] in {"HIGH", "MEDIUM", "ESTIMATED"}
         coordinates = geometry if project["geometry_type"] == "LineString" else [geometry]
         assert len(coordinates) >= (2 if project["geometry_type"] == "LineString" else 1)
         for longitude, latitude in coordinates:
@@ -288,3 +288,80 @@ def test_multi_route_and_mapless_gpc_projects_stay_null(tmp_path: Path) -> None:
         assert by_id[project_id]["geometry"] is None
         assert project_id in reasons
     assert "map is not currently" in reasons["georgia-power-2026-83a79bb18ac6d7434a20"]
+
+
+HIFLD_CORRIDOR_PROJECTS = [
+    # id, geometry type, first coordinate, vertex count (LineString) or None (Point)
+    (
+        "gpc-sertp-2025-dean-forest-little-ogeechee-rebuild",
+        "LineString",
+        [-81.252833, 32.007156],
+        63,
+    ),
+    (
+        "gpc-sertp-2025-boulevard-magnolia-truman-parkway-rebuilds",
+        "LineString",
+        [-81.086164, 32.022696],
+        103,
+    ),
+    (
+        "gpc-sertp-2025-little-ogeechee-autotransformer-replacement",
+        "Point",
+        [-81.252833, 32.007156],
+        None,
+    ),
+    (
+        "gpc-sertp-2025-meldrim-bank-d-replacement",
+        "Point",
+        [-81.367813, 32.155394],
+        None,
+    ),
+]
+
+
+@pytest.mark.parametrize(("project_id", "kind", "first", "vertices"), HIFLD_CORRIDOR_PROJECTS)
+def test_hifld_existing_corridor_geometry_is_labelled_medium(
+    tmp_path: Path, project_id: str, kind: str, first: list, vertices: int | None
+) -> None:
+    module = _product_export_module()
+    projects, review_queue = module.write_product_exports(
+        PROCESSED / "gridlock_verified_projects.json",
+        tmp_path / "projects.json",
+        tmp_path / "queue.json",
+    )
+    project = {item["id"]: item for item in projects}[project_id]
+
+    assert project["geometry_type"] == kind
+    assert project["geometry_confidence"] == "MEDIUM"
+    assert project["geometry_source"].startswith("https://services1.arcgis.com/")
+    assert "HIFLD" in project["geometry_notes"]
+    expected_method = (
+        "existing_corridor_hifld" if kind == "LineString" else "public_facility_endpoint_point"
+    )
+    assert project["geometry_method"] == expected_method
+    if kind == "LineString":
+        assert project["geometry"][0] == first
+        assert len(project["geometry"]) == vertices
+    else:
+        assert project["geometry"] == first
+    assert project_id not in {item["id"] for item in review_queue}
+
+
+def test_unverifiable_savannah_and_augusta_endpoints_stay_null(tmp_path: Path) -> None:
+    module = _product_export_module()
+    projects, review_queue = module.write_product_exports(
+        PROCESSED / "gridlock_verified_projects.json",
+        tmp_path / "projects.json",
+        tmp_path / "queue.json",
+    )
+    by_id = {project["id"]: project for project in projects}
+    reasons = {item["id"]: item["review_reason"] for item in review_queue}
+    for project_id in (
+        "gpc-sertp-2025-big-ogeechee-new-substation",
+        "gpc-sertp-2025-boulevard-deptford-reconductor",
+        "gpc-sertp-2025-coleman-dean-forest-rebuild",
+        "gpc-sertp-2025-goshen-kraft-first-segment",
+        "gpc-sertp-2025-goshen-area-gpc-switching-station",
+    ):
+        assert by_id[project_id]["geometry"] is None
+        assert project_id in reasons

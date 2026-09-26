@@ -8,6 +8,7 @@ from typing import Any
 
 ALLOWED_UTILITIES = frozenset({"DESC", "GPC"})
 ALLOWED_CONFIDENCE = frozenset({"HIGH", "MEDIUM", "LOW"})
+ALLOWED_GEOMETRY_CONFIDENCE = frozenset({"HIGH", "MEDIUM", "ESTIMATED"})
 EXPECTED_COUNTS = {"DESC": 54, "GPC": 24}
 YEAR_PATTERN = re.compile(r"\b(20\d{2})\b")
 PROJECT_LONGITUDE_BOUNDS = (-86.0, -78.0)
@@ -26,6 +27,11 @@ JASPER_OKATIE_SOURCE = (
     "jasper-okatie-riverport/pdfs/jor-final-route-selection-map.pdf"
 )
 EIA_860_SOURCE = "https://www.eia.gov/electricity/data/eia860/"
+HIFLD_LINES_SOURCE = (
+    "https://services1.arcgis.com/Hp6G80Pky0om7QvQ/arcgis/rest/services/"
+    "Electric_Power_Transmission_Lines/FeatureServer/0"
+)
+HIFLD_TITLE = "HIFLD Open Electric Power Transmission Lines (DHS/CISA public GIS layer)"
 GPC_TRANSMISSION_PROJECTS_BASE = (
     "https://www.georgiapower.com/about/grid-reliability/grid-improvements/"
     "grid-projects/transmission-projects/"
@@ -752,11 +758,284 @@ GIS_EVIDENCE: dict[str, dict[str, Any]] = {
             "named Urquhart endpoint, not the Toolebeck line route."
         ),
     },
+
+    "gpc-sertp-2025-dean-forest-little-ogeechee-rebuild": {
+        "geometry": [
+            [-81.252833, 32.007156],
+            [-81.252258, 32.007934],
+            [-81.251409, 32.007894],
+            [-81.250393, 32.008278],
+            [-81.249485, 32.007378],
+            [-81.248557, 32.006457],
+            [-81.247616, 32.005524],
+            [-81.246692, 32.004608],
+            [-81.245759, 32.003683],
+            [-81.244804, 32.002792],
+            [-81.244481, 32.002462],
+            [-81.241654, 32.005295],
+            [-81.239346, 32.006374],
+            [-81.236148, 32.009077],
+            [-81.235220, 32.009862],
+            [-81.233678, 32.012170],
+            [-81.233178, 32.013031],
+            [-81.231979, 32.014207],
+            [-81.230494, 32.016139],
+            [-81.227963, 32.019465],
+            [-81.226211, 32.021774],
+            [-81.225231, 32.023377],
+            [-81.224765, 32.023625],
+            [-81.222933, 32.025038],
+            [-81.220548, 32.028350],
+            [-81.220001, 32.028988],
+            [-81.218930, 32.030382],
+            [-81.217731, 32.032010],
+            [-81.214790, 32.036031],
+            [-81.213391, 32.037935],
+            [-81.212339, 32.039267],
+            [-81.212886, 32.039815],
+            [-81.216303, 32.043550],
+            [-81.217274, 32.044712],
+            [-81.215861, 32.045644],
+            [-81.216608, 32.046529],
+            [-81.215475, 32.046863],
+            [-81.211754, 32.054781],
+            [-81.210773, 32.056913],
+            [-81.210217, 32.057846],
+            [-81.208432, 32.061749],
+            [-81.207033, 32.064809],
+            [-81.206509, 32.065932],
+            [-81.205677, 32.066812],
+            [-81.204882, 32.067750],
+            [-81.202541, 32.069329],
+            [-81.200561, 32.070686],
+            [-81.198781, 32.072270],
+            [-81.197824, 32.073160],
+            [-81.196792, 32.074493],
+            [-81.196758, 32.075549],
+            [-81.196205, 32.076663],
+            [-81.195736, 32.078140],
+            [-81.195497, 32.079729],
+            [-81.195382, 32.080876],
+            [-81.195409, 32.082174],
+            [-81.193829, 32.082008],
+            [-81.192255, 32.081851],
+            [-81.190672, 32.081706],
+            [-81.189770, 32.082590],
+            [-81.190702, 32.084010],
+            [-81.188724, 32.084217],
+            [-81.188737, 32.083602],
+        ],
+        "geometry_type": "LineString",
+        "geometry_source": HIFLD_LINES_SOURCE,
+        "geometry_method": "existing_corridor_hifld",
+        "geometry_confidence": "MEDIUM",
+        "geometry_notes": (
+            f"Source: {HIFLD_TITLE}, feature ID 107636 (Georgia Power, 230 kV, in service, "
+            "SUB_1=DEAN FOREST, SUB_2=LITTLE OGEECHEE). The project is a rebuild of the "
+            "Little Ogeechee-Salt Creek-Dean Forest 230 kV facilities (about 8 miles, SERTP 2025 "
+            "p. 130); the HIFLD line is the existing 230 kV line between the same named "
+            "endpoints and measures about 8.05 miles, so the existing corridor is a defensible "
+            "location for a rebuild. HIFLD line work is imagery-derived and approximate, not "
+            "a survey alignment."
+        ),
+    },
+    "gpc-sertp-2025-boulevard-magnolia-truman-parkway-rebuilds": {
+        "geometry": [
+            [-81.086164, 32.022696],
+            [-81.086657, 32.022859],
+            [-81.086501, 32.023243],
+            [-81.086386, 32.023909],
+            [-81.086625, 32.024353],
+            [-81.087464, 32.025894],
+            [-81.087912, 32.026718],
+            [-81.088408, 32.027625],
+            [-81.089318, 32.027836],
+            [-81.090219, 32.028084],
+            [-81.091436, 32.028430],
+            [-81.092525, 32.028739],
+            [-81.092965, 32.029064],
+            [-81.093443, 32.029214],
+            [-81.094494, 32.029546],
+            [-81.095822, 32.029969],
+            [-81.096954, 32.030329],
+            [-81.097284, 32.030504],
+            [-81.099523, 32.031070],
+            [-81.100396, 32.031302],
+            [-81.100192, 32.031856],
+            [-81.100016, 32.032324],
+            [-81.099864, 32.032722],
+            [-81.099655, 32.033282],
+            [-81.099530, 32.033701],
+            [-81.099310, 32.034319],
+            [-81.099150, 32.034759],
+            [-81.098929, 32.035361],
+            [-81.098755, 32.035806],
+            [-81.098649, 32.036093],
+            [-81.098555, 32.036332],
+            [-81.099967, 32.036705],
+            [-81.100503, 32.036846],
+            [-81.101278, 32.037050],
+            [-81.102045, 32.037253],
+            [-81.102550, 32.037386],
+            [-81.102961, 32.037494],
+            [-81.103486, 32.037633],
+            [-81.104213, 32.037825],
+            [-81.104835, 32.037989],
+            [-81.105553, 32.038178],
+            [-81.106297, 32.038375],
+            [-81.107138, 32.038596],
+            [-81.107311, 32.038642],
+            [-81.107632, 32.038668],
+            [-81.108064, 32.038783],
+            [-81.108896, 32.039003],
+            [-81.109467, 32.039154],
+            [-81.109999, 32.039295],
+            [-81.110509, 32.039430],
+            [-81.111125, 32.039594],
+            [-81.111783, 32.039191],
+            [-81.112023, 32.038419],
+            [-81.112182, 32.038004],
+            [-81.112316, 32.037657],
+            [-81.112429, 32.037362],
+            [-81.112615, 32.036879],
+            [-81.112878, 32.036192],
+            [-81.113027, 32.035805],
+            [-81.113178, 32.035411],
+            [-81.113412, 32.034802],
+            [-81.113896, 32.033543],
+            [-81.114777, 32.033822],
+            [-81.115539, 32.034025],
+            [-81.116059, 32.034155],
+            [-81.116926, 32.034495],
+            [-81.117564, 32.034662],
+            [-81.118298, 32.034848],
+            [-81.119128, 32.035071],
+            [-81.119875, 32.035271],
+            [-81.120606, 32.035468],
+            [-81.121346, 32.035669],
+            [-81.121742, 32.035770],
+            [-81.122383, 32.035943],
+            [-81.122924, 32.036094],
+            [-81.123434, 32.036227],
+            [-81.123883, 32.036346],
+            [-81.124752, 32.036579],
+            [-81.125540, 32.036786],
+            [-81.126261, 32.036987],
+            [-81.126865, 32.037174],
+            [-81.127199, 32.037284],
+            [-81.127671, 32.037519],
+            [-81.128140, 32.037738],
+            [-81.128760, 32.037936],
+            [-81.129725, 32.038129],
+            [-81.130370, 32.038260],
+            [-81.130909, 32.038309],
+            [-81.131465, 32.038361],
+            [-81.131949, 32.038402],
+            [-81.132654, 32.038447],
+            [-81.134233, 32.038859],
+            [-81.135578, 32.039241],
+            [-81.135983, 32.039345],
+            [-81.136566, 32.039514],
+            [-81.137095, 32.039668],
+            [-81.137718, 32.039839],
+            [-81.138483, 32.040051],
+            [-81.139227, 32.040261],
+            [-81.140022, 32.040482],
+            [-81.140832, 32.040565],
+            [-81.144580, 32.041581],
+            [-81.145193, 32.041350],
+        ],
+        "geometry_type": "LineString",
+        "geometry_source": HIFLD_LINES_SOURCE,
+        "geometry_method": "existing_corridor_hifld",
+        "geometry_confidence": "MEDIUM",
+        "geometry_notes": (
+            f"Source: {HIFLD_TITLE}, feature ID 131525 (Georgia Power, 115 kV, in service, "
+            "SUB_1=MAGNOLIA, SUB_2=BOULEVARD). Represents only the Boulevard-Magnolia "
+            "115 kV rebuild (about 4.56 miles in SERTP 2025 pp. 129-130); the HIFLD line "
+            "measures about 4.66 miles. The separate approximately 3-mile Magnolia-Truman "
+            "Parkway section could not be matched to a public line (no Truman Parkway "
+            "endpoint in HIFLD) and is not represented. HIFLD line work is imagery-derived "
+            "and approximate."
+        ),
+    },
+    "gpc-sertp-2025-little-ogeechee-autotransformer-replacement": {
+        "geometry": [-81.252833, 32.007156],
+        "geometry_type": "Point",
+        "geometry_source": HIFLD_LINES_SOURCE,
+        "geometry_method": "public_facility_endpoint_point",
+        "geometry_confidence": "MEDIUM",
+        "geometry_notes": (
+            f"Source: {HIFLD_TITLE}. Little Ogeechee substation location taken from the shared "
+            "terminal vertex of ten HIFLD lines labelled LITTLE OGEECHEE (Georgia Power 230 kV "
+            "and 115 kV, e.g. feature IDs 107636, 156230, 156228). The project replaces the "
+            "230/115 kV autotransformer at that substation, so the substation point is the "
+            "project location; position is an imagery-derived line terminus, not a surveyed "
+            "substation coordinate."
+        ),
+    },
+    "gpc-sertp-2025-meldrim-bank-d-replacement": {
+        "geometry": [-81.367813, 32.155394],
+        "geometry_type": "Point",
+        "geometry_source": HIFLD_LINES_SOURCE,
+        "geometry_method": "public_facility_endpoint_point",
+        "geometry_confidence": "MEDIUM",
+        "geometry_notes": (
+            f"Source: {HIFLD_TITLE}. Meldrim substation location taken from the shared terminal "
+            "vertex of five HIFLD lines labelled MELDRIM (feature IDs 156230, 124990, 102519, "
+            "and others; 230 kV and 115 kV). The project replaces the Meldrim Bank D 230/115 kV "
+            "autotransformer, so the substation point is the project location; position is an "
+            "imagery-derived line terminus, not a surveyed substation coordinate."
+        ),
+    },
 }
 
 
 # Record-specific explanations for why geometry stays null after a bounded source check.
 REVIEW_REASONS: dict[str, str] = {
+    "gpc-sertp-2025-big-ogeechee-new-substation": (
+        "Georgia Power describes a new 500/230 kV substation in West Chatham on Little "
+        "Ogeechee Road, but no site coordinates or route map are public, and the existing "
+        "Little Ogeechee substation is a different facility, so no proxy point is used."
+    ),
+    "gpc-sertp-2025-boulevard-deptford-reconductor": (
+        "The Boulevard-Deptford 115 kV line is not a single named public line: HIFLD has "
+        "Boulevard-Magnolia (4.66 mi) and Magnolia-Deptford (5.12 mi) but their total does "
+        "not match the approximately 8 miles in the project text, so the route is ambiguous."
+    ),
+    "gpc-sertp-2025-coleman-dean-forest-rebuild": (
+        "No public HIFLD line or substation is named Coleman in the Savannah area, so the "
+        "Coleman endpoint cannot be verified and the line is not drawn."
+    ),
+    "gpc-sertp-2025-coleman-meldrim-rebuild": (
+        "The named Four Lakes, Structure 76A and Quacco Road endpoints have no matching "
+        "public GIS features, so no route can be verified."
+    ),
+    "gpc-sertp-2025-goshen-kraft-first-segment": (
+        "HIFLD has no Goshen (Savannah) substation (its Goshen is in the Augusta area); the "
+        "Goshen (Savannah) endpoint cannot be verified, so no line is drawn."
+    ),
+    "gpc-sertp-2025-goshen-kraft-rice-hope-segment": (
+        "HIFLD has no Goshen (Savannah) or Rice Hope substation, so neither endpoint can be "
+        "verified and no line is drawn."
+    ),
+    "gpc-sertp-2025-goshen-mcintosh-rebuild": (
+        "The Goshen (Savannah) and Georgia Pacific (Rincon) endpoints have no matching public "
+        "GIS features, so the 6.7-mile section cannot be located."
+    ),
+    "gpc-sertp-2025-rice-hope-autotransformer": (
+        "No public GIS feature named Rice Hope or Crossgate was found, so the substation "
+        "location cannot be verified."
+    ),
+    "gpc-sertp-2025-goldens-creek-warrenton-primary-rebuild": (
+        "No public GIS feature named Goldens Creek was found and the rebuild is only about "
+        "0.34 miles, so it cannot be located from named endpoints."
+    ),
+    "gpc-sertp-2025-goshen-area-gpc-switching-station": (
+        "The switching station is new and sited on the Waynesboro-Wilson 230 kV line at an "
+        "unpublished location; no public coordinates exist and the line has no Waynesboro "
+        "endpoint in HIFLD."
+    ),
     "georgia-power-2026-a84d843ee3a3cc43ff5f": (
         "The official Georgia Power project page map embeds two separate route polylines "
         "(new transmission lines) that do not share an endpoint. They cannot be represented as "
@@ -906,13 +1185,21 @@ def _validate_projects(projects: list[dict[str, Any]]) -> None:
                 raise ValueError(f"invalid LineString for {project['id']}")
             for coordinate in geometry:
                 _validate_coordinate(coordinate)
+        elif geometry_type == "MultiLineString":
+            if not isinstance(geometry, list) or not geometry:
+                raise ValueError(f"invalid MultiLineString for {project['id']}")
+            for line in geometry:
+                if not isinstance(line, list) or len(line) < 2:
+                    raise ValueError(f"invalid MultiLineString member for {project['id']}")
+                for coordinate in line:
+                    _validate_coordinate(coordinate)
         else:
             raise ValueError(f"invalid geometry type for {project['id']}: {geometry_type!r}")
         if geometry is not None:
             for field in ("geometry_source", "geometry_method", "geometry_notes"):
                 if not isinstance(project[field], str) or not project[field]:
                     raise ValueError(f"{field} must be a non-empty string for {project['id']}")
-            if project["geometry_confidence"] not in {"HIGH", "MEDIUM"}:
+            if project["geometry_confidence"] not in ALLOWED_GEOMETRY_CONFIDENCE:
                 raise ValueError(f"invalid geometry confidence for {project['id']}")
 
 
