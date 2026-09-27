@@ -1,0 +1,23 @@
+{
+  "artifacts": {
+    "gridlock_master_projects.csv": {
+      "format": "csv",
+      "path": "data/published/gridlock_master_projects.csv",
+      "sha256": "79fe57347ee358ac86eced630c907d8d341e92f697223bf8bb829fac20693159"
+    },
+    "gridlock_master_projects.json": {
+      "format": "canonical-json",
+      "path": "data/published/gridlock_master_projects.json",
+      "sha256": "3f845b7f1ebc517367398821e35d6b006385e9c5c3126d54736785ec0cdd976d"
+    },
+    "gridlock_master_projects.ndjson": {
+      "format": "ndjson",
+      "path": "data/published/gridlock_master_projects.ndjson",
+      "sha256": "ae3e8b6cf51796af77cf5a23c614c69805f171d3257ba895b072ce42b3d627bb"
+    }
+  },
+  "dataset_version": "1.0.0",
+  "generated_at": "2026-09-27T01:39:03.615547+00:00",
+  "pipeline_commit": "7c72a0c670bba9b94513e49f16684fb71f3e9124",
+  "total_projects": 78
+}

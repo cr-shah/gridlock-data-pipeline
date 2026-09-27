@@ -11,9 +11,9 @@ It explains why the change was needed, what was implemented, what remains intent
 and how another developer can integrate the generated dataset into a website, MongoDB, SQL system,
 or a future Gemini enrichment workflow.
 
-> **Current Git status:** this work is local and has **not been pushed**. The GitHub repositories
-> named in this document do not contain these changes until someone reviews, commits, and pushes
-> both working trees. Do not assume the raw GitHub URLs will work before that happens.
+> **Publication branches:** pipeline work is published from `feat/canonical-publishing`; product
+> integration is published from `feat/real-data-integration`. Use those branches until the changes
+> are reviewed and merged into each repository's default branch.
 
 ## What problem we found
 
@@ -209,8 +209,7 @@ python -m gridlock_pipeline publish --skip-downstream
 
 ## Local setup from the two repositories
 
-Until the changes are pushed, use the existing local working trees. After they are pushed, a new
-developer can clone both repositories as siblings:
+Clone both repositories as siblings, then check out the publication branches:
 
 ```bash
 mkdir gridlock
@@ -218,6 +217,9 @@ cd gridlock
 
 git clone https://github.com/cr-shah/gridlock-data-pipeline.git
 git clone https://github.com/cr-shah/gridlock-challenge.git
+
+git -C gridlock-data-pipeline switch feat/canonical-publishing
+git -C gridlock-challenge switch feat/real-data-integration
 ```
 
 Install the pipeline and publishing dependencies:
@@ -246,19 +248,18 @@ python -m http.server 8000
 Then open `http://localhost:8000`. Opening `index.html` directly with `file://` will not allow its
 JSON fetches to work.
 
-## Integrating from GitHub after the changes are pushed
+## Integrating from GitHub
 
-After review and push, consumers that only need the canonical snapshot may download:
+Before merge, consumers should use the pipeline feature branch:
 
 ```text
-https://raw.githubusercontent.com/cr-shah/gridlock-data-pipeline/main/data/published/gridlock_master_projects.json
-https://raw.githubusercontent.com/cr-shah/gridlock-data-pipeline/main/data/published/gridlock_master_projects.ndjson
-https://raw.githubusercontent.com/cr-shah/gridlock-data-pipeline/main/data/published/gridlock_master_projects.csv
-https://raw.githubusercontent.com/cr-shah/gridlock-data-pipeline/main/data/published/publication_manifest.json
+https://github.com/cr-shah/gridlock-data-pipeline/blob/feat/canonical-publishing/data/published/gridlock_master_projects.json
+https://github.com/cr-shah/gridlock-data-pipeline/blob/feat/canonical-publishing/data/published/gridlock_master_projects.ndjson
+https://github.com/cr-shah/gridlock-data-pipeline/blob/feat/canonical-publishing/data/published/gridlock_master_projects.csv
+https://github.com/cr-shah/gridlock-data-pipeline/blob/feat/canonical-publishing/data/published/publication_manifest.json
 ```
 
-These URLs are listed for the future published state. They will not expose the new artifacts until
-the local changes are committed and pushed to `main` or merged there.
+After merge, replace `feat/canonical-publishing` with `main` in those URLs.
 
 Consumers should download `publication_manifest.json` first, then verify the SHA-256 of the chosen
 artifact before importing it. They should also store:
@@ -488,9 +489,7 @@ The tests cover:
 - original verified geometry
 - demo data semantics
 - the website default filter in the final follow-up
-- any remote Git branch or pull request
-
-Nothing has been pushed.
+- any pull request or merge into a default branch
 
 ## Review and publication checklist
 
@@ -509,7 +508,6 @@ Before another developer publishes this work:
 11. Push only after review.
 12. Verify the raw GitHub URLs and the hosted website after merge.
 
-Because `pipeline_commit` is generated from `git rev-parse HEAD`, the current local artifact records
-the last pulled pipeline commit (`164c9b259607dd53c9095a4949fbbe5e36bf5b41`). The implementation
-changes are still uncommitted. Rerun publication after the implementation commit so the final
-artifact points at the commit that actually contains the publisher.
+Because `pipeline_commit` is generated from `git rev-parse HEAD`, the published artifact records
+the implementation commit used by the publisher. Generated-artifact commits may follow that
+implementation commit; this is expected and avoids a self-referential commit hash.
