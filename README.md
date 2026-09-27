@@ -40,6 +40,36 @@ python -m gridlock_pipeline export --source sertp --year 2026
 
 `discover` reports the selected candidate. In Phase 1, each other stage-oriented command executes the complete gated pipeline so it cannot publish a partial dataset. Any source/year other than `sertp`/`2026` fails explicitly.
 
+## Publish the canonical product dataset
+
+This repository is the single source of truth for the Gridlock product catalog and its geometry
+states. After changing the verified inventory or curated estimated-geometry evidence, regenerate
+the canonical master and every product artifact with:
+
+```bash
+python -m gridlock_pipeline publish
+```
+
+By default, the command also finds the sibling `gridlock-challenge` checkout and regenerates its
+website input, scoring output, Excel analysis, project explorer, and summary statistics. Use
+`--product-root /path/to/gridlock-challenge` when the checkout is elsewhere, or
+`--skip-downstream` to publish only the pipeline master.
+
+The canonical output is `data/published/gridlock_master_projects.json`. It contains all 78 real
+projects exactly once. Verified and estimated geometry are fields on the same project record,
+with `analysis_geometry` selected by strict precedence: verified, then estimated, then null.
+`geometry_status` is correspondingly `VERIFIED`, `ESTIMATED`, or `UNRESOLVED`. Excel is only an
+optional downstream report; it is not a source dataset.
+
+The same publish run also writes an NDJSON transport for MongoDB, a CSV staging export for SQL,
+and a SHA-256 publication manifest. See
+[`docs/integration/gridlock-master-contract.md`](docs/integration/gridlock-master-contract.md) for
+the storage-neutral contract and the boundary for future Gemini enrichment.
+
+Curated estimated geometry evidence is maintained in `data/curated/estimated_geometry.json`.
+It may fill missing geometry, but it never replaces verified geometry or changes project identity,
+timing, ownership, status, or source provenance.
+
 ## Outputs
 
 Successful runs atomically publish:
@@ -50,6 +80,14 @@ Successful runs atomically publish:
 - `data/processed/data_quality.json`: record, authority, confidence, validation, warning, and parser-diagnostic counts;
 - `data/processed/bundle_manifest.json`: the atomic snapshot boundary and hashes for coherent multi-file reads;
 - `schemas/project_observation.schema.json`: the Pydantic-generated machine-readable contract.
+
+The separate `publish` command writes:
+
+- `data/published/gridlock_master_projects.json`: the canonical 78-project analysis export;
+- `data/published/gridlock_master_projects.ndjson`: one canonical project document per line;
+- `data/published/gridlock_master_projects.csv`: flat SQL staging rows with nested values encoded as JSON;
+- `data/published/publication_manifest.json`: synchronized artifact hashes and publication metadata;
+- top-level counts and the exact pipeline Git commit used to generate it.
 
 The challenge-ready verified inventory contains 54 DESC and 24 GPC records. The GPC total is the
 10 projects on Georgia Power's public current-project page plus 14 separately source-scoped final
@@ -81,6 +119,6 @@ See [`docs/verification/sertp-2026-phase-1.md`](docs/verification/sertp-2026-pha
 
 - Phase 1 has no OCR; it relies on the PDF text layer.
 - Location endpoints and project types are conservative deterministic interpretations, not official fields; ambiguous endpoints are review-queued.
-- No geocoding, geometry fabrication, ML/LLM extraction, canonical-project matching, schedule-drift analysis, DESC/SCRTP ingestion, dashboard work, or automatic maintenance prediction is included.
+- The ingestion pipeline does not perform ML/LLM extraction, schedule-drift analysis, dashboard work, or automatic maintenance prediction. Curated public geometry evidence is explicitly labeled by method and confidence; estimated geometry never becomes verified geometry.
 - Historical SERTP documents do not have a generalized parser. The 14 final-2025 planning records
   are a bounded, page-cited curated layer; additional years require separate source review.

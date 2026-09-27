@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gridlock.local/schemas/gridlock_master_projects.schema.json",
+  "title": "Gridlock canonical master projects",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "dataset_version",
+    "generated_at",
+    "pipeline_commit",
+    "total_projects",
+    "DESC_count",
+    "GPC_count",
+    "verified_geometry_count",
+    "estimated_geometry_count",
+    "unresolved_count",
+    "projects"
+  ],
+  "properties": {
+    "dataset_version": {"type": "string"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "pipeline_commit": {"type": "string", "minLength": 7},
+    "total_projects": {"type": "integer", "minimum": 0},
+    "DESC_count": {"type": "integer", "minimum": 0},
+    "GPC_count": {"type": "integer", "minimum": 0},
+    "verified_geometry_count": {"type": "integer", "minimum": 0},
+    "estimated_geometry_count": {"type": "integer", "minimum": 0},
+    "unresolved_count": {"type": "integer", "minimum": 0},
+    "projects": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/project"}
+    }
+  },
+  "$defs": {
+    "geometry": {
+      "type": ["object", "null"],
+      "required": ["type", "coordinates"],
+      "properties": {
+        "type": {"enum": ["Point", "LineString", "MultiLineString"]},
+        "coordinates": {"type": "array"}
+      },
+      "additionalProperties": false
+    },
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "project_id",
+        "utility",
+        "project_name",
+        "project_type",
+        "voltage",
+        "planned_start_year",
+        "planned_end_year",
+        "in_service_year",
+        "status",
+        "source_metadata",
+        "verified_geometry",
+        "estimated_geometry",
+        "analysis_geometry",
+        "geometry_status",
+        "geometry_method",
+        "geometry_confidence",
+        "geometry_source",
+        "geometry_notes",
+        "geometry_tier_eligibility",
+        "unresolved_reason",
+        "county_region",
+        "endpoint_candidates"
+      ],
+      "properties": {
+        "project_id": {"type": "string", "minLength": 1},
+        "utility": {"enum": ["DESC", "GPC"]},
+        "project_name": {"type": "string", "minLength": 1},
+        "project_type": {"type": ["string", "null"]},
+        "voltage": {"type": "array", "items": {"type": "number"}},
+        "planned_start_year": {"type": ["integer", "null"]},
+        "planned_end_year": {"type": ["integer", "null"]},
+        "in_service_year": {"type": ["integer", "null"]},
+        "status": {"type": ["string", "null"]},
+        "source_metadata": {"type": "object"},
+        "verified_geometry": {"$ref": "#/$defs/geometry"},
+        "estimated_geometry": {"$ref": "#/$defs/geometry"},
+        "analysis_geometry": {"$ref": "#/$defs/geometry"},
+        "geometry_status": {"enum": ["VERIFIED", "ESTIMATED", "UNRESOLVED"]},
+        "geometry_method": {"type": ["string", "null"]},
+        "geometry_confidence": {"type": ["string", "null"]},
+        "geometry_source": {"type": ["string", "null"]},
+        "geometry_notes": {"type": ["string", "null"]},
+        "geometry_tier_eligibility": {"type": ["string", "null"]},
+        "unresolved_reason": {"type": ["string", "null"]},
+        "county_region": {"type": ["string", "null"]},
+        "endpoint_candidates": {"type": "array"}
+      }
+    }
+  }
+}

@@ -6,7 +6,7 @@ import sys
 from collections.abc import Sequence
 from pathlib import Path
 
-from gridlock_pipeline.pipeline import PipelineRunner
+from gridlock_pipeline.export.master_projects import publish_all
 
 COMMANDS = ("discover", "download", "extract", "parse", "validate", "export", "run")
 
@@ -21,11 +21,43 @@ def build_parser() -> argparse.ArgumentParser:
         subparser.add_argument("--dry-run", action="store_true")
         subparser.add_argument("--force", action="store_true")
         subparser.add_argument("--verbose", action="store_true")
+    publish_parser = subparsers.add_parser("publish")
+    publish_parser.add_argument("--product-root", type=Path)
+    publish_parser.add_argument("--skip-downstream", action="store_true")
     return parser
 
 
 def main(argv: Sequence[str] | None = None, *, root: Path | None = None) -> int:
     args = build_parser().parse_args(argv)
+    if args.command == "publish":
+        pipeline_root = (root or Path.cwd()).resolve()
+        product_root = args.product_root
+        if product_root is None and not args.skip_downstream:
+            candidate = pipeline_root.parent / "gridlock-challenge"
+            product_root = candidate if candidate.exists() else None
+        payload = publish_all(
+            pipeline_root,
+            None if args.skip_downstream else product_root,
+        )
+        print(
+            json.dumps(
+                {
+                    key: payload[key]
+                    for key in (
+                        "dataset_version",
+                        "pipeline_commit",
+                        "total_projects",
+                        "DESC_count",
+                        "GPC_count",
+                        "verified_geometry_count",
+                        "estimated_geometry_count",
+                        "unresolved_count",
+                    )
+                },
+                indent=2,
+            )
+        )
+        return 0
     if args.source not in {"sertp", "scrtp", "georgia_power"} or args.year != 2026:
         print(
             "Implemented sources are sertp, scrtp, and georgia_power for only 2026; "
@@ -36,6 +68,8 @@ def main(argv: Sequence[str] | None = None, *, root: Path | None = None) -> int:
     if args.dry_run:
         print(f"Dry run: would {args.command} {args.source} planning year {args.year}")
         return 0
+
+    from gridlock_pipeline.pipeline import PipelineRunner
 
     runner = PipelineRunner(root=root)
     if args.command == "discover":
